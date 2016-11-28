@@ -24,10 +24,63 @@ public class TSMenu {
         this.ctrl = ctrl;
     }
     
-    public void show(){
+    //Inici del programa
+    public void init(){
+        int option1 = -1;
+        //Mentre no vulgui sortir del programa(4)
+        while(option1 != 4){
+            //Obtenim instrucció
+            option1 = showFirstMenu();
+            //Tractem instrucció
+            optionsFirstMenu(option1);
+        }
+    }
+    
+    //Mostra el primer menu
+    public int showFirstMenu(){
         console.escriu("Welcome to TotSeries. Select an option, please:"
                 + "\n(1)Login"
                 + "\n(2)Register"
-                + "\n(3)Consult catalog");
+                + "\n(3)Consult catalog"
+                + "\n(4)Exit\n");
+        int option = console.llegeixInt();
+        
+        //Espera a tenir una instrucció vàlida
+        while(option > 4 || option <= 0){
+            System.out.println("Opció no vàlida. Torni a escriure l'opcio desitjada.");
+            option = console.llegeixInt();
+        }
+        return option;
     }
+
+    private void optionsFirstMenu(int option) {
+        boolean registered = false;
+        boolean logged = false;
+        switch(option){
+            case 1: // IDENTIFICARSE
+                login();
+                break;
+            case 2: // REGISTRARSE
+                while(registered){
+                    
+                }
+                break;
+            case 3: // CONSULTAR CATÀLEG
+                consultCatalog();
+                break;
+        }
+    }
+
+    private void consultCatalog() {
+        ctrl.consultCatalog();
+    }
+
+    private boolean register() {
+        return ctrl.createClient();
+    }
+
+    private boolean login() {
+        return ctrl.login();
+    }
+    
 }

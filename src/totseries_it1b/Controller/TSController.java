@@ -49,7 +49,7 @@ public class TSController {
     }
     
     public void consultCatalog(){
-        
+        System.out.println("Heu consultat el ");
     }
     
     public void visualizeEpisode(){
@@ -57,7 +57,9 @@ public class TSController {
     }
     
     public boolean login(){
-        return false;
+        System.out.println("Us heu registrat");
+        return true;
+
     }
     
     public void setClientVIP(Client v, boolean VIP){
