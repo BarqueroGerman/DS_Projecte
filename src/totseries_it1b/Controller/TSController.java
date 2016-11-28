@@ -5,6 +5,8 @@
  */
 package totseries_it1b.Controller;
 
+import edu.ub.informatica.disseny.totseries.Consola;
+import java.util.Calendar;
 import totseries_it1b.Model.*;
 
 /**
@@ -12,10 +14,19 @@ import totseries_it1b.Model.*;
  * @author Enric Calvo & German Barquero
  */
 public class TSController {
+    private Consola console;
+    /**
+     * Database
+     */
     private TotSeries totSeries;
+    /**
+     * Client in session.
+     */
+    private Client client;
     
     public TSController(){
         totSeries = new TotSeries();
+        console = new Consola();
     }
     
     public TSController(TotSeries ts){
@@ -23,6 +34,17 @@ public class TSController {
     }
     
     public boolean createClient(){
+        String username, pass, name, nationality, dateString;
+        Calendar birthdate = Calendar.getInstance();
+        
+        username = console.llegeixString();
+        pass = console.llegeixString();
+        name = console.llegeixString();
+        nationality = console.llegeixString();
+        dateString = console.llegeixString();
+        
+        // Crear birthdate
+        //client = new Client(totSeries, username, pass, name, nationality, birthdate);
         return false;
     }
     

@@ -261,8 +261,8 @@ public class TotSeriesDataManager {
 		
                 // TODO birthdate??
                 Client c;
-                if(vip.equals("true")) c = new VIPClient(totSeries, id, usuari, password, nom, "Spain", adreca, null);
-                else c = new Client(totSeries, id, usuari, password, nom, "Spain", adreca, null);
+                if(vip.equals("true")) c = new VIPClient(totSeries, id, usuari, password, nom, "Undefined", null);
+                else c = new Client(totSeries, id, usuari, password, nom, "Undefined", null);
                 totSeries.addUser(c);
 	}
 }

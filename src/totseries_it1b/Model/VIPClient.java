@@ -13,8 +13,12 @@ import java.util.Date;
  */
 public class VIPClient extends Client {
     
-    public VIPClient(TotSeries ts, String id, String user, String pass, String name, String nationality, String address, Date birthdate){
-        super(ts, id, user, pass, name, nationality, address, birthdate);
+    public VIPClient(TotSeries ts, String id, String user, String pass, String name, String nationality, Date birthdate){
+        super(ts, id, user, pass, name, nationality, birthdate);
+    }
+    
+    public VIPClient(TotSeries ts, String user, String pass, String name, String nationality, Date birthdate){
+        super(ts, user, pass, name, nationality, birthdate);
     }
     
 }
