@@ -5,6 +5,7 @@
  */
 package totseries_it1b.View;
 
+import edu.ub.informatica.disseny.totseries.Consola;
 import totseries_it1b.Controller.TSController;
 
 /**
@@ -13,6 +14,7 @@ import totseries_it1b.Controller.TSController;
  */
 public class TSMenu {
     private TSController ctrl;
+    private Consola console;
     
     public TSMenu(){
         ctrl = new TSController();
@@ -23,6 +25,9 @@ public class TSMenu {
     }
     
     public void show(){
-        // We show the menu
+        console.escriu("Welcome to TotSeries. Select an option, please:"
+                + "\n(1)Login"
+                + "\n(2)Register"
+                + "\n(3)Consult catalog");
     }
 }
