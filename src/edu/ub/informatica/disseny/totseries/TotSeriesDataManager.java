@@ -142,12 +142,12 @@ public class TotSeriesDataManager {
 		/* TODO: Aqui feu el necessari per a crear els artistes per a la serie
 		 */
 
-		System.out.println("\nArtista amb ID: " + id);
+		/*System.out.println("\nArtista amb ID: " + id);
 		System.out.println("--------------------------------------");
 		System.out.println("Nom: " + nom);
 		System.out.println("Tipus: " + tipus);
 		System.out.println("Serie ID: " + idSerie);
-                System.out.println("Nacionalitat: " + nacionalitat);
+                System.out.println("Nacionalitat: " + nacionalitat);*/
                 
                 Artist a;
                 int idInt = Integer.parseInt(id);
@@ -173,10 +173,10 @@ public class TotSeriesDataManager {
 		/* TODO: Aqui feu el necessari per a crear les productores per a les series
 		 */
 
-		System.out.println("\nProductora amb ID: " + id);
+		/*System.out.println("\nProductora amb ID: " + id);
 		System.out.println("--------------------------------------");
 		System.out.println("Nom: " + nom);
-		System.out.println("Serie ID: " + idSerie);
+		System.out.println("Serie ID: " + idSerie);*/
                 
                 Producer prod = new Producer(nom, Integer.parseInt(id), 0);
                 Serie s = totSeries.getCatalog().getSerieById(idSerie);
@@ -200,12 +200,12 @@ public class TotSeriesDataManager {
 
 		/* TODO: A partir d'aqui creeu la valoracio
 		 */
-		System.out.println("\nValoracio amb ID: " + id);
+		/*System.out.println("\nValoracio amb ID: " + id);
 		System.out.println("--------------------------------------");
 		System.out.println("Client: " + client);
 		System.out.println("Episodi: " + episodi);
 		System.out.println("Puntuacio: " + puntuacio);
-		System.out.println("Data: " + data);
+		System.out.println("Data: " + data);*/
                 
                 
 	}
@@ -223,11 +223,11 @@ public class TotSeriesDataManager {
 		/* TODO: Creeu aqui el vostre admin
 		 */
 
-		System.out.println("\nAdmin ID: " + id);
+		/*System.out.println("\nAdmin ID: " + id);
 		System.out.println("-----------------");
 		System.out.println("Nom: " + nom);
 		System.out.println("Usuari: " + usuari);
-		System.out.println("Password: " + password);
+		System.out.println("Password: " + password);*/
                 
                 Admin ad = new Admin(totSeries, id, nom, usuari, password);
                 totSeries.addUser(ad);
@@ -250,14 +250,14 @@ public class TotSeriesDataManager {
 		/* TODO: Creeu aqui el vostre client
 		 */
 
-		System.out.println("\nClient ID: " + id);
+		/*System.out.println("\nClient ID: " + id);
 		System.out.println("-----------------");
 		System.out.println("Nom: " + nom);
 		System.out.println("Usuari: " + usuari);
 		System.out.println("Dni: " + dni);
 		System.out.println("Adreça: " + adreca);
 		System.out.println("Password: " + password);
-		System.out.println("Es VIP: " + vip);
+		System.out.println("Es VIP: " + vip);*/
 		
                 // TODO birthdate??
                 Client c;
