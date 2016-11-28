@@ -28,7 +28,7 @@ public class TotSeries_It1b {
         TSController ctrl = new TSController(dataManager.getTotSeries());
         // We show the main menu
         TSMenu menu = new TSMenu(ctrl);
-        menu.show();
+        menu.init();
     }
     
 }

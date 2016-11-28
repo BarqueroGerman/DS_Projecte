@@ -23,11 +23,12 @@ public class TSController {
     }
     
     public boolean createClient(){
-        return false;
+        System.out.println("S'ha creat un usuari");
+        return true;
     }
     
     public void consultCatalog(){
-        
+        System.out.println("Heu consultat el ");
     }
     
     public void visualizeEpisode(){
@@ -35,7 +36,9 @@ public class TSController {
     }
     
     public boolean login(){
-        return false;
+        System.out.println("Us heu registrat");
+        return true;
+
     }
     
     public void setClientVIP(Client v, boolean VIP){
