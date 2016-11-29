@@ -15,10 +15,7 @@ public abstract class User {
     protected String username;
     protected String password;
     
-    protected TotSeries totSeries;
-    
-    public User(TotSeries ts, String id, String name, String username, String pass){
-        this.totSeries = ts;
+    public User(String id, String name, String username, String pass){
         this.id = id;
         this.name = name;
         this.username = username;

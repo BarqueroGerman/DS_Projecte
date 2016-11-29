@@ -21,15 +21,15 @@ public class Client extends User {
     
     private ArrayList<View> views;
     
-    public Client(TotSeries ts, String id, String user, String pass, String name, String nationality, Date birthdate){
-        super(ts, id, name, user, pass);
+    public Client(String id, String user, String pass, String name, String nationality, Date birthdate){
+        super(id, name, user, pass);
         this.nationality = nationality;
         this.birthdate = birthdate;
         views = new ArrayList<View>();
     }
     
-    public Client(TotSeries ts, String user, String pass, String name, String nationality, Date birthdate){
-        super(ts, Integer.toString(id), name, user, pass);
+    public Client(String user, String pass, String name, String nationality, Date birthdate){
+        super(Integer.toString(id), name, user, pass);
         this.nationality = nationality;
         this.birthdate = birthdate;
         views = new ArrayList<View>();

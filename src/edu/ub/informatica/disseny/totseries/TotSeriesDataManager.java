@@ -229,7 +229,7 @@ public class TotSeriesDataManager {
 		System.out.println("Usuari: " + usuari);
 		System.out.println("Password: " + password);*/
                 
-                Admin ad = new Admin(totSeries, id, nom, usuari, password);
+                Admin ad = new Admin(id, nom, usuari, password);
                 totSeries.addUser(ad);
 	}
 
@@ -259,10 +259,9 @@ public class TotSeriesDataManager {
 		System.out.println("Password: " + password);
 		System.out.println("Es VIP: " + vip);*/
 		
-                // TODO birthdate??
                 Client c;
-                if(vip.equals("true")) c = new VIPClient(totSeries, id, usuari, password, nom, "Undefined", null);
-                else c = new Client(totSeries, id, usuari, password, nom, "Undefined", null);
+                if(vip.equals("true")) c = new VIPClient(id, usuari, password, nom, "Undefined", null);
+                else c = new Client(id, usuari, password, nom, "Undefined", null);
                 totSeries.addUser(c);
 	}
 }

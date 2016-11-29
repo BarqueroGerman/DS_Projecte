@@ -10,7 +10,7 @@ package totseries_it1b.Model;
  * @author Enric Calvo & German Barquero
  */
 public class Admin extends User {
-    public Admin(TotSeries ts, String id, String name, String user, String pass){
-        super(ts, id, name, user, pass);
+    public Admin(String id, String name, String user, String pass){
+        super(id, name, user, pass);
     }
 }

@@ -14,29 +14,23 @@ import java.util.Iterator;
  */
 public class TotSeries {
     private Catalog catalog;
-    private ArrayList<User> users;
+    private UsersList userslist;
     
     public TotSeries(){
         this.catalog = new Catalog(this);
-        users = new ArrayList<User>();
+        userslist = new UsersList();
+    }
+    
+    public boolean isUsernameAvailable(String username){
+        return userslist.getByUsername(username) == null;
     }
     
     public boolean addUser(User u){
         if(isUsernameAvailable(u.getUsername())){
-            this.users.add(u);
+            this.userslist.add(u);
             return true;
         }
         return false;
-    }
-    
-    public boolean isUsernameAvailable(String username){
-        Iterator it = users.iterator();
-        boolean found = false;
-        
-        while(it.hasNext() && !found){
-            found = username.equals(((User)it.next()).getUsername());
-        }
-        return !found;
     }
     
     public Catalog getCatalog(){
