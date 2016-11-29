@@ -39,7 +39,7 @@ public class Catalog {
         String toReturn = "";
         Iterator it = series.iterator();
         while(it.hasNext()){
-            toReturn += ((Serie)it.next()).toString();
+            toReturn += ((Serie)it.next()).toString() + "\n";
         }
         return toReturn;
     }

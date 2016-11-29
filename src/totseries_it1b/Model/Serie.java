@@ -57,9 +57,18 @@ public class Serie {
         this.artists.add(a);
     }
     
+    public String getSeasonsString(){
+        String toReturn = "";
+        Iterator it = seasons.iterator();
+        while(it.hasNext()){
+            toReturn += ((Season)it.next()).toString() + "\n";
+        }
+        return toReturn;
+    }
+    
     @Override
     public String toString(){
-        return this.id + "-" + this.title + "\n" + this.description;
+        return "[ID = " + this.id + "]  " + this.title + "\n       " + this.description;
     }
     
     public String getId(){
