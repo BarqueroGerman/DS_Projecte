@@ -25,6 +25,10 @@ public class TotSeries {
         return userslist.getByUsername(username) == null;
     }
     
+    public User correctUsername(String username){
+        return userslist.getByUsername(username);
+    }
+    
     public boolean addUser(User u){
         if(isUsernameAvailable(u.getUsername())){
             this.userslist.add(u);

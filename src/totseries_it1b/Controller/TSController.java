@@ -50,12 +50,22 @@ public class TSController {
         
     }
     
-    public boolean login(){
-        System.out.println("Us heu registrat");
-        return true;
-
+    public boolean usernameExists(String user){
+        if(totSeries.correctUsername(user) == null){
+            return false;
+        } else {
+            return true;
+        }
     }
     
+    public boolean correctPassword(String user, String password){
+        String pass = totSeries.correctUsername(user).getPassword();
+        if(pass.equals(password)){
+            return true;
+        } else {
+            return false;
+        }
+    }
     public void setClientVIP(Client v, boolean VIP){
         
     }

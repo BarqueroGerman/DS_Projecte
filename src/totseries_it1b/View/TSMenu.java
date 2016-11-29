@@ -53,13 +53,24 @@ public class TSMenu {
         }
         return option;
     }
+    
+    public int showClientMenu(){
+        console.escriu("Welcome,dear Client of TotSeries\nPress 4 to get the fuck out of here.");
+        int option = console.llegeixInt();
+        
+        //Espera a tenir una instrucció vàlida
+        while(option > 4 || option <= 0){
+            System.out.println("Opció no vàlida. Torni a escriure l'opcio desitjada.");
+            option = console.llegeixInt();
+        }
+        return option;
+    }
 
     private void optionsFirstMenu(int option) {
-        boolean registered = false;
-        boolean logged = false;
         switch(option){
             case 1: // IDENTIFICARSE
                 login();
+                showClientMenu();
                 break;
             case 2: // REGISTRARSE
                 register();
@@ -68,6 +79,9 @@ public class TSMenu {
                 consultCatalog();
                 break;
         }
+    }
+    
+    private void optionsClientMenu(int option) {
     }
 
     private void consultCatalog() {
@@ -112,8 +126,27 @@ public class TSMenu {
         return true;
     }
 
-    private boolean login() {
-        return ctrl.login();
+    private void login() {
+        boolean rightUsername = false;
+        boolean rightPassword = false;
+        String username, password;
+        console.escriu("Please, write your username:");
+        username = console.llegeixString();
+        rightUsername = ctrl.usernameExists(username);
+        while(!rightUsername){
+            console.escriu("We are sorry, that username doesn't exists.\nPlease, try again:");
+            username = console.llegeixString();
+            rightUsername = ctrl.usernameExists(username);
+        }
+        console.escriu("Please, write your password:");
+        password = console.llegeixString();
+        rightPassword = ctrl.correctPassword(username,password);
+        while(!rightPassword){
+            console.escriu("We are sorry, that password is incorrect.\nPlease, try again:");
+            password = console.llegeixString();
+            rightPassword = ctrl.correctPassword(username,password);
+        }console.escriu("Congratulations, you have been correctly logged in.\n");
+
     }
     
 }

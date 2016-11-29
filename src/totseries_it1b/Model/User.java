@@ -29,4 +29,12 @@ public abstract class User {
     public String getUsername(){
         return this.username;
     }
+    
+    public String getPassword(){
+        return this.password;
+    }
+    
+    public boolean isThePasswordCorrect(String password){
+        return this.password == password;
+    }
 }
