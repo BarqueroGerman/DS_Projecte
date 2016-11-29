@@ -49,6 +49,15 @@ public class Season {
         this.episodes.add(e);
     }
     
+    public String getEpisodesString(){
+        String toReturn = "";
+        Iterator it = episodes.iterator();
+        while(it.hasNext()){
+            toReturn += ((Episode)it.next()).getNumAndTitle() + "\n";
+        }
+        return toReturn;
+    }
+    
     @Override
     public String toString(){
         return "Season " + number;

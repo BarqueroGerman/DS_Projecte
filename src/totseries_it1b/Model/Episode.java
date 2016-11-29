@@ -53,8 +53,12 @@ public class Episode {
         return this.number == n;
     }
     
+    public String getNumAndTitle(){
+        return this.number + " - " + this.title;
+    }
+    
     @Override
     public String toString(){
-        return number + "-" + title + " (" + ratingAverage + "/5)\n" + description;
+        return number + " - " + title + " (" + ratingAverage + "/5)\n" + description;
     }
 }

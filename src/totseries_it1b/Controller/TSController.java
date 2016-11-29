@@ -42,10 +42,6 @@ public class TSController {
         return added;
     }
     
-    public void consultCatalog(){
-        System.out.println("Heu consultat el ");
-    }
-    
     public void visualizeEpisode(){
         
     }
@@ -76,5 +72,9 @@ public class TSController {
     
     public boolean isLogged(){
         return client != null;
+    }
+    
+    public Catalog getCatalog(){
+        return totSeries.getCatalog();
     }
 }
