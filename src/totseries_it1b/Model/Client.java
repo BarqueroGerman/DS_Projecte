@@ -6,7 +6,7 @@
 package totseries_it1b.Model;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -15,20 +15,18 @@ import java.util.Date;
 public class Client extends User {
     private static int id = 0;
     private String nationality;
-    private Date birthdate;
+    private Calendar birthdate;
     private String creditCard;
     private String address;
     
     private ArrayList<View> views;
     
-    public Client(String id, String user, String pass, String name, String nationality, Date birthdate){
+    public Client(String id, String user, String pass, String name){
         super(id, name, user, pass);
-        this.nationality = nationality;
-        this.birthdate = birthdate;
         views = new ArrayList<View>();
     }
     
-    public Client(String user, String pass, String name, String nationality, Date birthdate){
+    public Client(String user, String pass, String name, String nationality, Calendar birthdate){
         super(Integer.toString(id), name, user, pass);
         this.nationality = nationality;
         this.birthdate = birthdate;

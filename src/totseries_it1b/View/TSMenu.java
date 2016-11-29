@@ -6,6 +6,7 @@
 package totseries_it1b.View;
 
 import edu.ub.informatica.disseny.totseries.Consola;
+import java.util.Calendar;
 import totseries_it1b.Controller.TSController;
 
 /**
@@ -61,9 +62,7 @@ public class TSMenu {
                 login();
                 break;
             case 2: // REGISTRARSE
-                while(registered){
-                    
-                }
+                register();
                 break;
             case 3: // CONSULTAR CATÀLEG
                 consultCatalog();
@@ -76,7 +75,41 @@ public class TSMenu {
     }
 
     private boolean register() {
-        return ctrl.createClient();
+        String username, pass, name, nationality, dateString;
+        Calendar birthdate = Calendar.getInstance();
+        
+        console.escriu("Write your username:");
+        username = console.llegeixString();
+        console.escriu("Write your password:");
+        pass = console.llegeixString();
+        console.escriu("Write your name:");
+        name = console.llegeixString();
+        console.escriu("Write your nationality:");
+        nationality = console.llegeixString();
+        console.escriu("Write your birthdate (DD/MM/YYYY):");
+        dateString = console.llegeixString();
+        
+        boolean dateOk = false;
+        Calendar date = Calendar.getInstance();
+        while(!dateOk){
+            try{
+                int year = Integer.parseInt(dateString.substring(dateString.lastIndexOf("/")+1));
+                int month = Integer.parseInt(dateString.substring(dateString.indexOf("/")+1, dateString.lastIndexOf("/")));
+                int day = Integer.parseInt(dateString.substring(0,dateString.indexOf("/")));
+                date.set(year, month, day);
+                dateOk = true;
+            }catch(Exception ex){
+                console.escriu("Write your birthdate again with the format DD/MM/YYYY:");
+                dateString = console.llegeixString();
+            }
+        }
+        while(!ctrl.createClient(username, pass, name, nationality, date)) {
+            console.escriu("We are sorry, there is already someone with that username...");
+            console.escriu("Write a different username, please:");
+            username = console.llegeixString();
+        }
+        console.escriu("Congratulations, you have been correctly registered in TotSeries.");
+        return true;
     }
 
     private boolean login() {

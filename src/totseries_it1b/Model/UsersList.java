@@ -28,7 +28,8 @@ public class UsersList {
             user = ((User)it.next());
             found = username.equals(user.getUsername());
         }
-        return user;
+        if(found) return user;
+        return null;
     }
     
     public int size(){

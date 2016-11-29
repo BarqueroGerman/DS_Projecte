@@ -5,7 +5,7 @@
  */
 package totseries_it1b.Model;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -13,11 +13,11 @@ import java.util.Date;
  */
 public class VIPClient extends Client {
     
-    public VIPClient(String id, String user, String pass, String name, String nationality, Date birthdate){
-        super(id, user, pass, name, nationality, birthdate);
+    public VIPClient(String id, String user, String pass, String name){
+        super(id, user, pass, name);
     }
     
-    public VIPClient(String user, String pass, String name, String nationality, Date birthdate){
+    public VIPClient(String user, String pass, String name, String nationality, Calendar birthdate){
         super(user, pass, name, nationality, birthdate);
     }
     

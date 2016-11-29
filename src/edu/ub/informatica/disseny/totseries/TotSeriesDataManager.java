@@ -260,8 +260,8 @@ public class TotSeriesDataManager {
 		System.out.println("Es VIP: " + vip);*/
 		
                 Client c;
-                if(vip.equals("true")) c = new VIPClient(id, usuari, password, nom, "Undefined", null);
-                else c = new Client(id, usuari, password, nom, "Undefined", null);
+                if(vip.equals("true")) c = new VIPClient(id, usuari, password, nom);
+                else c = new Client(id, usuari, password, nom);
                 totSeries.addUser(c);
 	}
 }

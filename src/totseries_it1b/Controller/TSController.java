@@ -33,19 +33,13 @@ public class TSController {
         this.totSeries = ts;
     }
     
-    public boolean createClient(){
-        String username, pass, name, nationality, dateString;
-        Calendar birthdate = Calendar.getInstance();
-        
-        username = console.llegeixString();
-        pass = console.llegeixString();
-        name = console.llegeixString();
-        nationality = console.llegeixString();
-        dateString = console.llegeixString();
-        
-        // Crear birthdate
-        //client = new Client(totSeries, username, pass, name, nationality, birthdate);
-        return false;
+    public boolean createClient(String username, String pass, String name, String nationality, Calendar birthdate){
+        boolean added = false;
+        if(totSeries.isUsernameAvailable(username)){
+            client = new Client(username, pass, name, nationality, birthdate);
+            added = totSeries.addUser(client);
+        }
+        return added;
     }
     
     public void consultCatalog(){
@@ -68,5 +62,9 @@ public class TSController {
     
     public View createView(Client c, Episode e){
         return null;
+    }
+    
+    public boolean isLogged(){
+        return client != null;
     }
 }
