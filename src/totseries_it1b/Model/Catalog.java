@@ -50,4 +50,12 @@ public class Catalog {
         serie.setCatalog(this);
         return true;
     }
+    
+    public int getNumSeries(){
+        return series.size();
+    }
+    
+    public Serie getSerie(int i){
+        return series.get(i);
+    }
 }

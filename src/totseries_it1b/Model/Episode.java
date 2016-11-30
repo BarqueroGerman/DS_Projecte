@@ -61,4 +61,8 @@ public class Episode {
     public String toString(){
         return number + " - " + title + " (" + ratingAverage + "/5)\n" + description;
     }
+    
+    public double getRating(){
+        return ratingAverage;
+    }
 }

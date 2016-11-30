@@ -6,7 +6,9 @@
 package totseries_it1b.View;
 
 import edu.ub.informatica.disseny.totseries.Consola;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import totseries_it1b.Controller.TSController;
 import totseries_it1b.Model.Catalog;
 import totseries_it1b.Model.Episode;
@@ -35,7 +37,7 @@ public class TSMenu {
     public void init() {
         int option1 = -1, option2 = -1;
         //Mentre no vulgui sortir del programa(4)
-        while (option1 != 4) {
+        while (option1 != 5) {
             //Obtenim instrucció
             option1 = showAnonymousMenu();
             //Tractem instrucció
@@ -105,7 +107,7 @@ public class TSMenu {
                 consultCatalog();
                 break;
             case 2: // CONSULTAR RANKING
-                //consultRanking();
+                consultRanking();
                 break;
             case 3: // LOGOUT
                 logout();
@@ -278,6 +280,28 @@ public class TSMenu {
     private void logout() {
         ctrl.logout();
         console.escriu("You have been correctly logged out.");
+    }
+    
+    private void consultRanking(){
+        ArrayList<Episode> ranks = new ArrayList<Episode>();
+        ranks = ctrl.generateRank();
+        int count = 0;
+        boolean done = false;
+        while(!done){            
+            Iterator it = ranks.iterator();
+            while(it.hasNext()){
+                count++;
+                console.escriu("[" + count + "] " + it.next().toString() + "\n");
+            }console.escriu("Select an epsiode:\n");
+            int ep = console.llegeixInt();
+            console.escriu(ranks.get(ep-1).toString());
+            console.escriu("\n\n  --> What would you like to do now?\n  1. Watch the episode.\n  *. Go back to the rank.\n");
+            int option = console.llegeixInt();
+            if (option == 1) {
+                visualizeEpisode(ranks.get(ep-1));
+                done = true;
+            }count = 0;
+        }
     }
 
 }

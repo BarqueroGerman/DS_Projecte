@@ -82,4 +82,12 @@ public class Serie {
     public void setProducer(Producer prod){
         this.producer = prod;
     }
+    
+    public int getNumSeasons(){
+        return seasons.size();
+    }
+    
+    public Season getSeason(int i){
+        return seasons.get(i);
+    }
 }

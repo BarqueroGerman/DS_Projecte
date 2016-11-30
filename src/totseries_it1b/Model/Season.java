@@ -58,6 +58,10 @@ public class Season {
         return toReturn;
     }
     
+    public Episode getEpisode(int i){
+        return episodes.get(i);
+    }
+    
     @Override
     public String toString(){
         return "Season " + number;

@@ -6,6 +6,7 @@
 package totseries_it1b.Controller;
 
 import edu.ub.informatica.disseny.totseries.Consola;
+import java.util.ArrayList;
 import java.util.Calendar;
 import totseries_it1b.Model.*;
 
@@ -97,5 +98,9 @@ public class TSController {
         } else {
             return -1;
         }
+    }
+    
+    public ArrayList<Episode> generateRank(){
+        return totSeries.generateRank();
     }
 }
