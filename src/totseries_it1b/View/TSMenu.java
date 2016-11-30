@@ -202,7 +202,7 @@ public class TSMenu {
         View view = ctrl.visualizeEpisode(episode);
         console.escriu("The episode finished. Thanks for watching.");
         console.escriu("Would you like to rate this episode? (y/*)");
-        if (console.llegeixString().toLowerCase() == "y") {
+        if (console.llegeixString().toLowerCase().equals("y")) {
             console.escriu("Please, enter a number between 0 and 5.");
             int rate = console.llegeixInt();
             while (rate < 0 || rate > 5) {

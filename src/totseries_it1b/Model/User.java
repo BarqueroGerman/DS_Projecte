@@ -36,6 +36,6 @@ public abstract class User {
     }
 
     public boolean isPasswordCorrect(String password) {
-        return this.password == password;
+        return this.password.equals(password);
     }
 }
