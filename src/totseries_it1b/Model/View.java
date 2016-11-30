@@ -36,8 +36,20 @@ public class View {
         episode.updateRating(rating);
     }
 
+    public Rating getRating() {
+        return this.rating;
+    }
+
+    public Client getClient() {
+        return this.client;
+    }
+
     public void setClient(Client c) {
         this.client = c;
+    }
+
+    public Episode getEpisode() {
+        return this.episode;
     }
 
     public void setEpisode(Episode e) {

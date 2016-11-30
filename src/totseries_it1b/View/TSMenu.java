@@ -9,9 +9,11 @@ import edu.ub.informatica.disseny.totseries.Consola;
 import java.util.Calendar;
 import totseries_it1b.Controller.TSController;
 import totseries_it1b.Model.Catalog;
+import totseries_it1b.Model.Client;
 import totseries_it1b.Model.Episode;
 import totseries_it1b.Model.Season;
 import totseries_it1b.Model.Serie;
+import totseries_it1b.Model.User;
 import totseries_it1b.Model.View;
 
 /**
@@ -60,7 +62,7 @@ public class TSMenu {
 
         //Espera a tenir una instrucció vàlida
         while (option > 5 || option <= 0) {
-            System.out.println("Opció no vàlida. Torni a escriure l'opcio desitjada.");
+            console.escriu("Opció no vàlida. Torni a escriure l'opcio desitjada.");
             option = console.llegeixInt();
         }
         return option;
@@ -76,7 +78,7 @@ public class TSMenu {
 
         //Espera a tenir una instrucció vàlida
         while (option > 4 || option <= 0) {
-            System.out.println("Opció no vàlida. Torni a escriure l'opcio desitjada.");
+            console.escriu("Opció no vàlida. Torni a escriure l'opcio desitjada.");
             option = console.llegeixInt();
         }
         return option;
@@ -140,7 +142,7 @@ public class TSMenu {
                 chooseSeasonFromSerie(serie);
             } else if (!serieID.equals("-1")) {
                 // si ha introduit un id no valid
-                console.escriu("Serie ID not valid");
+                console.escriu("Serie ID not valid.\n");
             }
         }
     }
@@ -164,7 +166,7 @@ public class TSMenu {
             if (season != null) {
                 chooseEpisodeFromSeason(season);
             } else if (seasonID != -1) {
-                console.escriu("Season number not valid");
+                console.escriu("Season number not valid.\n");
             }
         }
     }
@@ -193,20 +195,27 @@ public class TSMenu {
                     visualizeEpisode(episode);
                 }
             } else if (episodeID != -1) {
-                console.escriu("Episode number not valid");
+                console.escriu("Episode number not valid.\n");
             }
         }
     }
 
     private void visualizeEpisode(Episode episode) {
         View view = ctrl.visualizeEpisode(episode);
-        console.escriu("The episode finished. Thanks for watching.");
-        console.escriu("Would you like to rate this episode? (y/*)");
+        console.escriu("The episode finished. Thanks for watching.\n");
+        User user = ctrl.getUserInSession();
+        if (view != null && user instanceof Client && !episode.isRatedBy((Client) user)) {
+            rateEpisode(episode, view);
+        }
+    }
+
+    private void rateEpisode(Episode episode, View view) {
+        console.escriu("Would you like to rate this episode? (y/*): ");
         if (console.llegeixString().toLowerCase().equals("y")) {
-            console.escriu("Please, enter a number between 0 and 5.");
+            console.escriu("Please, enter a number between 0 and 5: ");
             int rate = console.llegeixInt();
             while (rate < 0 || rate > 5) {
-                console.escriu("The rate must be a number between 0 and 5. Please, write it again.");
+                console.escriu("The rate must be a number between 0 and 5. Please, write it again: ");
                 rate = console.llegeixInt();
             }
             ctrl.rateEpisode(view, rate);
@@ -238,13 +247,13 @@ public class TSMenu {
                 date.set(year, month, day);
                 dateOk = true;
             } catch (Exception ex) {
-                console.escriu("Write your birthdate again with the format DD/MM/YYYY:");
+                console.escriu("Write your birthdate again with the format DD/MM/YYYY: ");
                 dateString = console.llegeixString();
             }
         }
         while (!ctrl.createClient(username, pass, name, nationality, date)) {
             console.escriu("We are sorry, there is already someone with that username...");
-            console.escriu("Write a different username, please:");
+            console.escriu("Write a different username, please: ");
             username = console.llegeixString();
         }
         console.escriu("Congratulations, you have been correctly registered in TotSeries.\n");
@@ -255,19 +264,19 @@ public class TSMenu {
         boolean rightUsername = false;
         boolean rightPassword = false;
         String username, password;
-        console.escriu("Please, write your username:");
+        console.escriu("Please, write your username: ");
         username = console.llegeixString();
         rightUsername = ctrl.usernameExists(username);
         while (!rightUsername) {
-            console.escriu("We are sorry, that username doesn't exists.\nPlease, try again:");
+            console.escriu("We are sorry, that username doesn't exists.\nPlease, try again: ");
             username = console.llegeixString();
             rightUsername = ctrl.usernameExists(username);
         }
-        console.escriu("Please, write your password:");
+        console.escriu("Please, write your password: ");
         password = console.llegeixString();
         rightPassword = ctrl.login(username, password);
         while (!rightPassword) {
-            console.escriu("We are sorry, that password is incorrect.\nPlease, try again:");
+            console.escriu("We are sorry, that password is incorrect.\nPlease, try again: ");
             password = console.llegeixString();
             rightPassword = ctrl.login(username, password);
         }

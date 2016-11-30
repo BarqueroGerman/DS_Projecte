@@ -65,7 +65,9 @@ public class TSController {
     }
 
     public void rateEpisode(View v, int rating) {
-        v.setRate(rating);
+        if (userInSessionType() == CLIENT_TYPE && !v.getEpisode().isRatedBy(v.getClient())) {
+            v.setRate(rating);
+        }
     }
 
     public boolean isLogged() {
@@ -97,5 +99,9 @@ public class TSController {
         } else {
             return -1;
         }
+    }
+
+    public User getUserInSession() {
+        return this.user;
     }
 }
