@@ -54,24 +54,24 @@ public class TotSeries {
                 for(int k = 0;k<season.getEpisodesCount();k++){                    
                     Episode episode = season.getEpisode(k);
                     double rating = episode.getRating();
-                    
-                    int index = 0;
-                    while(index<rank.size() && !trobat){
-                        double ep = rank.get(index).getRating();
-                        if(ep <= rating && rating>0){
-                            rank.add(index, episode);
-                            if(rank.size()>10){
-                                rank.remove(rank.size()-1);
+                    if(rating>0){
+                        if(rank.size()==0){
+                            rank.add(episode);
+                        }else{
+                            int index = 0;
+                            while(index<rank.size() && !trobat && rank.size()>0){
+                                double ep = rank.get(index).getRating();
+                                if(ep <= rating){
+                                    rank.add(index, episode);
+                                    if(rank.size()>10){
+                                        rank.remove(rank.size()-1);
+                                    }trobat = true;
+                                }index++;
                             }
-                            trobat = true;
-                        }else if(rank.size()<10 && rating>0 && index>rank.size()){
+                        }if(rank.size()<10 && !trobat){
                             rank.add(rank.size(), episode);
-                            trobat = true;
-                        }index++;
+                        }trobat = false;
                     }
-                    if(rank.size()==0){
-                        rank.add(episode);
-                    }trobat = false;
                 }
             }
         }return rank;
