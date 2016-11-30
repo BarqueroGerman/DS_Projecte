@@ -72,7 +72,13 @@ public class Episode {
 
     @Override
     public String toString() {
+        String ratingStr = "0";
         DecimalFormat numberFormat = new DecimalFormat("#.00");
-        return number + " - " + title + " (" + numberFormat.format(ratingAverage) + "/5)\n" + description;
+        if (ratingAverage - (int) ratingAverage == 0) {
+            ratingStr = Integer.toString((int) ratingAverage);
+        } else {
+            ratingStr = numberFormat.format(ratingAverage);
+        }
+        return number + " - " + title + " (" + ratingStr + "/5)\n" + description;
     }
 }

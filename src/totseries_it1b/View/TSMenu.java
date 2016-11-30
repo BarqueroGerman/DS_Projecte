@@ -6,7 +6,10 @@
 package totseries_it1b.View;
 
 import edu.ub.informatica.disseny.totseries.Consola;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.concurrent.ThreadLocalRandom;
 import totseries_it1b.Controller.TSController;
 import totseries_it1b.Model.Catalog;
 import totseries_it1b.Model.Client;
@@ -35,6 +38,37 @@ public class TSMenu {
 
     //Inici del programa
     public void init() {
+        runRatingTest();
+        showMenu();
+    }
+
+    public void runRatingTest() {
+        ArrayList<Episode> episodes = new ArrayList<>();
+        Client c1 = (Client) ctrl.getUserByUsername("atormenta");
+        Client c2 = (Client) ctrl.getUserByUsername("dtomacal");
+        Serie serie = ctrl.getCatalog().getSerieById("bbad");
+        episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(1));
+        episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(2));
+        episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(3));
+        episodes.add(serie.getSeasonByNumber(2).getEpisodeByNumber(1));
+        episodes.add(serie.getSeasonByNumber(2).getEpisodeByNumber(2));
+        episodes.add(serie.getSeasonByNumber(2).getEpisodeByNumber(3));
+        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(1));
+        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(2));
+        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(3));
+        View v;
+        for (Episode e : episodes) {
+            ctrl.login(c1.getUsername(), c1.getPassword());
+            v = ctrl.visualizeEpisode(e);
+            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(0, 6));
+
+            ctrl.login(c2.getUsername(), c2.getPassword());
+            v = ctrl.visualizeEpisode(e);
+            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(0, 6));
+        }
+    }
+
+    public void showMenu() {
         int option1 = -1, option2 = -1;
         //Mentre no vulgui sortir del programa(4)
         while (option1 != 4) {

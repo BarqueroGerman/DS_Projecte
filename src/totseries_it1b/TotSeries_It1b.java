@@ -15,6 +15,7 @@ import totseries_it1b.View.TSMenu;
  * @author German
  */
 public class TotSeries_It1b {
+
     private final static String xmlFilename = "data/TotSeries.xml";
 
     /**
@@ -24,11 +25,11 @@ public class TotSeries_It1b {
         // We initialize our database
         TotSeriesDataManager dataManager = new TotSeriesDataManager();
         dataManager.obtenirDades(xmlFilename);
-        
+
         TSController ctrl = new TSController(dataManager.getTotSeries());
         // We show the main menu
         TSMenu menu = new TSMenu(ctrl);
         menu.init();
     }
-    
+
 }

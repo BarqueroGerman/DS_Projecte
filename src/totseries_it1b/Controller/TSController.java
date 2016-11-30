@@ -104,4 +104,8 @@ public class TSController {
     public User getUserInSession() {
         return this.user;
     }
+
+    public User getUserByUsername(String username) {
+        return totSeries.getUserByUsername(username);
+    }
 }
