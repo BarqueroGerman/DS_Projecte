@@ -10,31 +10,32 @@ package totseries_it1b.Model;
  * @author Enric Calvo & German Barquero
  */
 public abstract class User {
+
     protected String id;
     private String name;
     protected String username;
     protected String password;
-    
-    public User(String id, String name, String username, String pass){
+
+    public User(String id, String name, String username, String pass) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.password = pass;
     }
-    
-    public boolean compareUsername(String u){
+
+    public boolean compareUsername(String u) {
         return u.equals(this.username);
     }
-    
-    public String getUsername(){
+
+    public String getUsername() {
         return this.username;
     }
-    
-    public String getPassword(){
+
+    public String getPassword() {
         return this.password;
     }
-    
-    public boolean isThePasswordCorrect(String password){
+
+    public boolean isPasswordCorrect(String password) {
         return this.password == password;
     }
 }

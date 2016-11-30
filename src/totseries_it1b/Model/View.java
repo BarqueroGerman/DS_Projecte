@@ -5,6 +5,7 @@
  */
 package totseries_it1b.Model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -12,34 +13,35 @@ import java.util.Date;
  * @author Enric Calvo & German Barquero
  */
 public class View {
-    private Date date;
+
+    private Calendar date;
     private boolean active;
-    
+
     private Client client;
     private Rating rating;
     private Episode episode;
-    
-    public View(){
-        this.date = new Date();
+
+    public View() {
+        this.date = Calendar.getInstance();
         active = false; // In our system, the episode is instantly watched, so not active in any moment.
     }
-    
-    public void setRate(int rate){
+
+    public void setRate(int rate) {
         this.rating = new Rating(rate);
         episode.updateRating(rating);
     }
-    
-    public void setRate(Rating rating){
+
+    public void setRate(Rating rating) {
         this.rating = rating;
         episode.updateRating(rating);
     }
-    
-    public void setClient(Client c){
+
+    public void setClient(Client c) {
         this.client = c;
     }
-    
-    public void setEpisode(Episode e){
+
+    public void setEpisode(Episode e) {
         this.episode = e;
     }
-    
+
 }

@@ -12,6 +12,7 @@ import totseries_it1b.Model.Catalog;
 import totseries_it1b.Model.Episode;
 import totseries_it1b.Model.Season;
 import totseries_it1b.Model.Serie;
+import totseries_it1b.Model.View;
 
 /**
  *
@@ -32,23 +33,45 @@ public class TSMenu {
 
     //Inici del programa
     public void init() {
-        int option1 = -1;
+        int option1 = -1, option2 = -1;
         //Mentre no vulgui sortir del programa(4)
         while (option1 != 4) {
             //Obtenim instrucció
-            option1 = showFirstMenu();
+            option1 = showAnonymousMenu();
             //Tractem instrucció
-            optionsFirstMenu(option1);
+            optionsAnonymousMenu(option1);
+            while (ctrl.isLogged()) {
+                option2 = showClientMenu();
+                optionsClientMenu(option2);
+            }
         }
     }
 
     //Mostra el primer menu
-    public int showFirstMenu() {
+    public int showAnonymousMenu() {
         console.escriu("Welcome to TotSeries. Select an option, please:"
                 + "\n(1)Login"
                 + "\n(2)Register"
                 + "\n(3)Consult catalog"
-                + "\n(4)Exit\n");
+                + "\n(4)Show raking"
+                + "\n(5)Exit\n"
+        );
+        int option = console.llegeixInt();
+
+        //Espera a tenir una instrucció vàlida
+        while (option > 5 || option <= 0) {
+            System.out.println("Opció no vàlida. Torni a escriure l'opcio desitjada.");
+            option = console.llegeixInt();
+        }
+        return option;
+    }
+
+    public int showClientMenu() {
+        console.escriu("Welcome dear client of TotSeries. Select an option, please:"
+                + "\n(1)Consult catalog"
+                + "\n(2)Show raking"
+                + "\n(3)Log out\n"
+        );
         int option = console.llegeixInt();
 
         //Espera a tenir una instrucció vàlida
@@ -58,24 +81,11 @@ public class TSMenu {
         }
         return option;
     }
-    
-    public int showClientMenu(){
-        console.escriu("Welcome,dear Client of TotSeries\nPress 4 to get the fuck out of here.");
-        int option = console.llegeixInt();
-        
-        //Espera a tenir una instrucció vàlida
-        while(option > 4 || option <= 0){
-            System.out.println("Opció no vàlida. Torni a escriure l'opcio desitjada.");
-            option = console.llegeixInt();
-        }
-        return option;
-    }
 
-    private void optionsFirstMenu(int option) {
-        switch(option){
+    private void optionsAnonymousMenu(int option) {
+        switch (option) {
             case 1: // IDENTIFICARSE
                 login();
-                showClientMenu();
                 break;
             case 2: // REGISTRARSE
                 register();
@@ -83,10 +93,24 @@ public class TSMenu {
             case 3: // CONSULTAR CATÀLEG
                 consultCatalog();
                 break;
+            case 4: // CONSULTAR CATÀLEG
+                //consultRankings();
+                break;
         }
     }
-    
+
     private void optionsClientMenu(int option) {
+        switch (option) {
+            case 1: // CONSULTAR CATÀLEG
+                consultCatalog();
+                break;
+            case 2: // CONSULTAR RANKING
+                //consultRanking();
+                break;
+            case 3: // LOGOUT
+                logout();
+                break;
+        }
     }
 
     private void consultCatalog() {
@@ -101,7 +125,7 @@ public class TSMenu {
         /* Per sortir, l'usuari ha d'entrar un -1 */
         while (!serieID.equals("-1")) {
             console.escriu(catalog.toString());
-            console.escriu("\n  --> Write the ID of the serie that you want to watch: ");
+            console.escriu("\n  --> Write the ID of the serie that you want to watch (-1 to go back): ");
             serieID = console.llegeixString();
 
             // si ha entrat un id, busquem la serie corresponent
@@ -128,7 +152,7 @@ public class TSMenu {
         /* Per sortir, l'usuari ha d'entrar un -1 */
         while (seasonID != -1) {
             console.escriu(serie.getSeasonsString());
-            console.escriu("\n  --> Write the number of the season that you want to watch: ");
+            console.escriu("\n  --> Write the number of the season that you want to watch (-1 to go back): ");
             seasonID = console.llegeixInt();
 
             if (seasonID != -1) {
@@ -152,7 +176,7 @@ public class TSMenu {
         /* Per sortir, l'usuari ha d'entrar un -1 */
         while (episodeID != -1) {
             console.escriu(season.getEpisodesString());
-            console.escriu("\n  --> Write the number of the episode that you want to watch: ");
+            console.escriu("\n  --> Write the number of the episode that you want to watch (-1 to go back): ");
             episodeID = console.llegeixInt();
 
             if (episodeID != -1) {
@@ -175,22 +199,33 @@ public class TSMenu {
     }
 
     private void visualizeEpisode(Episode episode) {
-        console.escriu("Correctly visualized");
+        View view = ctrl.visualizeEpisode(episode);
+        console.escriu("The episode finished. Thanks for watching.");
+        console.escriu("Would you like to rate this episode? (y/*)");
+        if (console.llegeixString().toLowerCase() == "y") {
+            console.escriu("Please, enter a number between 0 and 5.");
+            int rate = console.llegeixInt();
+            while (rate < 0 || rate > 5) {
+                console.escriu("The rate must be a number between 0 and 5. Please, write it again.");
+                rate = console.llegeixInt();
+            }
+            ctrl.rateEpisode(view, rate);
+        }
     }
 
     private boolean register() {
         String username, pass, name, nationality, dateString;
         Calendar birthdate = Calendar.getInstance();
 
-        console.escriu("Write your username:");
+        console.escriu("Write your username: ");
         username = console.llegeixString();
-        console.escriu("Write your password:");
+        console.escriu("Write your password: ");
         pass = console.llegeixString();
-        console.escriu("Write your name:");
+        console.escriu("Write your name: ");
         name = console.llegeixString();
-        console.escriu("Write your nationality:");
+        console.escriu("Write your nationality: ");
         nationality = console.llegeixString();
-        console.escriu("Write your birthdate (DD/MM/YYYY):");
+        console.escriu("Write your birthdate (DD/MM/YYYY): ");
         dateString = console.llegeixString();
 
         boolean dateOk = false;
@@ -212,7 +247,7 @@ public class TSMenu {
             console.escriu("Write a different username, please:");
             username = console.llegeixString();
         }
-        console.escriu("Congratulations, you have been correctly registered in TotSeries.");
+        console.escriu("Congratulations, you have been correctly registered in TotSeries.\n");
         return true;
     }
 
@@ -223,20 +258,26 @@ public class TSMenu {
         console.escriu("Please, write your username:");
         username = console.llegeixString();
         rightUsername = ctrl.usernameExists(username);
-        while(!rightUsername){
+        while (!rightUsername) {
             console.escriu("We are sorry, that username doesn't exists.\nPlease, try again:");
             username = console.llegeixString();
             rightUsername = ctrl.usernameExists(username);
         }
         console.escriu("Please, write your password:");
         password = console.llegeixString();
-        rightPassword = ctrl.correctPassword(username,password);
-        while(!rightPassword){
+        rightPassword = ctrl.login(username, password);
+        while (!rightPassword) {
             console.escriu("We are sorry, that password is incorrect.\nPlease, try again:");
             password = console.llegeixString();
-            rightPassword = ctrl.correctPassword(username,password);
-        }console.escriu("Congratulations, you have been correctly logged in.\n");
+            rightPassword = ctrl.login(username, password);
+        }
+        console.escriu("Congratulations, you have been correctly logged in.\n");
 
+    }
+
+    private void logout() {
+        ctrl.logout();
+        console.escriu("You have been correctly logged out.");
     }
 
 }

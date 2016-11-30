@@ -14,67 +14,88 @@ import totseries_it1b.Model.*;
  * @author Enric Calvo & German Barquero
  */
 public class TSController {
+
+    private final static int ADMIN_TYPE = 0;
+    private final static int CLIENT_TYPE = 1;
+
     private Consola console;
     /**
      * Database
      */
     private TotSeries totSeries;
     /**
-     * Client in session.
+     * User in session.
      */
-    private Client client;
-    
-    public TSController(){
+    private User user;
+
+    public TSController() {
         totSeries = new TotSeries();
         console = new Consola();
     }
-    
-    public TSController(TotSeries ts){
+
+    public TSController(TotSeries ts) {
         this.totSeries = ts;
     }
-    
-    public boolean createClient(String username, String pass, String name, String nationality, Calendar birthdate){
+
+    public boolean createClient(String username, String pass, String name, String nationality, Calendar birthdate) {
         boolean added = false;
-        if(totSeries.isUsernameAvailable(username)){
-            client = new Client(username, pass, name, nationality, birthdate);
-            added = totSeries.addUser(client);
+        if (!totSeries.usernameRegistered(username)) {
+            user = new Client(username, pass, name, nationality, birthdate);
+            added = totSeries.addUser(user);
         }
         return added;
     }
-    
-    public void visualizeEpisode(){
-        
+
+    public View visualizeEpisode(Episode e) {
+        View v = null;
+        if (userInSessionType() == CLIENT_TYPE) {
+            v = new View();
+            e.addView(v);
+            ((Client) user).addView(v);
+        }
+        return v;
     }
-    
-    public boolean usernameExists(String user){
-        if(totSeries.correctUsername(user) == null){
-            return false;
-        } else {
+
+    public boolean usernameExists(String user) {
+        return totSeries.usernameRegistered(user);
+    }
+
+    public void setClientVIP(Client c, boolean VIP) {
+
+    }
+
+    public void rateEpisode(View v, int rating) {
+        v.setRate(rating);
+    }
+
+    public boolean isLogged() {
+        return user != null;
+    }
+
+    public boolean login(String username, String pass) {
+        User u = totSeries.getUserByUsername(username);
+        if (u != null && u.isPasswordCorrect(pass) && u instanceof Client) {
+            user = u;
             return true;
         }
+        return false;
     }
-    
-    public boolean correctPassword(String user, String password){
-        String pass = totSeries.correctUsername(user).getPassword();
-        if(pass.equals(password)){
-            return true;
-        } else {
-            return false;
-        }
+
+    public void logout() {
+        this.user = null;
     }
-    public void setClientVIP(Client v, boolean VIP){
-        
-    }
-    
-    public View createView(Client c, Episode e){
-        return null;
-    }
-    
-    public boolean isLogged(){
-        return client != null;
-    }
-    
-    public Catalog getCatalog(){
+
+    public Catalog getCatalog() {
         return totSeries.getCatalog();
+    }
+
+    public int userInSessionType() {
+        if (user instanceof Admin) {
+            return 0;
+        } else if (user instanceof Client) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 }
