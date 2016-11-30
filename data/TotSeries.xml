@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE totseries>
 
 <totseries>
@@ -1032,7 +1032,7 @@
             </temporada>
 
             <temporada>
-                <numeroTemporada>5</numeroTemporada>
+                <numeroTemporada>6</numeroTemporada>
                 <numeroEpisodis>3</numeroEpisodis>
                 <episodis>
                     <episodi>

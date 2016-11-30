@@ -66,7 +66,9 @@ public class TSController {
     }
 
     public void rateEpisode(View v, int rating) {
-        v.setRate(rating);
+        if (userInSessionType() == CLIENT_TYPE && !v.getEpisode().isRatedBy(v.getClient())) {
+            v.setRate(rating);
+        }
     }
 
     public boolean isLogged() {
@@ -102,5 +104,13 @@ public class TSController {
     
     public ArrayList<Episode> generateRank(){
         return totSeries.generateRank();
+    }
+
+    public User getUserInSession() {
+        return this.user;
+    }
+
+    public User getUserByUsername(String username) {
+        return totSeries.getUserByUsername(username);
     }
 }
