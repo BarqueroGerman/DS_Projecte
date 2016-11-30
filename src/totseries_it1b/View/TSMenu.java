@@ -323,26 +323,28 @@ public class TSMenu {
         ctrl.logout();
         console.escriu("You have been correctly logged out.");
     }
-    
-    private void consultRanking(){
+
+    private void consultRanking() {
         ArrayList<Episode> ranks = new ArrayList<Episode>();
         ranks = ctrl.generateRank();
         int count = 0;
         boolean done = false;
-        while(!done){            
+        while (!done) {
             Iterator it = ranks.iterator();
-            while(it.hasNext()){
+            while (it.hasNext()) {
                 count++;
                 console.escriu("[" + count + "] " + it.next().toString() + "\n");
-            }console.escriu("Select an epsiode:\n");
+            }
+            console.escriu("Select an epsiode:\n");
             int ep = console.llegeixInt();
-            console.escriu(ranks.get(ep-1).toString());
+            console.escriu(ranks.get(ep - 1).toString());
             console.escriu("\n\n  --> What would you like to do now?\n  1. Watch the episode.\n  *. Go back to the rank.\n");
             int option = console.llegeixInt();
             if (option == 1) {
-                visualizeEpisode(ranks.get(ep-1));
+                visualizeEpisode(ranks.get(ep - 1));
                 done = true;
-            }count = 0;
+            }
+            count = 0;
         }
     }
 
