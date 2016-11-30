@@ -66,6 +66,7 @@ public class TSMenu {
             v = ctrl.visualizeEpisode(e);
             ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(0, 6));
         }
+        ctrl.logout();
     }
 
     public void showMenu() {
@@ -130,7 +131,7 @@ public class TSMenu {
                 consultCatalog();
                 break;
             case 4: // CONSULTAR CATÀLEG
-                //consultRankings();
+                consultRanking();
                 break;
         }
     }
