@@ -55,14 +55,17 @@ public class TotSeries {
                     Episode episode = season.getEpisode(k);
                     double rating = episode.getRating();
                     
-                    Iterator it = rank.iterator();
                     int index = 0;
-                    while(it.hasNext() && !trobat){
-                        if(((Episode)it.next()).getRating() <= rating){
+                    while(index<rank.size() && !trobat){
+                        double ep = rank.get(index).getRating();
+                        if(ep <= rating && rating>0){
                             rank.add(index, episode);
                             if(rank.size()>10){
                                 rank.remove(rank.size()-1);
                             }
+                            trobat = true;
+                        }else if(rank.size()<10 && rating>0 && index>rank.size()){
+                            rank.add(rank.size(), episode);
                             trobat = true;
                         }index++;
                     }

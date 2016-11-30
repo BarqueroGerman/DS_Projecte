@@ -60,7 +60,8 @@ public class TSMenu {
         for (Episode e : episodes) {
             ctrl.login(c1.getUsername(), c1.getPassword());
             v = ctrl.visualizeEpisode(e);
-            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(0, 6));
+            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(
+                    1, 6));
 
             ctrl.login(c2.getUsername(), c2.getPassword());
             v = ctrl.visualizeEpisode(e);
@@ -334,17 +335,18 @@ public class TSMenu {
             while (it.hasNext()) {
                 count++;
                 console.escriu("[" + count + "] " + it.next().toString() + "\n");
-            }
-            console.escriu("Select an epsiode:\n");
-            int ep = console.llegeixInt();
-            console.escriu(ranks.get(ep - 1).toString());
-            console.escriu("\n\n  --> What would you like to do now?\n  1. Watch the episode.\n  *. Go back to the rank.\n");
-            int option = console.llegeixInt();
-            if (option == 1) {
-                visualizeEpisode(ranks.get(ep - 1));
-                done = true;
-            }
-            count = 0;
+            }if(ctrl.isLogged()){
+                console.escriu("Select an epsiode:\n");
+                int ep = console.llegeixInt();
+                console.escriu(ranks.get(ep-1).toString());
+                console.escriu("\n\n  --> What would you like to do now?\n  1. Watch the episode.\n  *. Go back to the rank.\n");
+                int option = console.llegeixInt();
+                if (option == 1) {
+                    visualizeEpisode(ranks.get(ep-1));
+                    done = true;
+                }
+            }done = true;
+        count = 0;
         }
     }
 
