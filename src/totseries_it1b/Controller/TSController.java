@@ -20,7 +20,6 @@ public class TSController {
     private final static int ADMIN_TYPE = 0;
     private final static int CLIENT_TYPE = 1;
 
-    private Consola console;
     /**
      * Database
      */
@@ -32,7 +31,6 @@ public class TSController {
 
     public TSController() {
         totSeries = new TotSeries();
-        console = new Consola();
     }
 
     public TSController(TotSeries ts) {
@@ -157,7 +155,7 @@ public class TSController {
      * @return
      */
     public ArrayList<Episode> generateRank() {
-        return totSeries.generateRank();
+        return totSeries.generateRank(10);
     }
 
     /**

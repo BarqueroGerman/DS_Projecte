@@ -84,7 +84,7 @@ public class Episode {
         return number + " - " + title + " (" + ratingStr + "/5)\n" + description;
     }
 
-    public double getRating() {
+    public double getRatingAverage() {
         return ratingAverage;
     }
 }

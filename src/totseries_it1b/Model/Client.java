@@ -13,28 +13,29 @@ import java.util.Calendar;
  * @author Enric Calvo & German Barquero
  */
 public class Client extends User {
-    private static int id = 0;
-    private String nationality;
-    private Calendar birthdate;
-    private String creditCard;
-    private String address;
-    
+
+    protected static int id = 0;
+    protected String nationality;
+    protected Calendar birthdate;
+    protected String creditCard;
+    protected String address;
+
     private ArrayList<View> views;
-    
-    public Client(String id, String user, String pass, String name){
+
+    public Client(String id, String user, String pass, String name) {
         super(id, name, user, pass);
         views = new ArrayList<View>();
     }
-    
-    public Client(String user, String pass, String name, String nationality, Calendar birthdate){
+
+    public Client(String user, String pass, String name, String nationality, Calendar birthdate) {
         super(Integer.toString(id), name, user, pass);
         this.nationality = nationality;
         this.birthdate = birthdate;
         views = new ArrayList<View>();
         id += 1;
     }
-    
-    public void addView(View v){
+
+    public void addView(View v) {
         views.add(v);
         v.setClient(this);
     }

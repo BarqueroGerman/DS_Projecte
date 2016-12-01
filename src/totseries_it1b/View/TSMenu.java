@@ -56,12 +56,15 @@ public class TSMenu {
         episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(1));
         episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(2));
         episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(3));
+        episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(4));
         episodes.add(serie.getSeasonByNumber(2).getEpisodeByNumber(1));
         episodes.add(serie.getSeasonByNumber(2).getEpisodeByNumber(2));
         episodes.add(serie.getSeasonByNumber(2).getEpisodeByNumber(3));
         episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(1));
         episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(2));
         episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(3));
+        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(4));
+        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(5));
         View v;
         for (Episode e : episodes) {
             ctrl.login(c1.getUsername(), c1.getPassword());
@@ -103,7 +106,7 @@ public class TSMenu {
                 + "\n(1)Login"
                 + "\n(2)Register"
                 + "\n(3)Consult catalog"
-                + "\n(4)Show raking"
+                + "\n(4)Show ranking"
                 + "\n(5)Exit\n"
         );
         int option = console.llegeixInt();
@@ -124,7 +127,7 @@ public class TSMenu {
     private int showClientMenu() {
         console.escriu("Welcome dear client of TotSeries. Select an option, please:"
                 + "\n(1)Consult catalog"
-                + "\n(2)Show raking"
+                + "\n(2)Show ranking"
                 + "\n(3)Log out\n"
         );
         int option = console.llegeixInt();
@@ -421,27 +424,29 @@ public class TSMenu {
     private void consultRanking() {
         ArrayList<Episode> ranks = new ArrayList<Episode>();
         ranks = ctrl.generateRank();
-        int count = 0;
-        boolean done = false;
-        while (!done) {
-            Iterator it = ranks.iterator();
-            while (it.hasNext()) {
-                count++;
-                console.escriu("[" + count + "] " + it.next().toString() + "\n");
-            }
-            if (ctrl.isLogged()) {
-                console.escriu("Select an epsiode:\n");
-                int ep = console.llegeixInt();
-                console.escriu(ranks.get(ep - 1).toString());
-                console.escriu("\n\n  --> What would you like to do now?\n  1. Watch the episode.\n  *. Go back to the rank.\n");
-                int option = console.llegeixInt();
-                if (option == 1) {
-                    visualizeEpisode(ranks.get(ep - 1));
-                    done = true;
+        if (ranks.size() > 0) {
+            int count = 0;
+            boolean done = false;
+            while (!done) {
+                Iterator it = ranks.iterator();
+                while (it.hasNext()) {
+                    count++;
+                    console.escriu("[" + count + "] " + it.next().toString() + "\n");
                 }
+                if (ctrl.isLogged()) {
+                    console.escriu("Select an epsiode: ");
+                    int ep = console.llegeixInt();
+                    while (ep <= 0 || ep > ranks.size()) {
+                        console.escriu("You entered an invalid number of episode. Please, select an episode: ");
+                        ep = console.llegeixInt();
+                    }
+                    showEpisodeFullInformation(ranks.get(ep - 1));
+                }
+                done = true;
+                count = 0;
             }
-            done = true;
-            count = 0;
+        } else {
+            console.escriu("There is not enough valorations of episodes to show a ranking.");
         }
     }
 
