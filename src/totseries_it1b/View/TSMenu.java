@@ -434,13 +434,15 @@ public class TSMenu {
                     console.escriu("[" + count + "] " + it.next().toString() + "\n");
                 }
                 if (ctrl.isLogged()) {
-                    console.escriu("Select an epsiode: ");
+                    console.escriu("Select an epsiode:\n(-1)to go back\n");
                     int ep = console.llegeixInt();
-                    while (ep <= 0 || ep > ranks.size()) {
-                        console.escriu("You entered an invalid number of episode. Please, select an episode: ");
-                        ep = console.llegeixInt();
+                    if(ep!=-1){
+                        while (ep <= 0 || ep > ranks.size()) {
+                            console.escriu("You entered an invalid number of episode. Please, select an episode: ");
+                            ep = console.llegeixInt();
+                        }
+                        showEpisodeFullInformation(ranks.get(ep - 1));
                     }
-                    showEpisodeFullInformation(ranks.get(ep - 1));
                 }
                 done = true;
                 count = 0;
