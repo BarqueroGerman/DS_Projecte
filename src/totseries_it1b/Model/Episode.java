@@ -76,13 +76,15 @@ public class Episode {
         DecimalFormat numberFormat = new DecimalFormat("#.00");
         if (ratingAverage - (int) ratingAverage == 0) {
             ratingStr = Integer.toString((int) ratingAverage);
+        } else if (ratingAverage < 1) {
+            ratingStr = "0" + numberFormat.format(ratingAverage);
         } else {
             ratingStr = numberFormat.format(ratingAverage);
         }
         return number + " - " + title + " (" + ratingStr + "/5)\n" + description;
     }
-    
-    public double getRating(){
+
+    public double getRating() {
         return ratingAverage;
     }
 }

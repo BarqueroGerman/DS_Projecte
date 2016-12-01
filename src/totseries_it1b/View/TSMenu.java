@@ -20,6 +20,7 @@ import totseries_it1b.Model.User;
 import totseries_it1b.Model.View;
 
 /**
+ * Classe que inicialitza el menu principal de TotSeries (Vista)
  *
  * @author Enric Calvo & German Barquero
  */
@@ -36,13 +37,18 @@ public class TSMenu {
         this.ctrl = ctrl;
     }
 
-    //Inici del programa
+    /**
+     * Funcio que inicia el menu i totes les funcions previes necessaries.
+     */
     public void init() {
         runRatingTest();
         showMenu();
     }
 
-    public void runRatingTest() {
+    /**
+     * Afegeix valoracions a 9 episodes de breaking bad a mode de test.
+     */
+    private void runRatingTest() {
         ArrayList<Episode> episodes = new ArrayList<>();
         Client c1 = (Client) ctrl.getUserByUsername("atormenta");
         Client c2 = (Client) ctrl.getUserByUsername("dtomacal");
@@ -60,17 +66,19 @@ public class TSMenu {
         for (Episode e : episodes) {
             ctrl.login(c1.getUsername(), c1.getPassword());
             v = ctrl.visualizeEpisode(e);
-            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(
-                    1, 6));
+            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(0, 6));
 
             ctrl.login(c2.getUsername(), c2.getPassword());
             v = ctrl.visualizeEpisode(e);
-            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(0, 6));
+            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(1, 6));
         }
         ctrl.logout();
     }
 
-    public void showMenu() {
+    /**
+     * Inicia el bucle principal del programa, amb els menus corresponents.
+     */
+    private void showMenu() {
         int option1 = -1, option2 = -1;
         //Mentre no vulgui sortir del programa(4)
         while (option1 != 5) {
@@ -78,15 +86,19 @@ public class TSMenu {
             option1 = showAnonymousMenu();
             //Tractem instrucció
             optionsAnonymousMenu(option1);
-            while (ctrl.isLogged()) {
+            while (ctrl.userIsClient()) {
                 option2 = showClientMenu();
                 optionsClientMenu(option2);
             }
         }
     }
 
-    //Mostra el primer menu
-    public int showAnonymousMenu() {
+    /**
+     * Mostra el menu d'usuari anonim i retorna l'opcio escollida.
+     *
+     * @return option
+     */
+    private int showAnonymousMenu() {
         console.escriu("Welcome to TotSeries. Select an option, please:"
                 + "\n(1)Login"
                 + "\n(2)Register"
@@ -104,7 +116,12 @@ public class TSMenu {
         return option;
     }
 
-    public int showClientMenu() {
+    /**
+     * Mostra el menu de client i retorna la opcio escollida.
+     *
+     * @return option
+     */
+    private int showClientMenu() {
         console.escriu("Welcome dear client of TotSeries. Select an option, please:"
                 + "\n(1)Consult catalog"
                 + "\n(2)Show raking"
@@ -120,6 +137,12 @@ public class TSMenu {
         return option;
     }
 
+    /**
+     * Rep l'opcio escollida per l'usuari anonim i realitza les accions
+     * pertinents.
+     *
+     * @param option
+     */
     private void optionsAnonymousMenu(int option) {
         switch (option) {
             case 1: // IDENTIFICARSE
@@ -137,6 +160,11 @@ public class TSMenu {
         }
     }
 
+    /**
+     * Rep l'opcio escollida pel client i realitza les accions pertinents.
+     *
+     * @param option
+     */
     private void optionsClientMenu(int option) {
         switch (option) {
             case 1: // CONSULTAR CATÀLEG
@@ -151,11 +179,20 @@ public class TSMenu {
         }
     }
 
+    /**
+     * Funcio que inicialitza la consulta del cataleg.
+     */
     private void consultCatalog() {
         Catalog catalog = ctrl.getCatalog();
         chooseSerieFromCatalog(catalog);
     }
 
+    /**
+     * Funcio que mostra les series de la base de dades i gestiona la seleccio
+     * d'una per part de l'usuari.
+     *
+     * @param catalog
+     */
     private void chooseSerieFromCatalog(Catalog catalog) {
         String serieID = "";
         Serie serie;
@@ -183,6 +220,12 @@ public class TSMenu {
         }
     }
 
+    /**
+     * Funcio que mostra les temporades d'una serie i gestiona la seleccio d'una
+     * per part de l'usuari.
+     *
+     * @param serie
+     */
     private void chooseSeasonFromSerie(Serie serie) {
         int seasonID = 0;
         Season season;
@@ -207,9 +250,15 @@ public class TSMenu {
         }
     }
 
+    /**
+     * Funcio que mostra els episodis d'una temporada d'una serie i gestiona la
+     * seleccio d'un per part de l'usuari.
+     *
+     * @param season
+     */
     private void chooseEpisodeFromSeason(Season season) {
         Episode episode;
-        int episodeID = 0, option;
+        int episodeID = 0;
 
         /* Per sortir, l'usuari ha d'entrar un -1 */
         while (episodeID != -1) {
@@ -224,28 +273,56 @@ public class TSMenu {
             }
 
             if (episode != null) {
-                console.escriu(episode.toString());
-                console.escriu("\n\n  --> What would you like to do now?\n  1. Watch the episode.\n  *. Go back to the catalog.\n");
-                option = console.llegeixInt();
-                if (option == 1) {
-                    visualizeEpisode(episode);
-                }
+                showEpisodeFullInformation(episode);
             } else if (episodeID != -1) {
                 console.escriu("Episode number not valid.\n");
             }
         }
     }
 
-    private void visualizeEpisode(Episode episode) {
-        View view = ctrl.visualizeEpisode(episode);
-        console.escriu("The episode finished. Thanks for watching.\n");
-        User user = ctrl.getUserInSession();
-        if (view != null && user instanceof Client && !episode.isRatedBy((Client) user)) {
-            rateEpisode(episode, view);
+    /**
+     * Funcio que mostra la informacio completa d'un episodi i si es client el
+     * deixa visualitzarlo.
+     *
+     * @param episode
+     */
+    private void showEpisodeFullInformation(Episode episode) {
+        int option;
+        console.escriu(episode.toString());
+        console.escriu("\n\n  --> What would you like to do now?");
+        if (ctrl.userIsClient()) {
+            console.escriu("\n  1. Watch the episode.");
+        }
+        console.escriu("\n  *. Go back.\n");
+        option = console.llegeixInt();
+        if (option == 1 && ctrl.userIsClient()) {
+            visualizeEpisode(episode);
         }
     }
 
-    private void rateEpisode(Episode episode, View view) {
+    /**
+     * Visualitza l'episodi (si es client) i li dona l'opcio de valorarlo (si no
+     * ho ha fet ja)
+     *
+     * @param episode
+     */
+    private void visualizeEpisode(Episode episode) {
+        if (ctrl.userIsClient()) {
+            View view = ctrl.visualizeEpisode(episode);
+            console.escriu("The episode finished. Thanks for watching.\n");
+            if (view != null && !episode.isRatedBy((Client) ctrl.getUserInSession())) {
+                rateEpisode(view);
+            }
+        }
+    }
+
+    /**
+     * Un cop visualitzat l'episodi, aquesta funcio demana a l'usuari una
+     * valoracio.
+     *
+     * @param view
+     */
+    private void rateEpisode(View view) {
         console.escriu("Would you like to rate this episode? (y/*): ");
         if (console.llegeixString().toLowerCase().equals("y")) {
             console.escriu("Please, enter a number between 0 and 5: ");
@@ -258,6 +335,12 @@ public class TSMenu {
         }
     }
 
+    /**
+     * Mètode que demana les dades de registre a l'usuari i crea un client. Un
+     * cop creat, es logueja automaticament.
+     *
+     * @return ok
+     */
     private boolean register() {
         String username, pass, name, nationality, dateString;
         Calendar birthdate = Calendar.getInstance();
@@ -296,6 +379,9 @@ public class TSMenu {
         return true;
     }
 
+    /**
+     * Mètode que demana les credencials a l'usuari i el logueja.
+     */
     private void login() {
         boolean rightUsername = false;
         boolean rightPassword = false;
@@ -320,11 +406,18 @@ public class TSMenu {
 
     }
 
+    /**
+     * Funcio que desconecta a l'usuari de la sessio.
+     */
     private void logout() {
         ctrl.logout();
         console.escriu("You have been correctly logged out.");
     }
 
+    /**
+     * Funcio que imprimeix el ranking dels 10 episodis millor valorats i permet
+     * als clients visualitzarlos.
+     */
     private void consultRanking() {
         ArrayList<Episode> ranks = new ArrayList<Episode>();
         ranks = ctrl.generateRank();
@@ -335,18 +428,20 @@ public class TSMenu {
             while (it.hasNext()) {
                 count++;
                 console.escriu("[" + count + "] " + it.next().toString() + "\n");
-            }if(ctrl.isLogged()){
+            }
+            if (ctrl.isLogged()) {
                 console.escriu("Select an epsiode:\n");
                 int ep = console.llegeixInt();
-                console.escriu(ranks.get(ep-1).toString());
+                console.escriu(ranks.get(ep - 1).toString());
                 console.escriu("\n\n  --> What would you like to do now?\n  1. Watch the episode.\n  *. Go back to the rank.\n");
                 int option = console.llegeixInt();
                 if (option == 1) {
-                    visualizeEpisode(ranks.get(ep-1));
+                    visualizeEpisode(ranks.get(ep - 1));
                     done = true;
                 }
-            }done = true;
-        count = 0;
+            }
+            done = true;
+            count = 0;
         }
     }
 
