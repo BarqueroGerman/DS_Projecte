@@ -59,7 +59,7 @@ public class TotSeries {
                             rank.add(episode);
                         }else{
                             int index = 0;
-                            while(index<rank.size() && !trobat && rank.size()>0){
+                            while(index<rank.size() && !trobat){
                                 double ep = rank.get(index).getRating();
                                 if(ep <= rating){
                                     rank.add(index, episode);
