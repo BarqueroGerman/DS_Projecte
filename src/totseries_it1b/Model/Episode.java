@@ -26,7 +26,7 @@ public class Episode {
     private double ratingAverage;
     private int ratingCount;
 
-    private ArrayList<View> views;
+    private ArrayList<AbstractView> views;
     private Season season;
 
     public Episode(Season season, int num, String title, String desc, String length, String lang, Calendar date) {
@@ -39,7 +39,7 @@ public class Episode {
         this.releaseDate = date;
         this.ratingAverage = 0;
         this.ratingCount = 0;
-        views = new ArrayList<View>();
+        views = new ArrayList<AbstractView>();
     }
 
     public void addView(View v) {
@@ -52,7 +52,7 @@ public class Episode {
         boolean rated = false;
         while (it.hasNext() && !rated) {
             View v = (View) it.next();
-            rated = v.getRating() != null && v.getClient().compareUsername(client.getUsername());
+            rated = v.getRating() != null && v.getUser().compareUsername(client.getUsername());
         }
         return rated;
     }
