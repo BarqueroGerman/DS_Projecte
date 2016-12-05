@@ -101,8 +101,8 @@ public class TSController {
      * @param v
      * @param rating
      */
-    public void rateEpisode(View v, int rating) {
-        if (userIsClient() && user == v.getClient() && !v.getEpisode().isRatedBy((Client) user)) {
+    public void rateEpisode(AbstractView v, int rating) {
+        if (userIsClient() && user == v.getUser() && !v.getEpisode().isRatedBy((Client) user)) {
             v.setRate(rating);
         }
     }

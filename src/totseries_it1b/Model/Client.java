@@ -20,23 +20,19 @@ public class Client extends User {
     protected String creditCard;
     protected String address;
 
-    private ArrayList<View> views;
-
     public Client(String id, String user, String pass, String name) {
         super(id, name, user, pass);
-        views = new ArrayList<View>();
     }
 
     public Client(String user, String pass, String name, String nationality, Calendar birthdate) {
         super(Integer.toString(id), name, user, pass);
         this.nationality = nationality;
         this.birthdate = birthdate;
-        views = new ArrayList<View>();
         id += 1;
     }
 
     public void addView(View v) {
         views.add(v);
-        v.setClient(this);
+        v.setUser(this);
     }
 }

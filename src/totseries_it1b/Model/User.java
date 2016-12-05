@@ -5,6 +5,8 @@
  */
 package totseries_it1b.Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Enric Calvo & German Barquero
@@ -15,12 +17,16 @@ public abstract class User {
     private String name;
     protected String username;
     protected String password;
+    
+    protected ArrayList<AbstractView> views;
 
     public User(String id, String name, String username, String pass) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.password = pass;
+        
+        views = new ArrayList<AbstractView>();
     }
 
     public boolean compareUsername(String u) {

@@ -5,13 +5,10 @@
  */
 package totseries_it1b.Model;
 
-import java.util.Calendar;
-import java.util.Date;
-
 /**
  *
- * @author Enric Calvo & German Barquero
+ * @author gbarquga9.alumnes
  */
-public class View extends AbstractView{
-
+public class PhantomView extends AbstractView {
+    
 }
