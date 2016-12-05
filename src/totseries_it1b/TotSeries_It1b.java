@@ -8,6 +8,7 @@ package totseries_it1b;
 import edu.ub.informatica.disseny.totseries.TotSeriesDataManager;
 import totseries_it1b.Controller.TSController;
 import totseries_it1b.Model.TotSeries;
+import totseries_it1b.View.MainMenu;
 import totseries_it1b.View.TSMenu;
 
 /**
@@ -28,8 +29,10 @@ public class TotSeries_It1b {
 
         TSController ctrl = new TSController(dataManager.getTotSeries());
         // We show the main menu
-        TSMenu menu = new TSMenu(ctrl);
-        menu.init();
+        //TSMenu menu = new TSMenu(ctrl);
+        //menu.init();
+        MainMenu main = new MainMenu();
+        main.setVisible(true);
     }
 
 }
