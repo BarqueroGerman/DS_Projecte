@@ -6,7 +6,9 @@
 package totseries_it1b;
 
 import edu.ub.informatica.disseny.totseries.TotSeriesDataManager;
+import java.util.ArrayList;
 import totseries_it1b.Controller.TSController;
+import totseries_it1b.Model.Episode;
 import totseries_it1b.Model.TotSeries;
 import totseries_it1b.View.MainMenu;
 import totseries_it1b.View.TSMenu;
@@ -27,12 +29,11 @@ public class TotSeries_It1b {
         TotSeriesDataManager dataManager = new TotSeriesDataManager();
         dataManager.obtenirDades(xmlFilename);
 
-        TSController ctrl = new TSController(dataManager.getTotSeries());
+        TSController ctrl = TSController.getInstance(dataManager.getTotSeries());
         // We show the main menu
         //TSMenu menu = new TSMenu(ctrl);
         //menu.init();
         MainMenu main = new MainMenu();
         main.setVisible(true);
     }
-
 }

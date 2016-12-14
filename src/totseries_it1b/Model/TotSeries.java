@@ -16,11 +16,13 @@ import java.util.Iterator;
 public class TotSeries {
 
     private Catalog catalog;
+    private BestRatedEpisodes bestRatedEp;
     private UsersList userslist;
 
     public TotSeries() {
         this.catalog = new Catalog(this);
         userslist = new UsersList();
+        bestRatedEp = BestRatedEpisodes.getInstance(this, 10);
     }
 
     /**

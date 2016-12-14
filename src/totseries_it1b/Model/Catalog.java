@@ -13,49 +13,54 @@ import java.util.Iterator;
  * @author Enric Calvo & German Barquero
  */
 public class Catalog {
+
     private TotSeries totSeries;
     private ArrayList<Serie> series;
-    
-    public Catalog(TotSeries totSeries){
+
+    public Catalog(TotSeries totSeries) {
         series = new ArrayList<>();
         this.totSeries = totSeries;
     }
-    
-    public Serie getSerieById(String id){
+
+    public Serie getSerieById(String id) {
         boolean found = false;
         Serie toReturn = null;
-        
+
         Iterator it = series.iterator();
-        while(it.hasNext() && !found){
-            toReturn = (Serie)it.next();
+        while (it.hasNext() && !found) {
+            toReturn = (Serie) it.next();
             found = toReturn.checkId(id);
         }
-        if(!found) return null;
-        return toReturn;
-    }
-    
-    @Override
-    public String toString(){
-        String toReturn = "";
-        Iterator it = series.iterator();
-        while(it.hasNext()){
-            toReturn += ((Serie)it.next()).toString() + "\n";
+        if (!found) {
+            return null;
         }
         return toReturn;
     }
-    
-    public boolean addSerie(Serie serie){
-        if(getSerieById(serie.getId()) != null) return false;
+
+    @Override
+    public String toString() {
+        String toReturn = "";
+        Iterator it = series.iterator();
+        while (it.hasNext()) {
+            toReturn += ((Serie) it.next()).toString() + "\n";
+        }
+        return toReturn;
+    }
+
+    public boolean addSerie(Serie serie) {
+        if (getSerieById(serie.getId()) != null) {
+            return false;
+        }
         this.series.add(serie);
         serie.setCatalog(this);
         return true;
     }
-    
-    public int getNumSeries(){
+
+    public int getNumSeries() {
         return series.size();
     }
-    
-    public Serie getSerie(int i){
+
+    public Serie getSerie(int i) {
         return series.get(i);
     }
 }

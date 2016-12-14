@@ -5,6 +5,8 @@
  */
 package totseries_it1b.Controller;
 
+import totseries_it1b.Model.View;
+import totseries_it1b.Model.AbstractView;
 import edu.ub.informatica.disseny.totseries.Consola;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,13 +30,36 @@ public class TSController {
      * User in session.
      */
     private User user;
+    private static TSController instance;
 
-    public TSController() {
-        totSeries = new TotSeries();
+    private TSController() {
+        this.totSeries = new TotSeries();
     }
 
-    public TSController(TotSeries ts) {
+    private TSController(TotSeries ts) {
         this.totSeries = ts;
+    }
+
+    public static TSController getInstance() {
+        if (instance == null) {
+            synchronized (BestRatedEpisodes.class) {
+                if (instance == null) {
+                    instance = new TSController();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public static TSController getInstance(TotSeries TS) {
+        if (instance == null) {
+            synchronized (BestRatedEpisodes.class) {
+                if (instance == null) {
+                    instance = new TSController(TS);
+                }
+            }
+        }
+        return instance;
     }
 
     /**
