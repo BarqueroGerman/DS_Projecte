@@ -17,12 +17,17 @@ public class TotSeries {
 
     private Catalog catalog;
     private BestRatedEpisodes bestRatedEp;
+    private BestRatedSeries bestRatedSer;
+    private MostViewedSeries mostViewedSer;
     private UsersList userslist;
 
     public TotSeries() {
         this.catalog = new Catalog(this);
         userslist = new UsersList();
-        bestRatedEp = BestRatedEpisodes.getInstance(this, 10);
+
+        bestRatedEp = new BestRatedEpisodes(this, 10);
+        bestRatedSer = new BestRatedSeries(this, 10);
+        mostViewedSer = new MostViewedSeries(this, 10);
     }
 
     /**

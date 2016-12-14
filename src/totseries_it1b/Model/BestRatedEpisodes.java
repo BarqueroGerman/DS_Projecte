@@ -16,22 +16,10 @@ import java.util.Observable;
 public class BestRatedEpisodes extends Ranking {
 
     private TotSeries totSeries;
-    private static BestRatedEpisodes instance;
 
-    private BestRatedEpisodes(TotSeries TS, int num) {
+    public BestRatedEpisodes(TotSeries TS, int num) {
         super(num);
         totSeries = TS;
-    }
-
-    public static BestRatedEpisodes getInstance(TotSeries TS, int num) {
-        if (instance == null) {
-            synchronized (BestRatedEpisodes.class) {
-                if (instance == null) {
-                    instance = new BestRatedEpisodes(TS, num);
-                }
-            }
-        }
-        return instance;
     }
 
     protected Episode getHigherElement(Object obj1, Object obj2) {
