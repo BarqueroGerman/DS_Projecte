@@ -13,22 +13,10 @@ package totseries_it1b.Model;
 public class BestRatedSeries extends Ranking {
 
     private TotSeries totSeries;
-    private static BestRatedSeries instance;
 
-    private BestRatedSeries(TotSeries TS, int num) {
+    public BestRatedSeries(TotSeries TS, int num) {
         super(num);
         totSeries = TS;
-    }
-
-    public static BestRatedSeries getInstance(TotSeries TS, int num) {
-        if (instance == null) {
-            synchronized (BestRatedEpisodes.class) {
-                if (instance == null) {
-                    instance = new BestRatedSeries(TS, num);
-                }
-            }
-        }
-        return instance;
     }
 
     protected Episode getHigherElement(Object obj1, Object obj2) {
