@@ -6,18 +6,26 @@
 package totseries_it1b.View;
 
 import java.awt.Color;
-
+import java.util.Calendar;
+import totseries_it1b.Controller.TSController;
 /**
  *
  * @author enric
  */
 public class RegisterFrame extends javax.swing.JFrame {
-
+    TSController controller;
     /**
      * Creates new form RegisterFrame
      */
-    public RegisterFrame() {
+    public RegisterFrame(TSController ctrl, String user, char[] password) {
         initComponents();
+        controller = ctrl;
+        usernameTextField.setText(user);
+        String pass = "";
+        for(char c:password){
+            pass = pass+c;
+        }
+        passwordTextField.setText(pass);
     }
 
     /**
@@ -48,6 +56,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         dayLabel = new javax.swing.JLabel();
         yearLabel = new javax.swing.JLabel();
         registerButton = new javax.swing.JButton();
+        birthdateFormatLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -106,6 +115,10 @@ public class RegisterFrame extends javax.swing.JFrame {
             }
         });
 
+        birthdateFormatLabel.setForeground(new java.awt.Color(255, 0, 0));
+        birthdateFormatLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        birthdateFormatLabel.setText("Incorrect birthdate format");
+
         javax.swing.GroupLayout registerBackGroundLayout = new javax.swing.GroupLayout(registerBackGround);
         registerBackGround.setLayout(registerBackGroundLayout);
         registerBackGroundLayout.setHorizontalGroup(
@@ -122,31 +135,29 @@ public class RegisterFrame extends javax.swing.JFrame {
                         .addComponent(usernameLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)))
                 .addGap(26, 26, 26)
                 .addGroup(registerBackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(registerBackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerBackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nationalityTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(nameTextField)
-                            .addComponent(passwordTextField))
+                    .addComponent(availabilityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(registerBackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(birthdateFormatLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nameTextField)
+                        .addComponent(passwordTextField)
+                        .addComponent(nationalityTextField)
                         .addGroup(registerBackGroundLayout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(availabilityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(registerBackGroundLayout.createSequentialGroup()
-                        .addComponent(monthLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(registerBackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(registerBackGroundLayout.createSequentialGroup()
-                                .addComponent(monthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(dayLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(yearLabel)
-                                .addGap(10, 10, 10)
-                                .addComponent(yearTextField)))))
-                .addContainerGap(143, Short.MAX_VALUE))
+                            .addComponent(monthLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(registerBackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(registerBackGroundLayout.createSequentialGroup()
+                                    .addComponent(monthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(dayLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(dayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(4, 4, 4)
+                                    .addComponent(yearLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(usernameTextField)))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         registerBackGroundLayout.setVerticalGroup(
             registerBackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,18 +182,23 @@ public class RegisterFrame extends javax.swing.JFrame {
                     .addComponent(nationalityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nationalityLabel))
                 .addGap(18, 18, 18)
-                .addGroup(registerBackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(registerBackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(birthdateLabel)
-                    .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(monthLabel)
-                    .addComponent(dayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(monthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dayLabel)
-                    .addComponent(yearLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                    .addGroup(registerBackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(monthLabel)
+                        .addComponent(dayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(monthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dayLabel)
+                        .addComponent(yearLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(birthdateFormatLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(registerButton)
                 .addGap(48, 48, 48))
         );
+
+        birthdateFormatLabel.setVisible(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,17 +219,36 @@ public class RegisterFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTextFieldActionPerformed
 
     private void usernameTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTextFieldKeyReleased
-        if(usernameTextField.getText().equals("penis")){
+        if(controller.usernameExists(usernameTextField.getText())){
             availabilityLabel.setForeground(Color.RED);
+            availabilityLabel.setText("This username is not avaialable");
         }else{
-            availabilityLabel.setForeground(Color.GREEN);
+            availabilityLabel.setForeground(new java.awt.Color(0,153,51));
+            availabilityLabel.setText("This username is avaialable");
         }
     }//GEN-LAST:event_usernameTextFieldKeyReleased
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        RegisterFrame registerFrame = new RegisterFrame();
-        registerFrame.setVisible(true);
-        registerFrame.setLocation(275, 200);
+        String username = usernameTextField.getText();
+        String password = "";
+        for(char c:passwordTextField.getPassword()){
+            password = password+c;
+        }String name = nameTextField.getText();
+        String nationality = nationalityTextField.getText();
+        Calendar date = Calendar.getInstance();
+        try {
+            date.set(Integer.parseInt(yearTextField.getText()), Integer.parseInt(monthTextField.getText()), Integer.parseInt(dayTextField.getText()));
+            birthdateFormatLabel.setVisible(false);
+            if(controller.createClient(username, password, name, nationality, date)){
+                this.dispose();
+            }
+        } catch (Exception ex) {
+            birthdateFormatLabel.setVisible(true);
+        }
+        if(controller.createClient(username, password, name, nationality, date)){
+            this.dispose();
+        }
+        
     }//GEN-LAST:event_registerButtonActionPerformed
 
     /**
@@ -222,6 +257,7 @@ public class RegisterFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel availabilityLabel;
+    private javax.swing.JLabel birthdateFormatLabel;
     private javax.swing.JLabel birthdateLabel;
     private javax.swing.JLabel dayLabel;
     private javax.swing.JTextField dayTextField;

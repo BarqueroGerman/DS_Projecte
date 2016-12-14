@@ -78,6 +78,8 @@ public class TSController {
         if (!totSeries.usernameRegistered(username)) {
             user = new Client(username, pass, name, nationality, birthdate);
             added = totSeries.addUser(user);
+        }if(username.equals("") || pass.equals("") || name.equals("") || nationality.equals("")){
+            added = false;
         }
         return added;
     }
