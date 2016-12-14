@@ -5,16 +5,23 @@
  */
 package totseries_it1b.View;
 
+import edu.ub.informatica.disseny.totseries.TotSeriesDataManager;
+import totseries_it1b.Controller.TSController;
+
 /**
  *
  * @author ecalvove7.alumnes
  */
 public class MainMenu extends javax.swing.JFrame {
 
+    private TSController ctrl;
+    private final static String xmlFilename = "data/TotSeries.xml";
+
     /**
      * Creates new form MainMenu
      */
-    public MainMenu() {
+    public MainMenu(TSController ctrl) {
+        this.ctrl = ctrl;
         initComponents();
     }
 
@@ -208,7 +215,7 @@ public class MainMenu extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -228,10 +235,15 @@ public class MainMenu extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        // We initialize our database
+        TotSeriesDataManager dataManager = new TotSeriesDataManager();
+        dataManager.obtenirDades(xmlFilename);
+
+        TSController ctrl = TSController.getInstance(dataManager.getTotSeries());
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainMenu().setVisible(true);
+                new MainMenu(ctrl).setVisible(true);
             }
         });
     }

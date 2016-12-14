@@ -30,7 +30,7 @@ public class TSMenu {
     private Consola console;
 
     public TSMenu() {
-        ctrl = new TSController();
+        ctrl = TSController.getInstance();
     }
 
     public TSMenu(TSController ctrl) {
@@ -436,7 +436,7 @@ public class TSMenu {
                 if (ctrl.isLogged()) {
                     console.escriu("Select an epsiode:\n(-1)to go back\n");
                     int ep = console.llegeixInt();
-                    if(ep!=-1){
+                    if (ep != -1) {
                         while (ep <= 0 || ep > ranks.size()) {
                             console.escriu("You entered an invalid number of episode. Please, select an episode: ");
                             ep = console.llegeixInt();
