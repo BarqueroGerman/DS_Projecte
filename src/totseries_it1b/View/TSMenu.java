@@ -423,7 +423,7 @@ public class TSMenu {
      */
     private void consultRanking() {
         ArrayList<Episode> ranks = new ArrayList<Episode>();
-        ranks = ctrl.generateRank();
+        //ranks = ctrl.generateRank();
         if (ranks.size() > 0) {
             int count = 0;
             boolean done = false;

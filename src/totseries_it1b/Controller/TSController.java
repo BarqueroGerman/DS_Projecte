@@ -95,6 +95,7 @@ public class TSController {
             v = new View();
             e.addView(v);
             ((Client) user).addView(v);
+            totSeries.updateMostViewedSeriesRanking(e.getSerie());
         }
         return v;
     }
@@ -129,6 +130,9 @@ public class TSController {
     public void rateEpisode(AbstractView v, int rating) {
         if (userIsClient() && user == v.getUser() && !v.getEpisode().isRatedBy((Client) user)) {
             v.setRate(rating);
+            Episode ep = v.getEpisode();
+            totSeries.updateBestRatedEpisodesRanking(ep);
+            totSeries.updateBestRatedSeriesRanking(ep.getSerie());
         }
     }
 
@@ -172,15 +176,6 @@ public class TSController {
      */
     public Catalog getCatalog() {
         return totSeries.getCatalog();
-    }
-
-    /**
-     * Funcio que genera el top 10 episodis millor valorats.
-     *
-     * @return
-     */
-    public ArrayList<Episode> generateRank() {
-        return totSeries.generateRank(10);
     }
 
     /**

@@ -73,48 +73,16 @@ public class TotSeries {
         return this.catalog;
     }
 
-    /**
-     * Genera una llista ordenada dels "num" millor valorats episodis (TOP num).
-     *
-     * @param num
-     * @return
-     */
-    public ArrayList<Episode> generateRank(int num) {
-        ArrayList<Episode> rank = new ArrayList<Episode>();
-        boolean added = false;
-        for (int i = 0; i < catalog.getNumSeries(); i++) {
-            Serie serie = catalog.getSerie(i);
-            for (int j = 0; j < serie.getNumSeasons(); j++) {
-                Season season = serie.getSeason(j);
-                for (int k = 0; k < season.getEpisodesCount(); k++) {
-                    Episode episode = season.getEpisode(k);
-                    // Busquem la posicio que li tocaria segons el rating i l'afegim.
-                    double rating = episode.getRatingAverage();
-                    // Nomes si el rating > 0
-                    if (rating > 0) {
-                        added = false;
-                        int index = 0;
-                        // Busquem la posicio on tocaria posarlo.
-                        while (index < rank.size() && !added) {
-                            double ep = rank.get(index).getRatingAverage();
-                            if (ep <= rating) {
-                                rank.add(index, episode);
-                                if (rank.size() > num) {
-                                    rank.remove(rank.size() - 1);
-                                }
-                                added = true;
-                            }
-                            index++;
-                        }
-                        // Si no hem trobat la seva posicio i hi ha lloc a la llista l'afegim al final.
-                        if (rank.size() < num && !added) {
-                            rank.add(rank.size(), episode);
-                        }
-                    }
-                }
-            }
-        }
-        return rank;
+    public void updateBestRatedEpisodesRanking(Episode ep) {
+        this.bestRatedEp.update(ep);
+    }
+
+    public void updateBestRatedSeriesRanking(Serie ser) {
+        this.bestRatedSer.update(ser);
+    }
+
+    public void updateMostViewedSeriesRanking(Serie ser) {
+        this.mostViewedSer.update(ser);
     }
 
 }

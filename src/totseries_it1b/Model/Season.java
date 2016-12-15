@@ -13,57 +13,64 @@ import java.util.Iterator;
  * @author Enric Calvo & German Barquero
  */
 public class Season {
+
     private int number;
-    
+
     private Serie serie;
     private ArrayList<Episode> episodes;
-    
-    public Season(Serie serie, int num){
+
+    public Season(Serie serie, int num) {
         this.serie = serie;
         this.number = num;
         episodes = new ArrayList<>();
     }
-    
-    public Episode getEpisodeByNumber(int n){
+
+    public Episode getEpisodeByNumber(int n) {
         boolean found = false;
         Episode toReturn = null;
-        
+
         Iterator it = episodes.iterator();
-        while(it.hasNext() && !found){
-            toReturn = (Episode)it.next();
+        while (it.hasNext() && !found) {
+            toReturn = (Episode) it.next();
             found = toReturn.checkNumber(n);
         }
-        if(!found) return null;
-        return toReturn;
-    }
-    
-    public boolean checkNumber(int n){
-        return this.number == n;
-    }
-    
-    public int getEpisodesCount(){
-        return this.episodes.size();
-    }
-    
-    public void addEpisode(Episode e){
-        this.episodes.add(e);
-    }
-    
-    public String getEpisodesString(){
-        String toReturn = "";
-        Iterator it = episodes.iterator();
-        while(it.hasNext()){
-            toReturn += ((Episode)it.next()).getNumAndTitle() + "\n";
+        if (!found) {
+            return null;
         }
         return toReturn;
     }
-    
-    public Episode getEpisode(int i){
+
+    public boolean checkNumber(int n) {
+        return this.number == n;
+    }
+
+    public int getEpisodesCount() {
+        return this.episodes.size();
+    }
+
+    public void addEpisode(Episode e) {
+        this.episodes.add(e);
+    }
+
+    public String getEpisodesString() {
+        String toReturn = "";
+        Iterator it = episodes.iterator();
+        while (it.hasNext()) {
+            toReturn += ((Episode) it.next()).getNumAndTitle() + "\n";
+        }
+        return toReturn;
+    }
+
+    public Episode getEpisode(int i) {
         return episodes.get(i);
     }
-    
+
+    public Serie getSerie() {
+        return this.serie;
+    }
+
     @Override
-    public String toString(){
+    public String toString() {
         return "Season " + number;
     }
 }

@@ -7,6 +7,7 @@ package totseries_it1b.Model;
 
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
@@ -25,11 +26,12 @@ public abstract class Ranking extends Observable {
         top = new ArrayList<>();
     }
 
-    public void update(Object e) {
-        int oldPosition = top.indexOf(e);
-        int newPosition = updateElementPosition(e, oldPosition);
+    public void update(Object o) {
+        int oldPosition = top.indexOf(o);
+        int newPosition = updateElementPosition(o, oldPosition);
 
         if (oldPosition != newPosition && (oldPosition <= num - 1 || newPosition <= num - 1)) {
+            setChanged();
             notifyObservers();
         }
     }

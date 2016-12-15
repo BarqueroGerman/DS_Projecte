@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Observable;
 
 /**
  *
@@ -86,5 +87,9 @@ public class Episode {
 
     public double getRatingAverage() {
         return ratingAverage;
+    }
+
+    public Serie getSerie() {
+        return this.season.getSerie();
     }
 }
