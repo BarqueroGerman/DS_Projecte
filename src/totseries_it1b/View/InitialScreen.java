@@ -15,7 +15,7 @@ import totseries_it1b.Controller.TSController;
  *
  * @author ecalvove7.alumnes
  */
-public class MainMenu extends javax.swing.JFrame {
+public class InitialScreen extends javax.swing.JFrame {
 
     private TSController ctrl;
     private final static String xmlFilename = "data/TotSeries.xml";
@@ -23,7 +23,7 @@ public class MainMenu extends javax.swing.JFrame {
     /**
      * Creates new form MainMenu
      */
-    public MainMenu(TSController ctrl) {
+    public InitialScreen(TSController ctrl) {
         this.ctrl = ctrl;
         initComponents();
     }
@@ -202,15 +202,15 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        RegisterFrame registerFrame = new RegisterFrame(ctrl, usernameTextFieldRegister.getText(),passwordTextFieldRegister.getPassword());
+        RegisterFrame registerFrame = new RegisterFrame(ctrl, usernameTextFieldRegister.getText(), passwordTextFieldRegister.getPassword());
         registerFrame.setVisible(true);
         registerFrame.setLocation(275, 200);
         JFrame pointer = this;
         registerFrame.addWindowListener(new WindowListener() {
             @Override
-            public void windowClosed(WindowEvent e){
-                if(ctrl.isLogged()){
-                    totSeries totSeries = new totSeries();
+            public void windowClosed(WindowEvent e) {
+                if (ctrl.isLogged()) {
+                    MainScreen totSeries = new MainScreen();
                     totSeries.setVisible(true);
                     pointer.setVisible(false);
                 }
@@ -244,14 +244,15 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         String password = "";
-        for(char c:passwordTextFieldLogin.getPassword()){
-            password = password+c;
-        }if(ctrl.login(usernameTextFieldLogin.getText(), password)){
+        for (char c : passwordTextFieldLogin.getPassword()) {
+            password = password + c;
+        }
+        if (ctrl.login(usernameTextFieldLogin.getText(), password)) {
             incorrectLoginLabel.setText("");
             this.setVisible(false);
-            totSeries totSeries = new totSeries();
+            MainScreen totSeries = new MainScreen();
             totSeries.setVisible(true);
-        }else{
+        } else {
             incorrectLoginLabel.setText("Incorrect username or password");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
@@ -273,14 +274,15 @@ public class MainMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InitialScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InitialScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InitialScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InitialScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         // We initialize our database
@@ -291,7 +293,14 @@ public class MainMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainMenu(ctrl).setVisible(true);
+                InitialScreen initial = new InitialScreen(ctrl);
+                //initial.setVisible(true);
+
+                if (ctrl.login("atormenta", "atormenta")) {
+                    initial.setVisible(false);
+                    MainScreen totSeries = new MainScreen();
+                    totSeries.setVisible(true);
+                }
             }
         });
     }
