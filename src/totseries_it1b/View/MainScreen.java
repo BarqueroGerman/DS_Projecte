@@ -45,12 +45,13 @@ public class MainScreen extends javax.swing.JFrame {
         mostViewedLabel = new javax.swing.JLabel();
         mainContainer = new javax.swing.JPanel();
         seriesByViews1 = new totseries_it1b.View.SeriesByViews();
-        catalogPanel1 = new totseries_it1b.View.CatalogPanel();
         seriesByRating1 = new totseries_it1b.View.SeriesByRating();
+        catalogPanel1 = new totseries_it1b.View.CatalogPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 750));
+        setMinimumSize(new java.awt.Dimension(1250, 750));
+        setPreferredSize(new java.awt.Dimension(1250, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tittlePanel.setBackground(new java.awt.Color(0, 0, 102));
@@ -67,14 +68,14 @@ public class MainScreen extends javax.swing.JFrame {
             tittlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tittlePanelLayout.createSequentialGroup()
                 .addComponent(totSeriesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 749, Short.MAX_VALUE))
         );
         tittlePanelLayout.setVerticalGroup(
             tittlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(totSeriesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(tittlePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, -1));
+        getContentPane().add(tittlePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -122,7 +123,9 @@ public class MainScreen extends javax.swing.JFrame {
         mostRatedButton.setLayout(mostRatedButtonLayout);
         mostRatedButtonLayout.setHorizontalGroup(
             mostRatedButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mostRatedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mostRatedButtonLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(mostRatedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         mostRatedButtonLayout.setVerticalGroup(
             mostRatedButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,9 +166,9 @@ public class MainScreen extends javax.swing.JFrame {
                 .addComponent(catalogButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(mostViewedButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
                 .addComponent(mostRatedButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(416, 416, 416))
+                .addContainerGap(458, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,19 +181,20 @@ public class MainScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 600, 60));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 900, 60));
 
+        mainContainer.setBackground(new java.awt.Color(255, 255, 255));
         mainContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         mainContainer.setOpaque(false);
         mainContainer.setLayout(new java.awt.CardLayout());
         mainContainer.add(seriesByViews1, "views");
-        mainContainer.add(catalogPanel1, "catalog");
         mainContainer.add(seriesByRating1, "ratings");
+        mainContainer.add(catalogPanel1, "catalog");
 
-        getContentPane().add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 600, 490));
+        getContentPane().add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 900, 530));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fonsMainMenu.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 760));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
