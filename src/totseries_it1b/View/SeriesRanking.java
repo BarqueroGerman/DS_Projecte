@@ -6,6 +6,7 @@
 package totseries_it1b.View;
 
 import javax.swing.JPanel;
+import totseries_it1b.Controller.TSController;
 
 /**
  *
@@ -18,7 +19,9 @@ public class SeriesRanking extends JPanel {
      */
     public SeriesRanking() {
         initComponents();
-        byViews = new SeriesByViews();
+
+        TSController ctrl = TSController.getInstance();
+        byViews = new SeriesByViews(ctrl.getMostViewedSeriesRanking());
         byRating = new SeriesByRating();
         this.add(byViews);
         this.add(byRating);

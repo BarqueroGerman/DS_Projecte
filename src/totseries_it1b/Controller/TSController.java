@@ -78,7 +78,8 @@ public class TSController {
         if (!totSeries.usernameRegistered(username)) {
             user = new Client(username, pass, name, nationality, birthdate);
             added = totSeries.addUser(user);
-        }if(username.equals("") || pass.equals("") || name.equals("") || nationality.equals("")){
+        }
+        if (username.equals("") || pass.equals("") || name.equals("") || nationality.equals("")) {
             added = false;
         }
         return added;
@@ -222,5 +223,9 @@ public class TSController {
      */
     public User getUserInSession() {
         return this.user;
+    }
+
+    public Ranking getMostViewedSeriesRanking() {
+        return totSeries.getMostViewedSeriesRanking();
     }
 }

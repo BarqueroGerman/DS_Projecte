@@ -38,7 +38,7 @@ public abstract class Ranking extends Observable {
 
     private int updateElementPosition(Object e, int oldPos) {
         // Mirem si es moura.
-        boolean toMove;
+        boolean toMove = false;
         if (top.isEmpty()) {
             top.add(e);
             return 0;
@@ -47,13 +47,13 @@ public abstract class Ranking extends Observable {
             int pos = getPosition(e);
             top.add(pos, e);
             return pos;
-        } else if (oldPos == 0) {
+        } else if (oldPos == 0 && top.size() > 1) {
             // esta al top 1
             toMove = getHigherElement(top.get(1), e) != e;
-        } else if (oldPos == top.size() - 1) {
+        } else if (oldPos == top.size() - 1 && top.size() > 1) {
             // esta a abaix de tot
             toMove = getHigherElement(top.get(oldPos - 1), e) == e;
-        } else {
+        } else if (top.size() > 1) {
             // esta a una posicio intermitja
             toMove = getHigherElement(top.get(oldPos - 1), e) == e || getHigherElement(top.get(oldPos + 1), e) != e;
         }

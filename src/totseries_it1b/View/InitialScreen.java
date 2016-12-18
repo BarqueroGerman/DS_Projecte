@@ -8,8 +8,14 @@ package totseries_it1b.View;
 import edu.ub.informatica.disseny.totseries.TotSeriesDataManager;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JFrame;
 import totseries_it1b.Controller.TSController;
+import totseries_it1b.Model.Client;
+import totseries_it1b.Model.Episode;
+import totseries_it1b.Model.Serie;
+import totseries_it1b.Model.View;
 
 /**
  *
@@ -17,7 +23,7 @@ import totseries_it1b.Controller.TSController;
  */
 public class InitialScreen extends javax.swing.JFrame {
 
-    private TSController ctrl;
+    private static TSController ctrl;
     private final static String xmlFilename = "data/TotSeries.xml";
 
     /**
@@ -289,7 +295,8 @@ public class InitialScreen extends javax.swing.JFrame {
         TotSeriesDataManager dataManager = new TotSeriesDataManager();
         dataManager.obtenirDades(xmlFilename);
 
-        TSController ctrl = TSController.getInstance(dataManager.getTotSeries());
+        ctrl = TSController.getInstance(dataManager.getTotSeries());
+        runRatingTest();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -303,6 +310,39 @@ public class InitialScreen extends javax.swing.JFrame {
                 }
             }
         });
+    }
+
+    /**
+     * Afegeix valoracions a 9 episodes de breaking bad a mode de test.
+     */
+    private static void runRatingTest() {
+        ArrayList<Episode> episodes = new ArrayList<>();
+        Client c1 = (Client) ctrl.getUserByUsername("atormenta");
+        Client c2 = (Client) ctrl.getUserByUsername("dtomacal");
+        Serie serie = ctrl.getCatalog().getSerieById("bbad");
+        episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(1));
+        episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(2));
+        episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(3));
+        episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(4));
+        episodes.add(serie.getSeasonByNumber(2).getEpisodeByNumber(1));
+        episodes.add(serie.getSeasonByNumber(2).getEpisodeByNumber(2));
+        episodes.add(serie.getSeasonByNumber(2).getEpisodeByNumber(3));
+        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(1));
+        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(2));
+        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(3));
+        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(4));
+        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(5));
+        View v;
+        for (Episode e : episodes) {
+            ctrl.login(c1.getUsername(), c1.getPassword());
+            v = ctrl.visualizeEpisode(e);
+            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(0, 6));
+
+            ctrl.login(c2.getUsername(), c2.getPassword());
+            v = ctrl.visualizeEpisode(e);
+            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(1, 6));
+        }
+        ctrl.logout();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
