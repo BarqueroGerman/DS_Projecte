@@ -5,6 +5,8 @@
  */
 package totseries_it1b.View;
 
+import java.awt.CardLayout;
+import java.awt.Color;
 import javafx.scene.control.TabPane;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
@@ -32,16 +34,205 @@ public class MainScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tittlePanel = new javax.swing.JPanel();
+        totSeriesLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        catalogButton = new javax.swing.JPanel();
+        catalogLabel = new javax.swing.JLabel();
+        mostRatedButton = new javax.swing.JPanel();
+        mostRatedLabel = new javax.swing.JLabel();
+        mostViewedButton = new javax.swing.JPanel();
+        mostViewedLabel = new javax.swing.JLabel();
         mainContainer = new javax.swing.JPanel();
+        seriesByViews1 = new totseries_it1b.View.SeriesByViews();
+        catalogPanel1 = new totseries_it1b.View.CatalogPanel();
+        seriesByRating1 = new totseries_it1b.View.SeriesByRating();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tittlePanel.setBackground(new java.awt.Color(0, 0, 102));
+        tittlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        totSeriesLabel.setFont(new java.awt.Font("Cooper Black", 3, 36)); // NOI18N
+        totSeriesLabel.setForeground(new java.awt.Color(255, 255, 255));
+        totSeriesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        totSeriesLabel.setText("TotSeries.com");
+
+        javax.swing.GroupLayout tittlePanelLayout = new javax.swing.GroupLayout(tittlePanel);
+        tittlePanel.setLayout(tittlePanelLayout);
+        tittlePanelLayout.setHorizontalGroup(
+            tittlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tittlePanelLayout.createSequentialGroup()
+                .addComponent(totSeriesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        tittlePanelLayout.setVerticalGroup(
+            tittlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(totSeriesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(tittlePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        catalogButton.setBackground(Color.GRAY);
+
+        catalogLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        catalogLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        catalogLabel.setText("Catalog");
+        catalogLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                catalogLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                catalogLabelMouseEntered(evt);
+            }
+        });
+
+        javax.swing.GroupLayout catalogButtonLayout = new javax.swing.GroupLayout(catalogButton);
+        catalogButton.setLayout(catalogButtonLayout);
+        catalogButtonLayout.setHorizontalGroup(
+            catalogButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(catalogLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+        );
+        catalogButtonLayout.setVerticalGroup(
+            catalogButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(catalogLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        mostRatedButton.setBackground(new java.awt.Color(255, 255, 255));
+
+        mostRatedLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mostRatedLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mostRatedLabel.setText("Most rated");
+        mostRatedLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostRatedLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                mostRatedLabelMouseEntered(evt);
+            }
+        });
+
+        javax.swing.GroupLayout mostRatedButtonLayout = new javax.swing.GroupLayout(mostRatedButton);
+        mostRatedButton.setLayout(mostRatedButtonLayout);
+        mostRatedButtonLayout.setHorizontalGroup(
+            mostRatedButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mostRatedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        mostRatedButtonLayout.setVerticalGroup(
+            mostRatedButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mostRatedLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+        );
+
+        mostViewedButton.setBackground(new java.awt.Color(255, 255, 255));
+
+        mostViewedLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mostViewedLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mostViewedLabel.setText("Most viewed");
+        mostViewedLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostViewedLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                mostViewedLabelMouseEntered(evt);
+            }
+        });
+
+        javax.swing.GroupLayout mostViewedButtonLayout = new javax.swing.GroupLayout(mostViewedButton);
+        mostViewedButton.setLayout(mostViewedButtonLayout);
+        mostViewedButtonLayout.setHorizontalGroup(
+            mostViewedButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mostViewedLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+        );
+        mostViewedButtonLayout.setVerticalGroup(
+            mostViewedButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mostViewedLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(catalogButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(mostViewedButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mostRatedButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(416, 416, 416))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mostRatedButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(catalogButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mostViewedButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 600, 60));
+
         mainContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1490, 740));
+        mainContainer.setOpaque(false);
+        mainContainer.setLayout(new java.awt.CardLayout());
+        mainContainer.add(seriesByViews1, "views");
+        mainContainer.add(catalogPanel1, "catalog");
+        mainContainer.add(seriesByRating1, "ratings");
+
+        getContentPane().add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 600, 490));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fonsMainMenu.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void catalogLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_catalogLabelMouseClicked
+        catalogButton.setBackground(Color.GRAY);
+        mostViewedButton.setBackground(Color.WHITE);
+        mostRatedButton.setBackground(Color.WHITE);
+        CardLayout card = (CardLayout) mainContainer.getLayout();
+        card.show(mainContainer,"catalog");
+    }//GEN-LAST:event_catalogLabelMouseClicked
+
+    private void mostViewedLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostViewedLabelMouseClicked
+        catalogButton.setBackground(Color.WHITE);
+        mostViewedButton.setBackground(Color.GRAY);
+        mostRatedButton.setBackground(Color.WHITE);
+        CardLayout card = (CardLayout)mainContainer.getLayout();
+        card.show(mainContainer,"views");
+    }//GEN-LAST:event_mostViewedLabelMouseClicked
+
+    private void mostRatedLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostRatedLabelMouseClicked
+        catalogButton.setBackground(Color.WHITE);
+        mostViewedButton.setBackground(Color.WHITE);
+        mostRatedButton.setBackground(Color.GRAY);
+        CardLayout card = (CardLayout)mainContainer.getLayout();
+        card.show(mainContainer,"ratings");
+    }//GEN-LAST:event_mostRatedLabelMouseClicked
+
+    private void mostRatedLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostRatedLabelMouseEntered
+        mostRatedButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mostRatedButton.setBackground(Color.GRAY);
+    }//GEN-LAST:event_mostRatedLabelMouseEntered
+
+    private void mostViewedLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostViewedLabelMouseEntered
+        mostViewedButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mostViewedButton.setBackground(Color.GRAY);
+    }//GEN-LAST:event_mostViewedLabelMouseEntered
+
+    private void catalogLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_catalogLabelMouseEntered
+        catalogButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        catalogButton.setBackground(Color.GRAY);
+    }//GEN-LAST:event_catalogLabelMouseEntered
 
     private void initMainComponents() {
         catalogPanel = new CatalogPanel();
@@ -61,7 +252,20 @@ public class MainScreen extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel catalogButton;
+    private javax.swing.JLabel catalogLabel;
+    private totseries_it1b.View.CatalogPanel catalogPanel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel mainContainer;
+    private javax.swing.JPanel mostRatedButton;
+    private javax.swing.JLabel mostRatedLabel;
+    private javax.swing.JPanel mostViewedButton;
+    private javax.swing.JLabel mostViewedLabel;
+    private totseries_it1b.View.SeriesByRating seriesByRating1;
+    private totseries_it1b.View.SeriesByViews seriesByViews1;
+    private javax.swing.JPanel tittlePanel;
+    private javax.swing.JLabel totSeriesLabel;
     // End of variables declaration//GEN-END:variables
     private CatalogPanel catalogPanel;
     private JTabbedPane rankingsTabsPanel;
