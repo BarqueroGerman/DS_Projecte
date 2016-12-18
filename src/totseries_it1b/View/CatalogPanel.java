@@ -16,8 +16,6 @@ public class CatalogPanel extends javax.swing.JPanel {
      */
     public CatalogPanel() {
         initComponents();
-        TRY.setVisible(false);
-        TRY2.setVisible(false);
     }
 
     /**
