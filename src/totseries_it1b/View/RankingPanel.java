@@ -5,17 +5,25 @@
  */
 package totseries_it1b.View;
 
+import java.util.Observable;
+import java.util.Observer;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author Enric Calvo & German Barquero
  */
-public class CatalogPanel extends javax.swing.JPanel {
+public abstract class RankingPanel extends javax.swing.JPanel implements Observer {
 
     /**
-     * Creates new form CatalogPanel
+     * Creates new form RankingPanel
      */
-    public CatalogPanel() {
+    public RankingPanel(Observable ranking) {
         initComponents();
+        model = new DefaultListModel();
+        rankingList.setModel(model);
+        update(ranking, null);
+        ranking.addObserver(this);
     }
 
     /**
@@ -27,38 +35,42 @@ public class CatalogPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        rankingList = new javax.swing.JList();
 
-        jButton1.setText("Catalog Panel");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setViewportView(rankingList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(618, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(514, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList rankingList;
     // End of variables declaration//GEN-END:variables
+    protected DefaultListModel model;
+
+    public abstract void update(Observable o, Object arg);
+
+    protected void addElementToRanking() {
+        model.addElement("Prova");
+    }
+
+    protected void clearRanking() {
+
+    }
 }

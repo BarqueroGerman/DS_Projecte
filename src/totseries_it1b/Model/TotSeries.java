@@ -81,6 +81,10 @@ public class TotSeries {
         this.bestRatedSer.update(ser);
     }
 
+    public Ranking getMostViewedSeriesRanking() {
+        return this.mostViewedSer;
+    }
+
     public void updateMostViewedSeriesRanking(Serie ser) {
         this.mostViewedSer.update(ser);
     }
