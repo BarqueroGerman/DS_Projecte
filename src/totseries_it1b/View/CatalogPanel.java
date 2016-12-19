@@ -13,8 +13,10 @@ import totseries_it1b.Controller.TSController;
  * @author Enric Calvo & German Barquero
  */
 public class CatalogPanel extends javax.swing.JPanel {
+
     TSController ctrl;
     ArrayList<SeriePanel> seriesPanels;
+
     /**
      * Creates new form CatalogPanel
      */
@@ -22,34 +24,31 @@ public class CatalogPanel extends javax.swing.JPanel {
         initComponents();
         ctrl = TSController.getInstance();
         seriesPanels = new ArrayList<SeriePanel>();
-        for(String[] serie:ctrl.getInfoSeries()){
-            SeriePanel panel = new SeriePanel(serie[0],serie[1]);
+        for (String[] serie : ctrl.getInfoSeries()) {
+            SeriePanel panel = new SeriePanel(serie[0], serie[1]);
             seriesPanels.add(panel);
-        }updateSeries(0,9);
-        
+        }
+        updateSeries(0, 9);
     }
-    
-    public void setTitleSerie(int i){
+
+    public void setTitleSerie(int i) {
         seriesPanels.get(i);
     }
-    
-    public void updateSeries(int from, int to){
-        boolean done = false;
-        int iter = 0;
-        int limit = to-from;
-        while(!done && iter<5){
-            if(limit==iter) done = true;
-            series1_5Panel.add(seriesPanels.get(iter));
-            iter++;
-        }if(!done){
-            while(!done && iter<10){
-                if(limit==iter) done = true;
-                series6_10Panel.add(seriesPanels.get(iter));
-                iter++;
+
+    public void updateSeries(int from, int to) {
+        if (seriesPanels.size() < to + 1) {
+            to = seriesPanels.size() - 1;
+        }
+        int total = (to - from) + 1;
+        for (int i = 0; i < total; i++) {
+            if (i < (total - total / 2)) {
+                series1_5Panel.add(seriesPanels.get(from + i));
+            } else {
+                series6_10Panel.add(seriesPanels.get(from + i));
             }
         }
-        
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
