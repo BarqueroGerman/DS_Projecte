@@ -12,7 +12,7 @@ import java.util.Iterator;
  *
  * @author Enric Calvo & German Barquero
  */
-public class Catalog {
+public class Catalog implements Iterable<Serie> {
 
     private TotSeries totSeries;
     private ArrayList<Serie> series;
@@ -62,5 +62,10 @@ public class Catalog {
 
     public Serie getSerie(int i) {
         return series.get(i);
+    }
+
+    @Override
+    public Iterator<Serie> iterator() {
+        return this.series.iterator();
     }
 }

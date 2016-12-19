@@ -51,7 +51,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1250, 750));
-        setPreferredSize(new java.awt.Dimension(1250, 750));
+        setPreferredSize(new java.awt.Dimension(1250, 820));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tittlePanel.setBackground(new java.awt.Color(0, 0, 102));
@@ -129,7 +129,7 @@ public class MainScreen extends javax.swing.JFrame {
         );
         mostRatedButtonLayout.setVerticalGroup(
             mostRatedButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mostRatedLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+            .addComponent(mostRatedLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
         );
 
         mostViewedButton.setBackground(new java.awt.Color(255, 255, 255));
@@ -168,7 +168,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addComponent(mostViewedButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(mostRatedButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(458, Short.MAX_VALUE))
+                .addContainerGap(514, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +181,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 900, 60));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 960, 60));
 
         mainContainer.setBackground(new java.awt.Color(255, 255, 255));
         mainContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -191,10 +191,10 @@ public class MainScreen extends javax.swing.JFrame {
         mainContainer.add(seriesByRating1, "ratings");
         mainContainer.add(catalogPanel1, "catalog");
 
-        getContentPane().add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 900, 530));
+        getContentPane().add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 960, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fonsMainMenu.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 760));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 810));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,6 +205,7 @@ public class MainScreen extends javax.swing.JFrame {
         mostRatedButton.setBackground(Color.WHITE);
         CardLayout card = (CardLayout) mainContainer.getLayout();
         card.show(mainContainer, "catalog");
+        
     }//GEN-LAST:event_catalogLabelMouseClicked
 
     private void mostViewedLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostViewedLabelMouseClicked

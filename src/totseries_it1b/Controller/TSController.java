@@ -236,4 +236,12 @@ public class TSController {
     public BestRatedEpisodes getBestRatedEpisodesRanking() {
         return totSeries.getBestRatedEpisodesRanking();
     }
+    
+    public ArrayList<String[]> getInfoSeries(){
+        ArrayList<String[]> infoSeries= new ArrayList<String[]>();
+        for(Serie serie:totSeries.getCatalog()){
+            String[] infoSerie = {serie.getTitle(),serie.getId()};
+            infoSeries.add(infoSerie);
+        }return infoSeries;
+    }
 }
