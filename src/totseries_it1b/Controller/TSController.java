@@ -11,6 +11,7 @@ import edu.ub.informatica.disseny.totseries.Consola;
 import java.util.ArrayList;
 import java.util.Calendar;
 import totseries_it1b.Model.*;
+import totseries_it1b.Model.Types.UserType;
 
 /**
  * Controlador principal de l'aplicacio TotSeries.
@@ -18,9 +19,6 @@ import totseries_it1b.Model.*;
  * @author Enric Calvo & German Barquero
  */
 public class TSController {
-
-    private final static int ADMIN_TYPE = 0;
-    private final static int CLIENT_TYPE = 1;
 
     /**
      * Database
@@ -213,7 +211,7 @@ public class TSController {
      * @return
      */
     public boolean userIsClient() {
-        return user != null && getUserInSessionType() == CLIENT_TYPE;
+        return user != null && getUserInSessionType() == UserType.CLIENT;
     }
 
     /**
