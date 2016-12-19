@@ -22,7 +22,7 @@ public class MainScreen extends javax.swing.JFrame {
      */
     public MainScreen() {
         initComponents();
-        initMainComponents();
+        //initMainComponents();
     }
 
     /**
@@ -200,23 +200,23 @@ public class MainScreen extends javax.swing.JFrame {
         mostViewedButton.setBackground(Color.WHITE);
         mostRatedButton.setBackground(Color.WHITE);
         CardLayout card = (CardLayout) mainContainer.getLayout();
-        card.show(mainContainer,"catalog");
+        card.show(mainContainer, "catalog");
     }//GEN-LAST:event_catalogLabelMouseClicked
 
     private void mostViewedLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostViewedLabelMouseClicked
         catalogButton.setBackground(Color.WHITE);
         mostViewedButton.setBackground(Color.GRAY);
         mostRatedButton.setBackground(Color.WHITE);
-        CardLayout card = (CardLayout)mainContainer.getLayout();
-        card.show(mainContainer,"views");
+        CardLayout card = (CardLayout) mainContainer.getLayout();
+        card.show(mainContainer, "views");
     }//GEN-LAST:event_mostViewedLabelMouseClicked
 
     private void mostRatedLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostRatedLabelMouseClicked
         catalogButton.setBackground(Color.WHITE);
         mostViewedButton.setBackground(Color.WHITE);
         mostRatedButton.setBackground(Color.GRAY);
-        CardLayout card = (CardLayout)mainContainer.getLayout();
-        card.show(mainContainer,"ratings");
+        CardLayout card = (CardLayout) mainContainer.getLayout();
+        card.show(mainContainer, "ratings");
     }//GEN-LAST:event_mostRatedLabelMouseClicked
 
     private void mostRatedLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostRatedLabelMouseEntered

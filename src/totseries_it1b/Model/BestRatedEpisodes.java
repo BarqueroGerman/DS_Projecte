@@ -22,7 +22,7 @@ public class BestRatedEpisodes extends Ranking {
         totSeries = TS;
     }
 
-    protected Episode getHigherElement(Object obj1, Object obj2) {
+    protected Object getHigherElement(Object obj1, Object obj2) {
         Episode ep1 = (Episode) obj1;
         Episode ep2 = (Episode) obj2;
         if (ep1.getRatingAverage() > ep2.getRatingAverage()) {

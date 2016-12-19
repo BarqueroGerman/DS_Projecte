@@ -6,6 +6,7 @@
 package totseries_it1b.Model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -13,7 +14,7 @@ import java.util.Observer;
  *
  * @author Enric Calvo & German Barquero
  */
-public abstract class Ranking extends Observable {
+public abstract class Ranking extends Observable implements Iterable<Object> {
 
     /**
      * Nombre d'episodis al ranking.
@@ -92,5 +93,13 @@ public abstract class Ranking extends Observable {
         return start;
     }
 
-    protected abstract Episode getHigherElement(Object ep1, Object ep2);
+    protected abstract Object getHigherElement(Object ep1, Object ep2);
+
+    @Override
+    public Iterator<Object> iterator() {
+        if (top.size() < num) {
+            return this.top.subList(0, top.size()).iterator();
+        }
+        return this.top.subList(0, num).iterator();
+    }
 }

@@ -12,7 +12,7 @@ import java.util.Iterator;
  *
  * @author Enric Calvo & German Barquero
  */
-public class Season {
+public class Season implements Iterable<Episode> {
 
     private int number;
 
@@ -61,10 +61,6 @@ public class Season {
         return toReturn;
     }
 
-    public Episode getEpisode(int i) {
-        return episodes.get(i);
-    }
-
     public Serie getSerie() {
         return this.serie;
     }
@@ -72,5 +68,10 @@ public class Season {
     @Override
     public String toString() {
         return "Season " + number;
+    }
+
+    @Override
+    public Iterator<Episode> iterator() {
+        return this.episodes.iterator();
     }
 }

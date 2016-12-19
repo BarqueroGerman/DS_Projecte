@@ -296,7 +296,6 @@ public class InitialScreen extends javax.swing.JFrame {
         dataManager.obtenirDades(xmlFilename);
 
         ctrl = TSController.getInstance(dataManager.getTotSeries());
-        runRatingTest();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -306,6 +305,7 @@ public class InitialScreen extends javax.swing.JFrame {
                 if (ctrl.login("atormenta", "atormenta")) {
                     initial.setVisible(false);
                     MainScreen totSeries = new MainScreen();
+                    runRatingTest();
                     totSeries.setVisible(true);
                 }
             }

@@ -73,15 +73,23 @@ public class TotSeries {
         return this.catalog;
     }
 
+    public BestRatedEpisodes getBestRatedEpisodesRanking() {
+        return this.bestRatedEp;
+    }
+
     public void updateBestRatedEpisodesRanking(Episode ep) {
         this.bestRatedEp.update(ep);
+    }
+
+    public BestRatedSeries getBestRatedSeriesRanking() {
+        return this.bestRatedSer;
     }
 
     public void updateBestRatedSeriesRanking(Serie ser) {
         this.bestRatedSer.update(ser);
     }
 
-    public Ranking getMostViewedSeriesRanking() {
+    public MostViewedSeries getMostViewedSeriesRanking() {
         return this.mostViewedSer;
     }
 

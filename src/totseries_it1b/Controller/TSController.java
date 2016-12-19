@@ -225,7 +225,15 @@ public class TSController {
         return this.user;
     }
 
-    public Ranking getMostViewedSeriesRanking() {
+    public MostViewedSeries getMostViewedSeriesRanking() {
         return totSeries.getMostViewedSeriesRanking();
+    }
+
+    public BestRatedSeries getBestRatedSeriesRanking() {
+        return totSeries.getBestRatedSeriesRanking();
+    }
+
+    public BestRatedEpisodes getBestRatedEpisodesRanking() {
+        return totSeries.getBestRatedEpisodesRanking();
     }
 }

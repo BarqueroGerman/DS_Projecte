@@ -89,6 +89,10 @@ public class Episode {
         return ratingAverage;
     }
 
+    public int getViewsCount() {
+        return this.views.size();
+    }
+
     public Serie getSerie() {
         return this.season.getSerie();
     }

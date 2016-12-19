@@ -13,7 +13,7 @@ import java.util.Observable;
  *
  * @author Enric Calvo & German Barquero
  */
-public class Serie {
+public class Serie implements Iterable<Season> {
 
     private String id;
     private String title;
@@ -53,6 +53,28 @@ public class Serie {
         return this.id.equals(id);
     }
 
+    public double getRatingAverage() {
+        int num = 0;
+        double sum = 0;
+        for (Season season : this) {
+            for (Episode e : season) {
+                sum += e.getRatingAverage();
+                num += 1;
+            }
+        }
+        return sum / num;
+    }
+
+    public int getTotalViews() {
+        int sum = 0;
+        for (Season season : this) {
+            for (Episode e : season) {
+                sum += e.getViewsCount();
+            }
+        }
+        return sum;
+    }
+
     public void addSeason(Season s) {
         seasons.add(s);
     }
@@ -87,11 +109,8 @@ public class Serie {
         this.producer = prod;
     }
 
-    public int getNumSeasons() {
-        return seasons.size();
-    }
-
-    public Season getSeason(int i) {
-        return seasons.get(i);
+    @Override
+    public Iterator<Season> iterator() {
+        return this.seasons.iterator();
     }
 }

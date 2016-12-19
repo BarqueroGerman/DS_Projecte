@@ -20,8 +20,7 @@ public class SeriesRanking extends JPanel {
     public SeriesRanking() {
         initComponents();
 
-        TSController ctrl = TSController.getInstance();
-        byViews = new SeriesByViews(/*ctrl.getMostViewedSeriesRanking()*/);
+        byViews = new SeriesByViews();
         byRating = new SeriesByRating();
         this.add(byViews);
         this.add(byRating);

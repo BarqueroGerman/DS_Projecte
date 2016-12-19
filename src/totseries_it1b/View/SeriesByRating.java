@@ -5,17 +5,21 @@
  */
 package totseries_it1b.View;
 
+import java.util.Observable;
+import totseries_it1b.Controller.TSController;
+import totseries_it1b.Model.*;
+
 /**
  *
  * @author Enric Calvo & German Barquero
  */
-public class SeriesByRating extends javax.swing.JPanel {
+public class SeriesByRating extends RankingPanel {
 
     /**
      * Creates new form SeriesByRating
      */
     public SeriesByRating() {
-        initComponents();
+        super(TSController.getInstance().getBestRatedSeriesRanking());
     }
 
     /**
@@ -27,34 +31,37 @@ public class SeriesByRating extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-
         setPreferredSize(new java.awt.Dimension(284, 487));
-
-        jButton1.setText("By Rating");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+            .addGap(0, 282, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+            .addGap(0, 488, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
+    @Override
+    public void update(Observable o, Object arg) {
+        clearRanking();
+        load((Ranking) o);
+    }
+
+    @Override
+    protected void load(Ranking ranking) {
+        for (Object obj : ranking) {
+            addElementToRanking(obj);
+        }
+    }
+
+    @Override
+    protected void addElementToRanking(Object obj) {
+        model.addElement((Serie) obj);
+    }
 }

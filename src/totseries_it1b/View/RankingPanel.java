@@ -8,6 +8,7 @@ package totseries_it1b.View;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.DefaultListModel;
+import totseries_it1b.Model.Ranking;
 
 /**
  *
@@ -18,11 +19,10 @@ public abstract class RankingPanel extends javax.swing.JPanel implements Observe
     /**
      * Creates new form RankingPanel
      */
-    public RankingPanel(Observable ranking) {
+    public RankingPanel(Ranking ranking) {
         initComponents();
         model = new DefaultListModel();
         rankingList.setModel(model);
-        update(ranking, null);
         ranking.addObserver(this);
     }
 
@@ -64,13 +64,14 @@ public abstract class RankingPanel extends javax.swing.JPanel implements Observe
     // End of variables declaration//GEN-END:variables
     protected DefaultListModel model;
 
+    @Override
     public abstract void update(Observable o, Object arg);
 
-    protected void addElementToRanking() {
-        model.addElement("Prova");
-    }
+    protected abstract void load(Ranking ranking);
+
+    protected abstract void addElementToRanking(Object obj);
 
     protected void clearRanking() {
-
+        model.clear();
     }
 }
