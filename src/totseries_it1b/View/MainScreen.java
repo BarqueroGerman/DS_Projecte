@@ -22,7 +22,6 @@ public class MainScreen extends javax.swing.JFrame {
      */
     public MainScreen() {
         initComponents();
-        //initMainComponents();
     }
 
     /**
@@ -239,20 +238,6 @@ public class MainScreen extends javax.swing.JFrame {
         catalogButton.setBackground(Color.GRAY);
     }//GEN-LAST:event_catalogLabelMouseEntered
 
-    private void initMainComponents() {
-        catalogPanel = new CatalogPanel();
-        rankingsTabsPanel = new JTabbedPane();
-        seriesRankings = new SeriesRanking();
-
-        mainContainer.add(catalogPanel);
-        mainContainer.add(rankingsTabsPanel);
-
-        rankingsTabsPanel.addTab("Series", seriesRankings);
-        rankingsTabsPanel.setBounds(0, 0, 500, 500);
-
-        pack();
-    }
-
     /**
      * @param args the command line arguments
      */
@@ -274,5 +259,4 @@ public class MainScreen extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private CatalogPanel catalogPanel;
     private JTabbedPane rankingsTabsPanel;
-    private SeriesRanking seriesRankings;
 }
