@@ -17,6 +17,10 @@ public class CatalogContainer extends javax.swing.JPanel {
     public CatalogContainer() {
         initComponents();
     }
+    
+    public SerieSeasons getSeasons(){
+        return serieSeasons1;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

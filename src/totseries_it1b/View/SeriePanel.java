@@ -6,6 +6,7 @@
 package totseries_it1b.View;
 
 import java.awt.CardLayout;
+import totseries_it1b.Controller.TSController;
 import totseries_it1b.Model.Serie;
 
 /**
@@ -14,6 +15,8 @@ import totseries_it1b.Model.Serie;
  */
 public class SeriePanel extends javax.swing.JPanel {
     String id;
+    TSController ctrl;
+    private boolean readOnly;
     /**
      * Creates new form SeriePanel
      */
@@ -21,7 +24,16 @@ public class SeriePanel extends javax.swing.JPanel {
         initComponents();
         titleSerie.setText(title);
         this.id = id;
-        
+        ctrl = TSController.getInstance();
+        readOnly = false;
+    }
+    
+    public SeriePanel(String title,String id, boolean read) {
+        initComponents();
+        titleSerie.setText(title);
+        this.id = id;
+        ctrl = TSController.getInstance();
+        readOnly = read;        
     }
 
     /**
@@ -87,20 +99,28 @@ public class SeriePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_serieContainerMouseExited
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
-        this.setSize(this.getWidth()-10,this.getHeight()-10);
-        serieContainer.setLocation(serieContainer.getX()-5, serieContainer.getY()-10);
-        this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        if(!readOnly){
+            this.setSize(this.getWidth()-10,this.getHeight()-10);
+            serieContainer.setLocation(serieContainer.getX()-5, serieContainer.getY()-10);
+            this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        }
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
-        this.setSize(this.getWidth()+10,this.getHeight()+10);        
-        serieContainer.setLocation(serieContainer.getX()+5, serieContainer.getY()+10);
-        this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        if(!readOnly){
+            this.setSize(this.getWidth()+10,this.getHeight()+10);        
+            serieContainer.setLocation(serieContainer.getX()+5, serieContainer.getY()+10);
+            this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        }
     }//GEN-LAST:event_formMouseExited
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        CardLayout card = (CardLayout)getParent().getParent().getParent().getLayout();
-        card.show(getParent().getParent().getParent(), "seasons");
+        if(!readOnly){
+            CardLayout card = (CardLayout)getParent().getParent().getParent().getLayout();
+            card.show(getParent().getParent().getParent(), "seasons");
+            ctrl.setIDCurrentSerie(id);
+            ((CatalogContainer)(this.getParent().getParent().getParent())).getSeasons().updateSerie(ctrl.getTitleCurrentSerie(), id);
+        }  
     }//GEN-LAST:event_formMouseClicked
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
