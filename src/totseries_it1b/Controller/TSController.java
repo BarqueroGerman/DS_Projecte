@@ -7,11 +7,14 @@ package totseries_it1b.Controller;
 
 import totseries_it1b.Model.View;
 import totseries_it1b.Model.AbstractView;
-import edu.ub.informatica.disseny.totseries.Consola;
+import edu.ub.informatica.disseny.totseries.TotSeriesDataManager;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.concurrent.ThreadLocalRandom;
 import totseries_it1b.Model.*;
 import totseries_it1b.Model.Types.UserType;
+import totseries_it1b.View.InitialScreen;
+import totseries_it1b.View.RankingPanel;
 
 /**
  * Controlador principal de l'aplicacio TotSeries.
@@ -29,6 +32,67 @@ public class TSController {
      */
     private User user;
     private static TSController instance;
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(InitialScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(InitialScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(InitialScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(InitialScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        // We initialize our database
+        TotSeriesDataManager dataManager = new TotSeriesDataManager();
+        dataManager.obtenirDades("data/TotSeries.xml");
+        TSController.getInstance(dataManager.getTotSeries());
+        TSController.getInstance().runRatingTest();
+        InitialScreen.init();
+    }
+
+    /**
+     * Afegeix valoracions a 9 episodes de breaking bad a mode de test.
+     */
+    public void runRatingTest() {
+        TSController ctrl = TSController.getInstance();
+        ArrayList<Episode> episodes = new ArrayList<>();
+        Client c1 = (Client) ctrl.getUserByUsername("atormenta");
+        Client c2 = (Client) ctrl.getUserByUsername("dtomacal");
+        View v;
+        for (Serie serie : ctrl.getCatalog()) {
+            for (Season season : serie) {
+                for (Episode e : season) {
+                    ctrl.login(c1.getUsername(), c1.getPassword());
+                    v = ctrl.visualizeEpisode(e);
+                    ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(0, 6));
+
+                    ctrl.login(c2.getUsername(), c2.getPassword());
+                    v = ctrl.visualizeEpisode(e);
+                    ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(1, 6));
+                }
+            }
+        }
+        ctrl.logout();
+    }
 
     private TSController() {
         this.totSeries = new TotSeries();
@@ -223,23 +287,45 @@ public class TSController {
         return this.user;
     }
 
-    public MostViewedSeries getMostViewedSeriesRanking() {
-        return totSeries.getMostViewedSeriesRanking();
+    public void linkMostViewedSeriesRanking(RankingPanel panel) {
+        totSeries.getMostViewedSeriesRanking().addObserver(panel);
     }
 
-    public BestRatedSeries getBestRatedSeriesRanking() {
-        return totSeries.getBestRatedSeriesRanking();
+    public void linkBestRatedSeriesRanking(RankingPanel panel) {
+        totSeries.getBestRatedSeriesRanking().addObserver(panel);
     }
 
-    public BestRatedEpisodes getBestRatedEpisodesRanking() {
-        return totSeries.getBestRatedEpisodesRanking();
+    public void linkBestRatedEpisodesRanking(RankingPanel panel) {
+        totSeries.getBestRatedEpisodesRanking().addObserver(panel);
     }
-    
-    public ArrayList<String[]> getInfoSeries(){
-        ArrayList<String[]> infoSeries= new ArrayList<String[]>();
-        for(Serie serie:totSeries.getCatalog()){
-            String[] infoSerie = {serie.getTitle(),serie.getId()};
+
+    // GETTERS DE INFO CAP A VISTA
+    public ArrayList<String[]> getInfoSeries() {
+        ArrayList<String[]> infoSeries = new ArrayList<String[]>();
+        for (Serie serie : totSeries.getCatalog()) {
+            String[] infoSerie = {serie.getTitle(), serie.getId()};
             infoSeries.add(infoSerie);
-        }return infoSeries;
+        }
+        return infoSeries;
+    }
+
+    public ArrayList<String[]> getMostViewedSeries() {
+        ArrayList<String[]> infoSeries = new ArrayList<String[]>();
+        for (Object obj : totSeries.getMostViewedSeriesRanking()) {
+            Serie serie = (Serie) obj;
+            String[] infoSerie = {serie.getId(), serie.getTitle(), Integer.toString(serie.getTotalViews())};
+            infoSeries.add(infoSerie);
+        }
+        return infoSeries;
+    }
+
+    public ArrayList<String[]> getBestRatedSeries() {
+        ArrayList<String[]> infoSeries = new ArrayList<String[]>();
+        for (Object obj : totSeries.getBestRatedSeriesRanking()) {
+            Serie serie = (Serie) obj;
+            String[] infoSerie = {serie.getId(), serie.getTitle(), Double.toString(serie.getRatingAverage())};
+            infoSeries.add(infoSerie);
+        }
+        return infoSeries;
     }
 }

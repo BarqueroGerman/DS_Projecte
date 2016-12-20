@@ -5,17 +5,12 @@
  */
 package totseries_it1b.View;
 
-import edu.ub.informatica.disseny.totseries.TotSeriesDataManager;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JFrame;
 import totseries_it1b.Controller.TSController;
-import totseries_it1b.Model.Client;
-import totseries_it1b.Model.Episode;
-import totseries_it1b.Model.Serie;
-import totseries_it1b.Model.View;
 
 /**
  *
@@ -24,13 +19,12 @@ import totseries_it1b.Model.View;
 public class InitialScreen extends javax.swing.JFrame {
 
     private static TSController ctrl;
-    private final static String xmlFilename = "data/TotSeries.xml";
 
     /**
      * Creates new form MainMenu
      */
-    public InitialScreen(TSController ctrl) {
-        this.ctrl = ctrl;
+    public InitialScreen() {
+        this.ctrl = TSController.getInstance();
         initComponents();
     }
 
@@ -263,86 +257,20 @@ public class InitialScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InitialScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InitialScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InitialScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InitialScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        // We initialize our database
-        TotSeriesDataManager dataManager = new TotSeriesDataManager();
-        dataManager.obtenirDades(xmlFilename);
-
-        ctrl = TSController.getInstance(dataManager.getTotSeries());
+    public static void init() {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                InitialScreen initial = new InitialScreen(ctrl);
+                InitialScreen initial = new InitialScreen();
                 //initial.setVisible(true);
-
+                TSController ctrl = TSController.getInstance();
                 if (ctrl.login("atormenta", "atormenta")) {
                     initial.setVisible(false);
                     MainScreen totSeries = new MainScreen();
-                    runRatingTest();
                     totSeries.setVisible(true);
                 }
             }
         });
-    }
-
-    /**
-     * Afegeix valoracions a 9 episodes de breaking bad a mode de test.
-     */
-    private static void runRatingTest() {
-        ArrayList<Episode> episodes = new ArrayList<>();
-        Client c1 = (Client) ctrl.getUserByUsername("atormenta");
-        Client c2 = (Client) ctrl.getUserByUsername("dtomacal");
-        Serie serie = ctrl.getCatalog().getSerieById("bbad");
-        episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(1));
-        episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(2));
-        episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(3));
-        episodes.add(serie.getSeasonByNumber(1).getEpisodeByNumber(4));
-        episodes.add(serie.getSeasonByNumber(2).getEpisodeByNumber(1));
-        episodes.add(serie.getSeasonByNumber(2).getEpisodeByNumber(2));
-        episodes.add(serie.getSeasonByNumber(2).getEpisodeByNumber(3));
-        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(1));
-        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(2));
-        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(3));
-        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(4));
-        episodes.add(serie.getSeasonByNumber(3).getEpisodeByNumber(5));
-        View v;
-        for (Episode e : episodes) {
-            ctrl.login(c1.getUsername(), c1.getPassword());
-            v = ctrl.visualizeEpisode(e);
-            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(0, 6));
-
-            ctrl.login(c2.getUsername(), c2.getPassword());
-            v = ctrl.visualizeEpisode(e);
-            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(1, 6));
-        }
-        ctrl.logout();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

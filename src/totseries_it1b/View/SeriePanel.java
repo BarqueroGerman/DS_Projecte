@@ -5,22 +5,30 @@
  */
 package totseries_it1b.View;
 
-import totseries_it1b.Model.Serie;
+import javax.swing.JLabel;
 
 /**
  *
  * @author ecalvove7.alumnes
  */
 public class SeriePanel extends javax.swing.JPanel {
+
     String id;
+
     /**
      * Creates new form SeriePanel
      */
-    public SeriePanel(String title,String id) {
+    public SeriePanel(String title, String id) {
         initComponents();
         titleSerie.setText(title);
         this.id = id;
-        
+
+    }
+
+    public void prova(String toAdd) {
+        JLabel label = new JLabel(toAdd);
+        jPanel2.add(label);
+        label.show();
     }
 
     /**
@@ -34,8 +42,10 @@ public class SeriePanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         titleSerie = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setPreferredSize(new java.awt.Dimension(157, 234));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
@@ -57,11 +67,12 @@ public class SeriePanel extends javax.swing.JPanel {
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 204, -1, -1));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 190));
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel titleSerie;
     // End of variables declaration//GEN-END:variables
 }

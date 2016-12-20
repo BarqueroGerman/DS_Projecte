@@ -7,20 +7,12 @@ package totseries_it1b.View;
 
 import java.util.Observable;
 import totseries_it1b.Controller.TSController;
-import totseries_it1b.Model.*;
 
 /**
  *
  * @author Enric Calvo & German Barquero
  */
 public class SeriesByRating extends RankingPanel {
-
-    /**
-     * Creates new form SeriesByRating
-     */
-    public SeriesByRating() {
-        super(TSController.getInstance().getBestRatedSeriesRanking());
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,457 +23,37 @@ public class SeriesByRating extends RankingPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        serie1 = new javax.swing.JPanel();
-        titlePanel1 = new javax.swing.JPanel();
-        titleSerie1 = new javax.swing.JLabel();
-        serie2 = new javax.swing.JPanel();
-        titlePanel2 = new javax.swing.JPanel();
-        titleSerie2 = new javax.swing.JLabel();
-        serie3 = new javax.swing.JPanel();
-        titlePanel3 = new javax.swing.JPanel();
-        titleSerie3 = new javax.swing.JLabel();
-        serie4 = new javax.swing.JPanel();
-        titlePanel4 = new javax.swing.JPanel();
-        titleSerie4 = new javax.swing.JLabel();
-        serie5 = new javax.swing.JPanel();
-        titlePanel5 = new javax.swing.JPanel();
-        titleSerie5 = new javax.swing.JLabel();
-        serie6 = new javax.swing.JPanel();
-        titlePanel6 = new javax.swing.JPanel();
-        titleSerie6 = new javax.swing.JLabel();
-        serie7 = new javax.swing.JPanel();
-        titlePanel7 = new javax.swing.JPanel();
-        titleSerie7 = new javax.swing.JLabel();
-        serie8 = new javax.swing.JPanel();
-        titlePanel8 = new javax.swing.JPanel();
-        titleSerie8 = new javax.swing.JLabel();
-        serie9 = new javax.swing.JPanel();
-        titlePanel9 = new javax.swing.JPanel();
-        titleSerie9 = new javax.swing.JLabel();
-        serie10 = new javax.swing.JPanel();
-        titlePanel10 = new javax.swing.JPanel();
-        titleSerie10 = new javax.swing.JLabel();
-
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(284, 487));
-
-        serie1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        titlePanel1.setBackground(new java.awt.Color(51, 51, 51));
-
-        titleSerie1.setForeground(new java.awt.Color(255, 255, 255));
-        titleSerie1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleSerie1.setText("jLabel1");
-
-        javax.swing.GroupLayout titlePanel1Layout = new javax.swing.GroupLayout(titlePanel1);
-        titlePanel1.setLayout(titlePanel1Layout);
-        titlePanel1Layout.setHorizontalGroup(
-            titlePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-        );
-        titlePanel1Layout.setVerticalGroup(
-            titlePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout serie1Layout = new javax.swing.GroupLayout(serie1);
-        serie1.setLayout(serie1Layout);
-        serie1Layout.setHorizontalGroup(
-            serie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titlePanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        serie1Layout.setVerticalGroup(
-            serie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serie1Layout.createSequentialGroup()
-                .addGap(0, 206, Short.MAX_VALUE)
-                .addComponent(titlePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        serie2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        titlePanel2.setBackground(new java.awt.Color(51, 51, 51));
-
-        titleSerie2.setForeground(new java.awt.Color(255, 255, 255));
-        titleSerie2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleSerie2.setText("jLabel1");
-
-        javax.swing.GroupLayout titlePanel2Layout = new javax.swing.GroupLayout(titlePanel2);
-        titlePanel2.setLayout(titlePanel2Layout);
-        titlePanel2Layout.setHorizontalGroup(
-            titlePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie2, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-        );
-        titlePanel2Layout.setVerticalGroup(
-            titlePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie2, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout serie2Layout = new javax.swing.GroupLayout(serie2);
-        serie2.setLayout(serie2Layout);
-        serie2Layout.setHorizontalGroup(
-            serie2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titlePanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        serie2Layout.setVerticalGroup(
-            serie2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serie2Layout.createSequentialGroup()
-                .addGap(0, 206, Short.MAX_VALUE)
-                .addComponent(titlePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        serie3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        titlePanel3.setBackground(new java.awt.Color(51, 51, 51));
-
-        titleSerie3.setForeground(new java.awt.Color(255, 255, 255));
-        titleSerie3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleSerie3.setText("jLabel1");
-
-        javax.swing.GroupLayout titlePanel3Layout = new javax.swing.GroupLayout(titlePanel3);
-        titlePanel3.setLayout(titlePanel3Layout);
-        titlePanel3Layout.setHorizontalGroup(
-            titlePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie3, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-        );
-        titlePanel3Layout.setVerticalGroup(
-            titlePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie3, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout serie3Layout = new javax.swing.GroupLayout(serie3);
-        serie3.setLayout(serie3Layout);
-        serie3Layout.setHorizontalGroup(
-            serie3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titlePanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        serie3Layout.setVerticalGroup(
-            serie3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serie3Layout.createSequentialGroup()
-                .addGap(0, 206, Short.MAX_VALUE)
-                .addComponent(titlePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        serie4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        titlePanel4.setBackground(new java.awt.Color(51, 51, 51));
-
-        titleSerie4.setForeground(new java.awt.Color(255, 255, 255));
-        titleSerie4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleSerie4.setText("jLabel1");
-
-        javax.swing.GroupLayout titlePanel4Layout = new javax.swing.GroupLayout(titlePanel4);
-        titlePanel4.setLayout(titlePanel4Layout);
-        titlePanel4Layout.setHorizontalGroup(
-            titlePanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie4, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-        );
-        titlePanel4Layout.setVerticalGroup(
-            titlePanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie4, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout serie4Layout = new javax.swing.GroupLayout(serie4);
-        serie4.setLayout(serie4Layout);
-        serie4Layout.setHorizontalGroup(
-            serie4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titlePanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        serie4Layout.setVerticalGroup(
-            serie4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serie4Layout.createSequentialGroup()
-                .addGap(0, 206, Short.MAX_VALUE)
-                .addComponent(titlePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        serie5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        titlePanel5.setBackground(new java.awt.Color(51, 51, 51));
-
-        titleSerie5.setForeground(new java.awt.Color(255, 255, 255));
-        titleSerie5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleSerie5.setText("jLabel1");
-
-        javax.swing.GroupLayout titlePanel5Layout = new javax.swing.GroupLayout(titlePanel5);
-        titlePanel5.setLayout(titlePanel5Layout);
-        titlePanel5Layout.setHorizontalGroup(
-            titlePanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie5, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-        );
-        titlePanel5Layout.setVerticalGroup(
-            titlePanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie5, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout serie5Layout = new javax.swing.GroupLayout(serie5);
-        serie5.setLayout(serie5Layout);
-        serie5Layout.setHorizontalGroup(
-            serie5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titlePanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        serie5Layout.setVerticalGroup(
-            serie5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serie5Layout.createSequentialGroup()
-                .addGap(0, 206, Short.MAX_VALUE)
-                .addComponent(titlePanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        serie6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        titlePanel6.setBackground(new java.awt.Color(51, 51, 51));
-
-        titleSerie6.setForeground(new java.awt.Color(255, 255, 255));
-        titleSerie6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleSerie6.setText("jLabel1");
-
-        javax.swing.GroupLayout titlePanel6Layout = new javax.swing.GroupLayout(titlePanel6);
-        titlePanel6.setLayout(titlePanel6Layout);
-        titlePanel6Layout.setHorizontalGroup(
-            titlePanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie6, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-        );
-        titlePanel6Layout.setVerticalGroup(
-            titlePanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie6, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout serie6Layout = new javax.swing.GroupLayout(serie6);
-        serie6.setLayout(serie6Layout);
-        serie6Layout.setHorizontalGroup(
-            serie6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titlePanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        serie6Layout.setVerticalGroup(
-            serie6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serie6Layout.createSequentialGroup()
-                .addGap(0, 206, Short.MAX_VALUE)
-                .addComponent(titlePanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        serie7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        titlePanel7.setBackground(new java.awt.Color(51, 51, 51));
-
-        titleSerie7.setForeground(new java.awt.Color(255, 255, 255));
-        titleSerie7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleSerie7.setText("jLabel1");
-
-        javax.swing.GroupLayout titlePanel7Layout = new javax.swing.GroupLayout(titlePanel7);
-        titlePanel7.setLayout(titlePanel7Layout);
-        titlePanel7Layout.setHorizontalGroup(
-            titlePanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie7, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-        );
-        titlePanel7Layout.setVerticalGroup(
-            titlePanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie7, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout serie7Layout = new javax.swing.GroupLayout(serie7);
-        serie7.setLayout(serie7Layout);
-        serie7Layout.setHorizontalGroup(
-            serie7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titlePanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        serie7Layout.setVerticalGroup(
-            serie7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serie7Layout.createSequentialGroup()
-                .addGap(0, 206, Short.MAX_VALUE)
-                .addComponent(titlePanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        serie8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        titlePanel8.setBackground(new java.awt.Color(51, 51, 51));
-
-        titleSerie8.setForeground(new java.awt.Color(255, 255, 255));
-        titleSerie8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleSerie8.setText("jLabel1");
-
-        javax.swing.GroupLayout titlePanel8Layout = new javax.swing.GroupLayout(titlePanel8);
-        titlePanel8.setLayout(titlePanel8Layout);
-        titlePanel8Layout.setHorizontalGroup(
-            titlePanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie8, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-        );
-        titlePanel8Layout.setVerticalGroup(
-            titlePanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie8, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout serie8Layout = new javax.swing.GroupLayout(serie8);
-        serie8.setLayout(serie8Layout);
-        serie8Layout.setHorizontalGroup(
-            serie8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titlePanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        serie8Layout.setVerticalGroup(
-            serie8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serie8Layout.createSequentialGroup()
-                .addGap(0, 206, Short.MAX_VALUE)
-                .addComponent(titlePanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        serie9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        titlePanel9.setBackground(new java.awt.Color(51, 51, 51));
-
-        titleSerie9.setForeground(new java.awt.Color(255, 255, 255));
-        titleSerie9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleSerie9.setText("jLabel1");
-
-        javax.swing.GroupLayout titlePanel9Layout = new javax.swing.GroupLayout(titlePanel9);
-        titlePanel9.setLayout(titlePanel9Layout);
-        titlePanel9Layout.setHorizontalGroup(
-            titlePanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie9, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-        );
-        titlePanel9Layout.setVerticalGroup(
-            titlePanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie9, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout serie9Layout = new javax.swing.GroupLayout(serie9);
-        serie9.setLayout(serie9Layout);
-        serie9Layout.setHorizontalGroup(
-            serie9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titlePanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        serie9Layout.setVerticalGroup(
-            serie9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serie9Layout.createSequentialGroup()
-                .addGap(0, 206, Short.MAX_VALUE)
-                .addComponent(titlePanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        serie10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        titlePanel10.setBackground(new java.awt.Color(51, 51, 51));
-
-        titleSerie10.setForeground(new java.awt.Color(255, 255, 255));
-        titleSerie10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleSerie10.setText("jLabel1");
-
-        javax.swing.GroupLayout titlePanel10Layout = new javax.swing.GroupLayout(titlePanel10);
-        titlePanel10.setLayout(titlePanel10Layout);
-        titlePanel10Layout.setHorizontalGroup(
-            titlePanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie10, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-        );
-        titlePanel10Layout.setVerticalGroup(
-            titlePanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleSerie10, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout serie10Layout = new javax.swing.GroupLayout(serie10);
-        serie10.setLayout(serie10Layout);
-        serie10Layout.setHorizontalGroup(
-            serie10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titlePanel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        serie10Layout.setVerticalGroup(
-            serie10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serie10Layout.createSequentialGroup()
-                .addGap(0, 206, Short.MAX_VALUE)
-                .addComponent(titlePanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(serie1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(serie2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(serie3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(serie4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(serie5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(serie6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(serie7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(serie8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(serie9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(serie10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30))
+            .addGap(0, 284, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(serie1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(serie2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(serie3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(serie4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(serie5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(serie6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(serie7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(serie8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(serie9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(serie10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+            .addGap(0, 487, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel serie1;
-    private javax.swing.JPanel serie10;
-    private javax.swing.JPanel serie2;
-    private javax.swing.JPanel serie3;
-    private javax.swing.JPanel serie4;
-    private javax.swing.JPanel serie5;
-    private javax.swing.JPanel serie6;
-    private javax.swing.JPanel serie7;
-    private javax.swing.JPanel serie8;
-    private javax.swing.JPanel serie9;
-    private javax.swing.JPanel titlePanel1;
-    private javax.swing.JPanel titlePanel10;
-    private javax.swing.JPanel titlePanel2;
-    private javax.swing.JPanel titlePanel3;
-    private javax.swing.JPanel titlePanel4;
-    private javax.swing.JPanel titlePanel5;
-    private javax.swing.JPanel titlePanel6;
-    private javax.swing.JPanel titlePanel7;
-    private javax.swing.JPanel titlePanel8;
-    private javax.swing.JPanel titlePanel9;
-    private javax.swing.JLabel titleSerie1;
-    private javax.swing.JLabel titleSerie10;
-    private javax.swing.JLabel titleSerie2;
-    private javax.swing.JLabel titleSerie3;
-    private javax.swing.JLabel titleSerie4;
-    private javax.swing.JLabel titleSerie5;
-    private javax.swing.JLabel titleSerie6;
-    private javax.swing.JLabel titleSerie7;
-    private javax.swing.JLabel titleSerie8;
-    private javax.swing.JLabel titleSerie9;
     // End of variables declaration//GEN-END:variables
     @Override
-    public void update(Observable o, Object arg) {
-        clearRanking();
-        load((Ranking) o);
-    }
-
-    @Override
-    protected void load(Ranking ranking) {
-        for (Object obj : ranking) {
-            addElementToRanking(obj);
+    protected void load() {
+        for (String[] serie : TSController.getInstance().getBestRatedSeries()) {
+            addElementToRanking(serie);
         }
     }
 
+    private void addElementToRanking(String[] serie) {
+        SerieRatingPanel panel = new SerieRatingPanel(serie[0], serie[1], Double.parseDouble(serie[2]));
+        addPanelToRanking(panel);
+    }
+
     @Override
-    protected void addElementToRanking(Object obj) {
-        model.addElement((Serie) obj);
+    protected void linkToObservable() {
+        TSController.getInstance().linkBestRatedSeriesRanking(this);
     }
 }
