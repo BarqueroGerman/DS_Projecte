@@ -32,6 +32,7 @@ public class TSController {
      */
     private User user;
     private static TSController instance;
+    private String idCurrentSerie;
 
     /**
      * @param args the command line arguments
@@ -327,5 +328,17 @@ public class TSController {
             infoSeries.add(infoSerie);
         }
         return infoSeries;
+    }
+    
+    public void setIDCurrentSerie(String id){
+        idCurrentSerie = id;
+    }
+    
+    public String getIDCurrentSerie(){
+        return idCurrentSerie;
+    }
+    
+    public String getTitleCurrentSerie(){
+        return totSeries.getCatalog().getSerieById(idCurrentSerie).getTitle();
     }
 }

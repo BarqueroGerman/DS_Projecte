@@ -5,25 +5,21 @@
  */
 package totseries_it1b.View;
 
-import javax.swing.JPanel;
-import totseries_it1b.Controller.TSController;
-
 /**
  *
- * @author Enric Calvo & German Barquero
+ * @author enric
  */
-public class SeriesRanking extends JPanel {
+public class CatalogContainer extends javax.swing.JPanel {
 
     /**
-     * Creates new form SeriesRankings
+     * Creates new form CatalogContainer
      */
-    public SeriesRanking() {
+    public CatalogContainer() {
         initComponents();
-
-        byViews = new SeriesByViews();
-        byRating = new SeriesByRating();
-        this.add(byViews);
-        this.add(byRating);
+    }
+    
+    public SerieSeasons getSeasons(){
+        return serieSeasons1;
     }
 
     /**
@@ -34,10 +30,19 @@ public class SeriesRanking extends JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        catalogPanel1 = new totseries_it1b.View.CatalogPanel();
+        serieSeasons1 = new totseries_it1b.View.SerieSeasons();
+
+        setPreferredSize(new java.awt.Dimension(967, 614));
+        setLayout(new java.awt.CardLayout());
+        add(catalogPanel1, "catalogPanel");
+        add(serieSeasons1, "seasons");
     }// </editor-fold>//GEN-END:initComponents
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private totseries_it1b.View.CatalogPanel catalogPanel1;
+    private totseries_it1b.View.SerieSeasons serieSeasons1;
     // End of variables declaration//GEN-END:variables
-    private SeriesByViews byViews;
-    private SeriesByRating byRating;
 }
