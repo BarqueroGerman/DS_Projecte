@@ -16,6 +16,7 @@ public class CatalogPanel extends javax.swing.JPanel {
 
     TSController ctrl;
     ArrayList<SeriePanel> seriesPanels;
+    int[] shownSeries = new int[2];
 
     /**
      * Creates new form CatalogPanel
@@ -29,6 +30,12 @@ public class CatalogPanel extends javax.swing.JPanel {
             seriesPanels.add(panel);
         }
         updateSeries(0, 9);
+        int[] shownSeriesAux = {0,9};
+        this.shownSeries = shownSeriesAux;
+        if(seriesPanels.size()==10){
+            rightArrow.setVisible(false);
+            leftArrow.setVisible(false);
+        }
     }
 
     public void setTitleSerie(int i) {
@@ -36,6 +43,8 @@ public class CatalogPanel extends javax.swing.JPanel {
     }
 
     public void updateSeries(int from, int to) {
+        series1_5Panel.removeAll();
+        series6_10Panel.removeAll();
         if (seriesPanels.size() < to + 1) {
             to = seriesPanels.size() - 1;
         }
@@ -48,6 +57,10 @@ public class CatalogPanel extends javax.swing.JPanel {
             }
         }
     }
+    
+    private int[] getShownSeries(){
+        return shownSeries;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,54 +70,118 @@ public class CatalogPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        leftArrow = new javax.swing.JLabel();
+        rightArrow = new javax.swing.JLabel();
         series1_5Panel = new javax.swing.JPanel();
         series6_10Panel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        leftArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/leftArrow.png")));
+        leftArrow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        leftArrow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                leftArrowMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                leftArrowMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                leftArrowMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                leftArrowMousePressed(evt);
+            }
+        });
+        add(leftArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 50, -1));
+
+        rightArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rightArrow.png")));
+        rightArrow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rightArrowMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                rightArrowMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                rightArrowMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rightArrowMousePressed(evt);
+            }
+        });
+        rightArrow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(rightArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 280, 40, -1));
 
         series1_5Panel.setBackground(new java.awt.Color(255, 255, 255));
         series1_5Panel.setPreferredSize(new java.awt.Dimension(891, 290));
+        series1_5Panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                series1_5PanelMouseClicked(evt);
+            }
+        });
+        add(series1_5Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 860, 270));
 
         series6_10Panel.setBackground(new java.awt.Color(255, 255, 255));
         series6_10Panel.setPreferredSize(new java.awt.Dimension(891, 260));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/ecalvove7.alumnes/Escriptori/arrowL.png")); // NOI18N
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("/home/ecalvove7.alumnes/Escriptori/arrowR.png")); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(series6_10Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
-                    .addComponent(series1_5Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(series1_5Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(series6_10Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        add(series6_10Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 860, 295));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void rightArrowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightArrowMouseEntered
+        if(getShownSeries()[1]<seriesPanels.size()-1){
+            rightArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rightArrowPressed.png")));           
+            rightArrow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        }else{
+            rightArrow.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        }
+    }//GEN-LAST:event_rightArrowMouseEntered
+
+    private void leftArrowMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftArrowMousePressed
+    }//GEN-LAST:event_leftArrowMousePressed
+
+    private void rightArrowMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightArrowMousePressed
+    }//GEN-LAST:event_rightArrowMousePressed
+
+    private void rightArrowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightArrowMouseExited
+        rightArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rightArrow.png")));
+
+    }//GEN-LAST:event_rightArrowMouseExited
+
+    private void leftArrowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftArrowMouseEntered
+        if(getShownSeries()[0]!=0){
+            leftArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/leftArrowPressed.png")));
+            leftArrow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        }else{
+            leftArrow.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        }
+
+    }//GEN-LAST:event_leftArrowMouseEntered
+
+    private void leftArrowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftArrowMouseExited
+        leftArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/leftArrow.png")));
+
+    }//GEN-LAST:event_leftArrowMouseExited
+
+    private void leftArrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftArrowMouseClicked
+        if(getShownSeries()[0]!=0){
+            updateSeries(getShownSeries()[0]-10,getShownSeries()[1]-10);
+        }
+    }//GEN-LAST:event_leftArrowMouseClicked
+
+    private void rightArrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightArrowMouseClicked
+        if(getShownSeries()[1]<seriesPanels.size()-1){
+            updateSeries(getShownSeries()[0]+10,getShownSeries()[1]+10);
+        }
+    }//GEN-LAST:event_rightArrowMouseClicked
+
+    private void series1_5PanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_series1_5PanelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_series1_5PanelMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel leftArrow;
+    private javax.swing.JLabel rightArrow;
     private javax.swing.JPanel series1_5Panel;
     private javax.swing.JPanel series6_10Panel;
     // End of variables declaration//GEN-END:variables

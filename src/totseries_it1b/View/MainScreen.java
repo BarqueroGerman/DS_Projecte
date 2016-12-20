@@ -36,7 +36,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         tittlePanel = new javax.swing.JPanel();
         totSeriesLabel = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        buttonsPanel = new javax.swing.JPanel();
         catalogButton = new javax.swing.JPanel();
         catalogLabel = new javax.swing.JLabel();
         mostRatedButton = new javax.swing.JPanel();
@@ -44,10 +44,10 @@ public class MainScreen extends javax.swing.JFrame {
         mostViewedButton = new javax.swing.JPanel();
         mostViewedLabel = new javax.swing.JLabel();
         mainContainer = new javax.swing.JPanel();
+        catalogContainer1 = new totseries_it1b.View.CatalogContainer();
         seriesByViews1 = new totseries_it1b.View.SeriesByViews();
         seriesByRating1 = new totseries_it1b.View.SeriesByRating();
-        catalogPanel1 = new totseries_it1b.View.CatalogPanel();
-        jLabel1 = new javax.swing.JLabel();
+        bakcGroundIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1250, 750));
@@ -77,8 +77,8 @@ public class MainScreen extends javax.swing.JFrame {
 
         getContentPane().add(tittlePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, -1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        buttonsPanel.setBackground(new java.awt.Color(255, 255, 255));
+        buttonsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         catalogButton.setBackground(Color.GRAY);
 
@@ -129,7 +129,7 @@ public class MainScreen extends javax.swing.JFrame {
         );
         mostRatedButtonLayout.setVerticalGroup(
             mostRatedButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mostRatedLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+            .addComponent(mostRatedLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
         );
 
         mostViewedButton.setBackground(new java.awt.Color(255, 255, 255));
@@ -157,11 +157,11 @@ public class MainScreen extends javax.swing.JFrame {
             .addComponent(mostViewedLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
+        buttonsPanel.setLayout(buttonsPanelLayout);
+        buttonsPanelLayout.setHorizontalGroup(
+            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(catalogButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -170,31 +170,31 @@ public class MainScreen extends javax.swing.JFrame {
                 .addComponent(mostRatedButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(514, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        buttonsPanelLayout.setVerticalGroup(
+            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mostRatedButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(catalogButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(mostViewedButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 960, 60));
+        getContentPane().add(buttonsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 960, 50));
 
         mainContainer.setBackground(new java.awt.Color(255, 255, 255));
         mainContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         mainContainer.setOpaque(false);
         mainContainer.setLayout(new java.awt.CardLayout());
+        mainContainer.add(catalogContainer1, "catalogContainer");
         mainContainer.add(seriesByViews1, "views");
         mainContainer.add(seriesByRating1, "ratings");
-        mainContainer.add(catalogPanel1, "catalog");
 
-        getContentPane().add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 960, 600));
+        getContentPane().add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 960, 620));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fonsMainMenu.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 810));
+        bakcGroundIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fonsMainMenu.png"))); // NOI18N
+        getContentPane().add(bakcGroundIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 810));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -204,7 +204,7 @@ public class MainScreen extends javax.swing.JFrame {
         mostViewedButton.setBackground(Color.WHITE);
         mostRatedButton.setBackground(Color.WHITE);
         CardLayout card = (CardLayout) mainContainer.getLayout();
-        card.show(mainContainer, "catalog");
+        card.show(mainContainer, "catalogContainer");
 
     }//GEN-LAST:event_catalogLabelMouseClicked
 
@@ -257,11 +257,11 @@ public class MainScreen extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bakcGroundIcon;
+    private javax.swing.JPanel buttonsPanel;
     private javax.swing.JPanel catalogButton;
+    private totseries_it1b.View.CatalogContainer catalogContainer1;
     private javax.swing.JLabel catalogLabel;
-    private totseries_it1b.View.CatalogPanel catalogPanel1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel mainContainer;
     private javax.swing.JPanel mostRatedButton;
     private javax.swing.JLabel mostRatedLabel;
