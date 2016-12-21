@@ -326,6 +326,16 @@ public class TSController {
         }
         return infoSeries;
     }
+    
+    public ArrayList<String[]> getInfoSeasons(String id) {
+        Serie serie = totSeries.getCatalog().getSerieById(id);
+        ArrayList<String[]> infoSeasons = new ArrayList<String[]>();
+        for (Season season : serie) {
+            String[] infoSeason = {Integer.toString(season.getNumSeason()), serie.getId()};
+            infoSeasons.add(infoSeason);
+        }
+        return infoSeasons;
+    }
 
     public ArrayList<String[]> getMostViewedSeries() {
         ArrayList<String[]> infoSeries = new ArrayList<String[]>();
