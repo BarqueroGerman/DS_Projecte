@@ -16,18 +16,28 @@ import java.util.Iterator;
 public class TotSeries {
 
     private Catalog catalog;
+    /**
+     * RANKINGS
+     */
     private BestRatedEpisodes bestRatedEp;
+    private BestRatedSeasons bestRatedSeas;
     private BestRatedSeries bestRatedSer;
     private MostViewedSeries mostViewedSer;
+    private MostViewedSeasons mostViewedSeas;
+    private MostViewedEpisodes mostViewedEp;
+
     private UsersList userslist;
 
     public TotSeries() {
         this.catalog = new Catalog(this);
         userslist = new UsersList();
 
-        bestRatedEp = new BestRatedEpisodes(this, 10);
-        bestRatedSer = new BestRatedSeries(this, 10);
-        mostViewedSer = new MostViewedSeries(this, 10);
+        bestRatedEp = new BestRatedEpisodes(10);
+        bestRatedSeas = new BestRatedSeasons(10);
+        bestRatedSer = new BestRatedSeries(10);
+        mostViewedEp = new MostViewedEpisodes(10);
+        mostViewedSeas = new MostViewedSeasons(10);
+        mostViewedSer = new MostViewedSeries(10);
     }
 
     /**
@@ -73,12 +83,25 @@ public class TotSeries {
         return this.catalog;
     }
 
+    /**
+     * RANKING RELATED
+     *
+     * @return
+     */
     public BestRatedEpisodes getBestRatedEpisodesRanking() {
         return this.bestRatedEp;
     }
 
     public void updateBestRatedEpisodesRanking(Episode ep) {
         this.bestRatedEp.update(ep);
+    }
+
+    public BestRatedSeasons getBestRatedSeasonsRanking() {
+        return this.bestRatedSeas;
+    }
+
+    public void updateBestRatedSeasonsRanking(Season s) {
+        this.bestRatedSeas.update(s);
     }
 
     public BestRatedSeries getBestRatedSeriesRanking() {
@@ -95,6 +118,22 @@ public class TotSeries {
 
     public void updateMostViewedSeriesRanking(Serie ser) {
         this.mostViewedSer.update(ser);
+    }
+
+    public MostViewedSeasons getMostViewedSeasonsRanking() {
+        return this.mostViewedSeas;
+    }
+
+    public void updateMostViewedSeasonsRanking(Season s) {
+        this.mostViewedSeas.update(s);
+    }
+
+    public MostViewedEpisodes getMostViewedEpisodesRanking() {
+        return this.mostViewedEp;
+    }
+
+    public void updateMostViewedEpisodesRanking(Episode ep) {
+        this.mostViewedEp.update(ep);
     }
 
 }

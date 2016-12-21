@@ -33,7 +33,7 @@ public class Serie implements Iterable<Season> {
         seasons = new ArrayList<>();
         artists = new ArrayList<>();
     }
-    
+
     public Season getSeasonByNumber(int id) {
         boolean found = false;
         Season toReturn = null;
@@ -68,9 +68,7 @@ public class Serie implements Iterable<Season> {
     public int getTotalViews() {
         int sum = 0;
         for (Season season : this) {
-            for (Episode e : season) {
-                sum += e.getViewsCount();
-            }
+            sum += season.getTotalViews();
         }
         return sum;
     }
@@ -108,11 +106,11 @@ public class Serie implements Iterable<Season> {
     public void setProducer(Producer prod) {
         this.producer = prod;
     }
-    
-    public String getTitle(){
+
+    public String getTitle() {
         return title;
     }
-    
+
     @Override
     public Iterator<Season> iterator() {
         return this.seasons.iterator();

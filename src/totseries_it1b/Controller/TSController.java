@@ -162,6 +162,8 @@ public class TSController {
             e.addView(v);
             ((Client) user).addView(v);
             totSeries.updateMostViewedSeriesRanking(e.getSerie());
+            totSeries.updateMostViewedSeasonsRanking(e.getSeason());
+            totSeries.updateMostViewedEpisodesRanking(e);
         }
         return v;
     }
@@ -198,6 +200,7 @@ public class TSController {
             v.setRate(rating);
             Episode ep = v.getEpisode();
             totSeries.updateBestRatedEpisodesRanking(ep);
+            totSeries.updateBestRatedSeasonsRanking(ep.getSeason());
             totSeries.updateBestRatedSeriesRanking(ep.getSerie());
         }
     }
@@ -292,8 +295,20 @@ public class TSController {
         totSeries.getMostViewedSeriesRanking().addObserver(panel);
     }
 
+    public void linkMostViewedSeasonsRanking(RankingPanel panel) {
+        totSeries.getMostViewedSeasonsRanking().addObserver(panel);
+    }
+
+    public void linkMostViewedEpisodesRanking(RankingPanel panel) {
+        totSeries.getMostViewedEpisodesRanking().addObserver(panel);
+    }
+
     public void linkBestRatedSeriesRanking(RankingPanel panel) {
         totSeries.getBestRatedSeriesRanking().addObserver(panel);
+    }
+
+    public void linkBestRatedSeasonsRanking(RankingPanel panel) {
+        totSeries.getBestRatedSeasonsRanking().addObserver(panel);
     }
 
     public void linkBestRatedEpisodesRanking(RankingPanel panel) {
@@ -339,16 +354,56 @@ public class TSController {
         }
         return infoSeries;
     }
-    
-    public void setIDCurrentSerie(String id){
+
+    public ArrayList<String[]> getMostViewedSeasons() {
+        ArrayList<String[]> infoSeasons = new ArrayList<String[]>();
+        for (Object obj : totSeries.getMostViewedSeasonsRanking()) {
+            Season season = (Season) obj;
+            String[] infoSeason = {Integer.toString(season.getNumber()), Integer.toString(season.getTotalViews())};
+            infoSeasons.add(infoSeason);
+        }
+        return infoSeasons;
+    }
+
+    public ArrayList<String[]> getBestRatedSeasons() {
+        ArrayList<String[]> infoSeasons = new ArrayList<String[]>();
+        for (Object obj : totSeries.getMostViewedSeasonsRanking()) {
+            Season season = (Season) obj;
+            String[] infoSeason = {Integer.toString(season.getNumber()), Double.toString(season.getRatingAverage())};
+            infoSeasons.add(infoSeason);
+        }
+        return infoSeasons;
+    }
+
+    public ArrayList<String[]> getMostViewedEpisodes() {
+        ArrayList<String[]> infoEpisodes = new ArrayList<String[]>();
+        for (Object obj : totSeries.getMostViewedSeasonsRanking()) {
+            Episode episode = (Episode) obj;
+            String[] infoEpisode = {Integer.toString(episode.getNumber()), episode.getTitle(), Integer.toString(episode.getViewsCount())};
+            infoEpisodes.add(infoEpisode);
+        }
+        return infoEpisodes;
+    }
+
+    public ArrayList<String[]> getBestRatedEpisodes() {
+        ArrayList<String[]> infoEpisodes = new ArrayList<String[]>();
+        for (Object obj : totSeries.getMostViewedSeasonsRanking()) {
+            Episode episode = (Episode) obj;
+            String[] infoEpisode = {Integer.toString(episode.getNumber()), episode.getTitle(), Double.toString(episode.getRatingAverage())};
+            infoEpisodes.add(infoEpisode);
+        }
+        return infoEpisodes;
+    }
+
+    public void setIDCurrentSerie(String id) {
         idCurrentSerie = id;
     }
-    
-    public String getIDCurrentSerie(){
+
+    public String getIDCurrentSerie() {
         return idCurrentSerie;
     }
-    
-    public String getTitleCurrentSerie(){
+
+    public String getTitleCurrentSerie() {
         return totSeries.getCatalog().getSerieById(idCurrentSerie).getTitle();
     }
 }

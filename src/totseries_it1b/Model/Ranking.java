@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
+import static javafx.scene.input.KeyCode.T;
 
 /**
  *
@@ -27,7 +28,7 @@ public abstract class Ranking extends Observable implements Iterable<Object> {
         top = new ArrayList<>();
     }
 
-    public void update(Object o) {
+    protected void update(Object o) {
         int oldPosition = top.indexOf(o);
         int newPosition = updateElementPosition(o, oldPosition);
 

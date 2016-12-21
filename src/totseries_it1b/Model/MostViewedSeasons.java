@@ -10,15 +10,15 @@ package totseries_it1b.Model;
  *
  * @author Enric Calvo & German Barquero
  */
-public class MostViewedSeries extends Ranking {
+public class MostViewedSeasons extends Ranking {
 
-    public MostViewedSeries(int num) {
+    public MostViewedSeasons(int num) {
         super(num);
     }
 
-    protected Serie getHigherElement(Object obj1, Object obj2) {
-        Serie s1 = (Serie) obj1;
-        Serie s2 = (Serie) obj2;
+    protected Season getHigherElement(Object obj1, Object obj2) {
+        Season s1 = (Season) obj1;
+        Season s2 = (Season) obj2;
         if (s1.getTotalViews() > s2.getTotalViews()) {
             return s1;
         } else if (s1.getTotalViews() < s2.getTotalViews()) {

@@ -44,6 +44,24 @@ public class Season implements Iterable<Episode> {
         return this.number == n;
     }
 
+    public double getRatingAverage() {
+        int num = 0;
+        double sum = 0;
+        for (Episode e : this) {
+            sum += e.getRatingAverage();
+            num += 1;
+        }
+        return sum / num;
+    }
+
+    public int getTotalViews() {
+        int sum = 0;
+        for (Episode e : this) {
+            sum += e.getViewsCount();
+        }
+        return sum;
+    }
+
     public int getEpisodesCount() {
         return this.episodes.size();
     }
@@ -67,6 +85,10 @@ public class Season implements Iterable<Episode> {
 
     public Serie getSerie() {
         return this.serie;
+    }
+
+    public int getNumber() {
+        return this.number;
     }
 
     @Override
