@@ -60,6 +60,10 @@ public class Season implements Iterable<Episode> {
         }
         return toReturn;
     }
+    
+    public int getNumSeason(){
+        return this.number;
+    }
 
     public Serie getSerie() {
         return this.serie;

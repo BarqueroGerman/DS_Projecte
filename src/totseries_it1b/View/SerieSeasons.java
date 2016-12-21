@@ -5,6 +5,7 @@
  */
 package totseries_it1b.View;
 
+import java.util.ArrayList;
 import totseries_it1b.Controller.TSController;
 
 /**
@@ -12,16 +13,30 @@ import totseries_it1b.Controller.TSController;
  * @author enric
  */
 public class SerieSeasons extends javax.swing.JPanel {
-
-    /**
+    ArrayList<SeriePanel> seasonsPanels;
+    TSController ctrl;
+    /*
      * Creates new form SerieSeasons
      */
     public SerieSeasons(){
         initComponents();
+        ctrl = TSController.getInstance();
     }
     
     public void updateSerie(String title, String id){
+        mainSeriePanel.removeAll();
         mainSeriePanel.add(new SeriePanel(title, id,true));
+        seasonsPanels = new ArrayList<SeriePanel>();
+        for (String[] season : ctrl.getInfoSeasons(id)) {
+            SeriePanel panel = new SeriePanel("SEASON "+season[0], season[1]);
+            seasonsPanels.add(panel);
+        }updateSeason(seasonsPanels);
+    }
+    public void updateSeason(ArrayList<SeriePanel> seasonsPanels){
+        seasonsPanel.removeAll();
+        for(SeriePanel panel:seasonsPanels){
+            seasonsPanel.add(panel);
+        }
     }
     /*public SerieSeasons(String title, String id) {
         initComponents();
@@ -39,32 +54,40 @@ public class SerieSeasons extends javax.swing.JPanel {
     private void initComponents() {
 
         mainSeriePanel = new javax.swing.JPanel();
+        seasonsPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         mainSeriePanel.setBackground(new java.awt.Color(255, 255, 255));
         mainSeriePanel.setPreferredSize(new java.awt.Dimension(160, 240));
 
+        seasonsPanel.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(mainSeriePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(780, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(seasonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mainSeriePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(45, 45, 45)
                 .addComponent(mainSeriePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(386, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(seasonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel mainSeriePanel;
+    private javax.swing.JPanel seasonsPanel;
     // End of variables declaration//GEN-END:variables
 }
