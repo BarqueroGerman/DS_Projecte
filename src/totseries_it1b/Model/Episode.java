@@ -96,4 +96,16 @@ public class Episode {
     public Serie getSerie() {
         return this.season.getSerie();
     }
+
+    public Season getSeason() {
+        return this.season;
+    }
+
+    public int getNumber() {
+        return this.number;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
 }

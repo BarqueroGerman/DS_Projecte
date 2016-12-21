@@ -40,7 +40,6 @@ public class SeriesByViews extends RankingPanel {
 
     private void addElementToRanking(String[] serie) {
         SerieViewsPanel panel = new SerieViewsPanel(serie[0], serie[1], Integer.parseInt(serie[2]));
-        //SeriePanel panel = new SeriePanel(serie[0], serie[1]);
         addPanelToRanking(panel);
     }
 

@@ -15,11 +15,8 @@ import java.util.Observable;
  */
 public class BestRatedEpisodes extends Ranking {
 
-    private TotSeries totSeries;
-
-    public BestRatedEpisodes(TotSeries TS, int num) {
+    public BestRatedEpisodes(int num) {
         super(num);
-        totSeries = TS;
     }
 
     protected Object getHigherElement(Object obj1, Object obj2) {
