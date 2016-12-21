@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.ThreadLocalRandom;
 import totseries_it1b.Model.*;
+import totseries_it1b.Model.Factories.FactoryProducer;
+import totseries_it1b.Model.Factories.UserFactory;
 import totseries_it1b.Model.Types.UserType;
 import totseries_it1b.View.InitialScreen;
 import totseries_it1b.View.RankingPanel;
