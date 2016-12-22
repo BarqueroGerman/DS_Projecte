@@ -32,7 +32,6 @@ public class TSController {
      */
     private User user;
     private static TSController instance;
-    private String idCurrentSerie;
 
     /**
      * @param args the command line arguments
@@ -334,6 +333,17 @@ public class TSController {
         }
         return infoSeasons;
     }
+    
+    public ArrayList<String[]> getInfoEpisodes(String id, int numSeason) {
+        Serie serie = totSeries.getCatalog().getSerieById(id);
+        Season season = serie.getSeasonByNumber(numSeason);
+        ArrayList<String[]> infoEpisodes = new ArrayList<String[]>();
+        for (Episode episode : season) {
+            String[] infoEpisode = {episode.getTitle(), serie.getId()};
+            infoEpisodes.add(infoEpisode);
+        }
+        return infoEpisodes;
+    }
 
     public ArrayList<String[]> getMostViewedSeries() {
         ArrayList<String[]> infoSeries = new ArrayList<String[]>();
@@ -393,17 +403,5 @@ public class TSController {
             infoEpisodes.add(infoEpisode);
         }
         return infoEpisodes;
-    }
-
-    public void setIDCurrentSerie(String id) {
-        idCurrentSerie = id;
-    }
-
-    public String getIDCurrentSerie() {
-        return idCurrentSerie;
-    }
-
-    public String getTitleCurrentSerie() {
-        return totSeries.getCatalog().getSerieById(idCurrentSerie).getTitle();
     }
 }

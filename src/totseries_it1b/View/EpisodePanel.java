@@ -5,23 +5,24 @@
  */
 package totseries_it1b.View;
 
-import java.awt.CardLayout;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import totseries_it1b.Controller.TSController;
 
 /**
  *
  * @author ecalvove7.alumnes
  */
-public class SeriePanel extends ParentPanel {
+public class EpisodePanel extends ParentPanel {
 
-    public SeriePanel(String title, String id) {
+    public EpisodePanel(String title, String id) {
         super(title,id);
     }
 
-    public SeriePanel(String title, String id, boolean read) {
+    public EpisodePanel(String title, String id, boolean read) {
         super(title,id,read);
+
+    }
+    
+    public EpisodePanel(String title, String id, boolean read, int num) {
+        super(title,id,read, num);
 
     }
 

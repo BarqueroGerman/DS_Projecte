@@ -13,7 +13,7 @@ import totseries_it1b.Controller.TSController;
  * @author enric
  */
 public class SerieSeasons extends javax.swing.JPanel {
-    ArrayList<SeriePanel> seasonsPanels;
+    ArrayList<SeasonPanel> seasonsPanels;
     TSController ctrl;
     /*
      * Creates new form SerieSeasons
@@ -25,16 +25,16 @@ public class SerieSeasons extends javax.swing.JPanel {
     
     public void updateSerie(String title, String id){
         mainSeriePanel.removeAll();
-        mainSeriePanel.add(new SeriePanel(title, id,true));
-        seasonsPanels = new ArrayList<SeriePanel>();
+        mainSeriePanel.add(new SeriePanel(title, id, true));
+        seasonsPanels = new ArrayList<SeasonPanel>();
         for (String[] season : ctrl.getInfoSeasons(id)) {
-            SeriePanel panel = new SeriePanel("SEASON "+season[0], season[1]);
+            SeasonPanel panel = new SeasonPanel("SEASON "+season[0], season[1],false, Integer.parseInt(season[0]));
             seasonsPanels.add(panel);
         }updateSeason(seasonsPanels);
     }
-    public void updateSeason(ArrayList<SeriePanel> seasonsPanels){
+    public void updateSeason(ArrayList<SeasonPanel> seasonsPanels){
         seasonsPanel.removeAll();
-        for(SeriePanel panel:seasonsPanels){
+        for(SeasonPanel panel:seasonsPanels){
             seasonsPanel.add(panel);
         }
     }
@@ -77,8 +77,8 @@ public class SerieSeasons extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(mainSeriePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(mainSeriePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(seasonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))

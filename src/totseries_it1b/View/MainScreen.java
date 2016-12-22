@@ -204,8 +204,7 @@ public class MainScreen extends javax.swing.JFrame {
         mostRatedButton.setBackground(Color.WHITE);
         CardLayout card = (CardLayout) mainContainer.getLayout();
         card.show(mainContainer, "catalogContainer");
-        CardLayout card2 = (CardLayout) catalogContainer1.getLayout();
-        card2.show(catalogContainer1, "catalogPanel");
+        catalogContainer1.showCatalogCard();
 
     }//GEN-LAST:event_catalogLabelMouseClicked
 

@@ -18,6 +18,6 @@ public class SerieRatingPanel extends SeriePanel {
      */
     public SerieRatingPanel(String id, String title, double rating) {
         super(title, id, true);
-        prova(Double.toString(rating));
+        //prova(Double.toString(rating));
     }
 }

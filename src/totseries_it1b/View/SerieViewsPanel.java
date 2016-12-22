@@ -16,6 +16,6 @@ public class SerieViewsPanel extends SeriePanel {
      */
     public SerieViewsPanel(String id, String title, int views) {
         super(title, id, true);
-        prova(Integer.toString(views));
+        //prova(Integer.toString(views));
     }
 }
