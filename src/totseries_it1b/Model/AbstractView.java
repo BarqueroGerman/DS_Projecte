@@ -8,6 +8,8 @@ package totseries_it1b.Model;
 import java.util.Calendar;
 import java.util.Date;
 import totseries_it1b.Model.Episode;
+import totseries_it1b.Model.Factories.FactoryCreator;
+import totseries_it1b.Model.Factories.RatingFactory;
 import totseries_it1b.Model.User;
 
 /**
@@ -29,7 +31,8 @@ public abstract class AbstractView {
     }
 
     public void setRate(int rate) {
-        this.rating = new Rating(rate);
+        RatingFactory fact = FactoryCreator.Create(RatingFactory.class);
+        this.rating = fact.create(rate);
         episode.updateRating(rating);
     }
 

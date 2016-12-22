@@ -5,10 +5,15 @@
  */
 package totseries_it1b.Model.Factories;
 
+import totseries_it1b.Model.Producer;
+
 /**
  *
- * @author gbarquga9.alumnes
+ * @author Enric Calvo & German Barquero
  */
-public abstract class AbstractFactory {
+public class ProducerFactory extends AbstractFactory {
 
+    public Producer create(int id, String nom) {
+        return new Producer(nom, id, 0);
+    }
 }

@@ -5,10 +5,15 @@
  */
 package totseries_it1b.Model.Factories;
 
+import totseries_it1b.Model.Serie;
+
 /**
  *
  * @author gbarquga9.alumnes
  */
-public abstract class AbstractFactory {
+public class SerieFactory extends AbstractFactory {
 
+    public Serie create(String id, String title, String desc) {
+        return new Serie(id, title, desc, null);
+    }
 }

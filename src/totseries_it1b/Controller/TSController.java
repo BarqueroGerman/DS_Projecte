@@ -5,14 +5,13 @@
  */
 package totseries_it1b.Controller;
 
-import totseries_it1b.Model.View;
-import totseries_it1b.Model.AbstractView;
 import edu.ub.informatica.disseny.totseries.TotSeriesDataManager;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.ThreadLocalRandom;
 import totseries_it1b.Model.*;
-import totseries_it1b.Model.Types.UserType;
+import totseries_it1b.Model.Factories.*;
+import totseries_it1b.Model.Types.*;
 import totseries_it1b.View.InitialScreen;
 import totseries_it1b.View.RankingPanel;
 
@@ -77,7 +76,7 @@ public class TSController {
         ArrayList<Episode> episodes = new ArrayList<>();
         Client c1 = (Client) ctrl.getUserByUsername("atormenta");
         Client c2 = (Client) ctrl.getUserByUsername("dtomacal");
-        View v;
+        AbstractView v;
         for (Serie serie : ctrl.getCatalog()) {
             for (Season season : serie) {
                 for (Episode e : season) {
@@ -104,7 +103,7 @@ public class TSController {
 
     public static TSController getInstance() {
         if (instance == null) {
-            synchronized (BestRatedEpisodes.class) {
+            synchronized (TSController.class) {
                 if (instance == null) {
                     instance = new TSController();
                 }
@@ -115,7 +114,7 @@ public class TSController {
 
     public static TSController getInstance(TotSeries TS) {
         if (instance == null) {
-            synchronized (BestRatedEpisodes.class) {
+            synchronized (TSController.class) {
                 if (instance == null) {
                     instance = new TSController(TS);
                 }
@@ -138,7 +137,8 @@ public class TSController {
     public boolean createClient(String username, String pass, String name, String nationality, Calendar birthdate) {
         boolean added = false;
         if (!totSeries.usernameRegistered(username)) {
-            user = new Client(username, pass, name, nationality, birthdate);
+            ClientFactory fact = FactoryCreator.Create(ClientFactory.class);
+            user = fact.create(username, pass, name, nationality, birthdate, false);
             added = totSeries.addUser(user);
         }
         if (username.equals("") || pass.equals("") || name.equals("") || nationality.equals("")) {
@@ -154,12 +154,11 @@ public class TSController {
      * @param e
      * @return
      */
-    public View visualizeEpisode(Episode e) {
-        View v = null;
+    public AbstractView visualizeEpisode(Episode e) {
+        AbstractView v = null;
         if (userIsClient()) {
-            v = new View();
-            e.addView(v);
-            ((Client) user).addView(v);
+            ViewFactory fact = FactoryCreator.Create(ViewFactory.class);
+            v = fact.create(e, (Client) user);
             totSeries.updateMostViewedSeriesRanking(e.getSerie());
             totSeries.updateMostViewedSeasonsRanking(e.getSeason());
             totSeries.updateMostViewedEpisodesRanking(e);
@@ -323,7 +322,7 @@ public class TSController {
         }
         return infoSeries;
     }
-    
+
     public ArrayList<String[]> getInfoSeasons(String id) {
         Serie serie = totSeries.getCatalog().getSerieById(id);
         ArrayList<String[]> infoSeasons = new ArrayList<String[]>();

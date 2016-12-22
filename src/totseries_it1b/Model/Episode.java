@@ -43,7 +43,7 @@ public class Episode {
         views = new ArrayList<AbstractView>();
     }
 
-    public void addView(View v) {
+    public void addView(AbstractView v) {
         views.add(v);
         v.setEpisode(this);
     }

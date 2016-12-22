@@ -14,12 +14,10 @@ import java.util.Iterator;
  */
 public class Catalog implements Iterable<Serie> {
 
-    private TotSeries totSeries;
     private ArrayList<Serie> series;
 
-    public Catalog(TotSeries totSeries) {
+    public Catalog() {
         series = new ArrayList<>();
-        this.totSeries = totSeries;
     }
 
     public Serie getSerieById(String id) {

@@ -20,7 +20,7 @@ public class Client extends User {
     protected String creditCard;
     protected String address;
 
-    public Client(String id, String user, String pass, String name) {
+    public Client(String id, String name, String user, String pass) {
         super(id, name, user, pass);
     }
 
@@ -31,7 +31,7 @@ public class Client extends User {
         id += 1;
     }
 
-    public void addView(View v) {
+    public void addView(AbstractView v) {
         views.add(v);
         v.setUser(this);
     }

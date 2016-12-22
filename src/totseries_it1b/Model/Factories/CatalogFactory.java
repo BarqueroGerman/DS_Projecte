@@ -5,10 +5,16 @@
  */
 package totseries_it1b.Model.Factories;
 
+import totseries_it1b.Model.Catalog;
+import totseries_it1b.Model.TotSeries;
+
 /**
  *
- * @author gbarquga9.alumnes
+ * @author Enric Calvo & German Barquero
  */
-public abstract class AbstractFactory {
+public class CatalogFactory extends AbstractFactory {
 
+    public Catalog create() {
+        return new Catalog();
+    }
 }

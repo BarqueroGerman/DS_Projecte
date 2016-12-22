@@ -5,14 +5,15 @@
  */
 package totseries_it1b.Model.Factories;
 
-import totseries_it1b.Model.User;
+import totseries_it1b.Model.UsersList;
 
 /**
  *
- * @author gbarquga9.alumnes
+ * @author Enric Calvo & German Barquero
  */
-public class UserFactory extends AbstractFactory{
-    public User getUser(){
-        return null;
+public class UsersListFactory extends AbstractFactory {
+
+    public UsersList create() {
+        return new UsersList();
     }
 }
