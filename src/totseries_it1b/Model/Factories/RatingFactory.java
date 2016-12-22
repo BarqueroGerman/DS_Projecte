@@ -5,10 +5,15 @@
  */
 package totseries_it1b.Model.Factories;
 
+import totseries_it1b.Model.Rating;
+
 /**
  *
- * @author gbarquga9.alumnes
+ * @author Enric Calvo & German Barquero
  */
-public abstract class AbstractFactory {
+public class RatingFactory extends AbstractFactory {
 
+    public Rating create(int value) {
+        return new Rating(value);
+    }
 }

@@ -5,8 +5,11 @@
  */
 package totseries_it1b.Model;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import totseries_it1b.Model.Factories.CatalogFactory;
+import totseries_it1b.Model.Factories.FactoryCreator;
+import totseries_it1b.Model.Factories.RankingsFactory;
+import totseries_it1b.Model.Factories.UsersListFactory;
+import totseries_it1b.Model.Types.RankingType;
 
 /**
  * Classe que conte totes les dades de TotSeries.
@@ -29,15 +32,20 @@ public class TotSeries {
     private UsersList userslist;
 
     public TotSeries() {
-        this.catalog = new Catalog(this);
-        userslist = new UsersList();
+        CatalogFactory catFact = FactoryCreator.Create(CatalogFactory.class);
+        this.catalog = catFact.create();
 
-        bestRatedEp = new BestRatedEpisodes(10);
-        bestRatedSeas = new BestRatedSeasons(10);
-        bestRatedSer = new BestRatedSeries(10);
-        mostViewedEp = new MostViewedEpisodes(10);
-        mostViewedSeas = new MostViewedSeasons(10);
-        mostViewedSer = new MostViewedSeries(10);
+        UsersListFactory usersFact = FactoryCreator.Create(UsersListFactory.class);
+        userslist = usersFact.create();
+
+        int num = 10;
+        RankingsFactory rankFact = FactoryCreator.Create(RankingsFactory.class);
+        bestRatedEp = (BestRatedEpisodes) rankFact.create(RankingType.BEST_RATED_EPISODES, num);
+        bestRatedSeas = (BestRatedSeasons) rankFact.create(RankingType.BEST_RATED_SEASONS, num);
+        bestRatedSer = (BestRatedSeries) rankFact.create(RankingType.BEST_RATED_SERIES, num);
+        mostViewedEp = (MostViewedEpisodes) rankFact.create(RankingType.MOST_VIEWED_EPISODES, num);
+        mostViewedSeas = (MostViewedSeasons) rankFact.create(RankingType.MOST_VIEWED_SEASONS, num);
+        mostViewedSer = (MostViewedSeries) rankFact.create(RankingType.MOST_VIEWED_SERIES, num);
     }
 
     /**

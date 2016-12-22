@@ -5,16 +5,15 @@
  */
 package totseries_it1b.Model.Factories;
 
-import totseries_it1b.Model.Admin;
-import totseries_it1b.Model.User;
+import totseries_it1b.Model.UsersList;
 
 /**
  *
- * @author gbarquga9.alumnes
+ * @author Enric Calvo & German Barquero
  */
-public class UserFactory extends AbstractFactory {
+public class UsersListFactory extends AbstractFactory {
 
-    public User getAdmin() {
-        return new Admin("id", "German", "Gershel", "a1a2a3a4");
+    public UsersList create() {
+        return new UsersList();
     }
 }
