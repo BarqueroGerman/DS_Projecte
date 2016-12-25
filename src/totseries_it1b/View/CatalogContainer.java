@@ -18,20 +18,21 @@ public class CatalogContainer extends javax.swing.JPanel {
         initComponents();
     }
     
-    public SerieSeasons getSeasons(){
+    /*public SerieSeasons getSeasons(){
         return serieSeasons1;
-    }
+    }*/
     
     public void showEpisodeCard(String title,String id, int num){
-        seasonEpisodes1.updateSeason(title, id, num);
-        CardLayout card = (CardLayout)this.getLayout();
-        card.show(this, "episodes");        
+        CardLayout card1 = (CardLayout)this.getLayout();
+        card1.show(this, "seasonsAndEpisodes");  
+        seasonsAndEpisodes1.updateSeason(title, id, num);
+                
     }
     
     public void showSeasonCard(String title, String id){
-        serieSeasons1.updateSerie(title, id);
-        CardLayout card = (CardLayout)this.getLayout();
-        card.show(this, "seasons");        
+        CardLayout card1 = (CardLayout)this.getLayout();
+        card1.show(this, "seasonsAndEpisodes");        
+        seasonsAndEpisodes1.updateSerie(title, id);
     }
     
     public void showCatalogCard(){
@@ -48,32 +49,17 @@ public class CatalogContainer extends javax.swing.JPanel {
     private void initComponents() {
 
         catalogPanel1 = new totseries_it1b.View.CatalogPanel();
-        serieSeasons1 = new totseries_it1b.View.SerieSeasons();
-        seasonEpisodes1 = new totseries_it1b.View.SeasonEpisodes();
+        seasonsAndEpisodes1 = new totseries_it1b.View.SeasonsAndEpisodes();
 
         setPreferredSize(new java.awt.Dimension(967, 614));
         setLayout(new java.awt.CardLayout());
         add(catalogPanel1, "catalogPanel");
-        add(serieSeasons1, "seasons");
-
-        javax.swing.GroupLayout seasonEpisodes1Layout = new javax.swing.GroupLayout(seasonEpisodes1);
-        seasonEpisodes1.setLayout(seasonEpisodes1Layout);
-        seasonEpisodes1Layout.setHorizontalGroup(
-            seasonEpisodes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 949, Short.MAX_VALUE)
-        );
-        seasonEpisodes1Layout.setVerticalGroup(
-            seasonEpisodes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 628, Short.MAX_VALUE)
-        );
-
-        add(seasonEpisodes1, "episodes");
+        add(seasonsAndEpisodes1, "seasonsAndEpisodes");
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private totseries_it1b.View.CatalogPanel catalogPanel1;
-    private totseries_it1b.View.SeasonEpisodes seasonEpisodes1;
-    private totseries_it1b.View.SerieSeasons serieSeasons1;
+    private totseries_it1b.View.SeasonsAndEpisodes seasonsAndEpisodes1;
     // End of variables declaration//GEN-END:variables
 }

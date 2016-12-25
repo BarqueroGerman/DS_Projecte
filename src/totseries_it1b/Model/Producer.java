@@ -30,4 +30,8 @@ public class Producer {
         // TODO check if existent
         series.add(s);
     }
+    
+    public String getName(){
+        return name;
+    }
 }

@@ -15,67 +15,16 @@ import totseries_it1b.Controller.TSController;
 public abstract class ParentPanel extends javax.swing.JPanel {
     String id;
     String title;
-    int numEpisode;
-    int numSeason;
     TSController ctrl;
-    boolean readOnly;
     /**
      * Creates new form ParentPanel
      */
     public ParentPanel(String title, String id) {
         initComponents();
-        initComponents();
         this.title = title;
         titleLabel.setText(title);
         this.id = id;
         ctrl = TSController.getInstance();
-        readOnly = false;
-        numEpisode = 0;
-        numSeason = 0;
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                formMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                formMouseExited(evt);
-            }
-        });
-    }
-    
-    public ParentPanel(String title, String id, boolean read) {
-        initComponents();
-        initComponents();
-        titleLabel.setText(title);
-        this.id = id;
-        ctrl = TSController.getInstance();
-        readOnly = read;
-        numEpisode = 0;
-        numSeason = 0;
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                formMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                formMouseExited(evt);
-            }
-        });
-    }
-    
-    public ParentPanel(String title, String id, boolean read, int num) {
-        initComponents();
-        initComponents();
-        titleLabel.setText(title);
-        this.id = id;
-        ctrl = TSController.getInstance();
-        readOnly = read;
-        numEpisode = num;
-        numSeason = num;
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -139,9 +88,9 @@ public abstract class ParentPanel extends javax.swing.JPanel {
    /* */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel infoEpisode;
+    public javax.swing.JLabel infoEpisode;
     public javax.swing.JPanel infoPanelContainer;
-    private javax.swing.JLabel titleLabel;
+    protected javax.swing.JLabel titleLabel;
     public javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables
 }

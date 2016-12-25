@@ -338,7 +338,7 @@ public class TSController {
         Season season = serie.getSeasonByNumber(numSeason);
         ArrayList<String[]> infoEpisodes = new ArrayList<String[]>();
         for (Episode episode : season) {
-            String[] infoEpisode = {episode.getTitle(), serie.getId()};
+            String[] infoEpisode = {episode.getTitle(), serie.getId(),Integer.toString(episode.getNumber())};
             infoEpisodes.add(infoEpisode);
         }
         return infoEpisodes;
@@ -362,6 +362,18 @@ public class TSController {
             infoSeries.add(infoSerie);
         }
         return infoSeries;
+    }
+    
+    public String getDescriptionSerie(String id){
+        return totSeries.getCatalog().getSerieById(id).getDescription();
+    }
+    
+    public String getDirector(String id){
+        return totSeries.getCatalog().getSerieById(id).getDirector();
+    }
+    
+    public String getProducer(String id){
+        return totSeries.getCatalog().getSerieById(id).getProducer();
     }
 
     public ArrayList<String[]> getMostViewedSeasons() {
