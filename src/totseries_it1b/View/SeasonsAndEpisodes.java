@@ -39,9 +39,24 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         mainSeriePanel.add(new SeriePanel(title, id, true));
         seasonsPanels = new ArrayList<SeasonPanel>();
         for (String[] season : ctrl.getInfoSeasons(id)) {
-            SeasonPanel panel = new SeasonPanel(title, season[1], Integer.parseInt(season[0]));
+            SeasonPanel panel = new SeasonPanel(title, season[1], Integer.parseInt(season[0]), false);
             seasonsPanels.add(panel);
         }updateSeason(seasonsPanels);    
+    }
+    
+    public void updateEpisode(String title, String id, int num, String inforEpisode, String description, int season){
+        CardLayout card = (CardLayout)seasonsAndEpisodesContainer.getLayout();
+        card.show(seasonsAndEpisodesContainer, "watch");
+        serieDescription.setText(ctrl.getDescriptionSerie(id));
+        numberSeasonLabel.setText(title);
+        directorNameLabel.setText(ctrl.getDirector(id));
+        producerNameLabel.setText(ctrl.getProducer(id));
+        mainSeriePanel.removeAll();
+        mainSeriePanel.add(new SeasonPanel(title, id, season, false,true));
+        watchEpisode1.episode.removeAll();
+        watchEpisode1.episode.add(new EpisodePanel(title,id, num, inforEpisode, description,true, season));
+        watchEpisode1.episodeDescription.setText(description);
+       
     }
     
     public void updateSeason(ArrayList<SeasonPanel> seasonsPanels){
@@ -62,7 +77,7 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         mainSeriePanel.add(new SeriePanel(title, id, false));
         episodesPanels = new ArrayList<EpisodePanel>();
         for (String[] episode : ctrl.getInfoEpisodes(id, num)) {
-            EpisodePanel panel = new EpisodePanel(title, episode[1], Integer.parseInt(episode[2]), episode[0]);
+            EpisodePanel panel = new EpisodePanel(title, episode[1], Integer.parseInt(episode[2]), episode[0],episode[3], false, num);
             episodesPanels.add(panel);
         }updateEpisode(episodesPanels);
     }
@@ -85,6 +100,7 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         mainSeriePanel = new javax.swing.JPanel();
         seasonsAndEpisodesContainer = new javax.swing.JPanel();
         seasonsPanel1 = new totseries_it1b.View.seasonsPanel();
+        watchEpisode1 = new totseries_it1b.View.WatchEpisode();
         episodesPanel1 = new totseries_it1b.View.episodesPanel();
         numberSeasonLabel = new javax.swing.JLabel();
         serieDescription = new javax.swing.JTextPane();
@@ -102,6 +118,7 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         seasonsAndEpisodesContainer.setBackground(new java.awt.Color(255, 255, 255));
         seasonsAndEpisodesContainer.setLayout(new java.awt.CardLayout());
         seasonsAndEpisodesContainer.add(seasonsPanel1, "seasons");
+        seasonsAndEpisodesContainer.add(watchEpisode1, "watch");
         seasonsAndEpisodesContainer.add(episodesPanel1, "episodes");
 
         numberSeasonLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -187,5 +204,6 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
     public javax.swing.JPanel seasonsAndEpisodesContainer;
     private totseries_it1b.View.seasonsPanel seasonsPanel1;
     private javax.swing.JTextPane serieDescription;
+    private totseries_it1b.View.WatchEpisode watchEpisode1;
     // End of variables declaration//GEN-END:variables
 }

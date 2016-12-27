@@ -25,8 +25,13 @@ public class CatalogContainer extends javax.swing.JPanel {
     public void showEpisodeCard(String title,String id, int num){
         CardLayout card1 = (CardLayout)this.getLayout();
         card1.show(this, "seasonsAndEpisodes");  
-        seasonsAndEpisodes1.updateSeason(title, id, num);
-                
+        seasonsAndEpisodes1.updateSeason(title, id, num);                
+    }
+    
+    public void showWatchCard(String title,String id, int num,String inforEpisode, String description, int season){
+        CardLayout card1 = (CardLayout)this.getLayout();
+        card1.show(this, "seasonsAndEpisodes");  
+        seasonsAndEpisodes1.updateEpisode(title, id, num, inforEpisode, description, season);                
     }
     
     public void showSeasonCard(String title, String id){

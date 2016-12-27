@@ -15,11 +15,9 @@ import totseries_it1b.Controller.TSController;
  * @author ecalvove7.alumnes
  */
 public class SeriePanel extends ParentPanel {
-    boolean readOnly;
 
     public SeriePanel(String title, String id, boolean read) {
-        super(title,id);
-        readOnly = read;
+        super(title,id,read);
     }
 
    /* public void prova(String toAdd) {

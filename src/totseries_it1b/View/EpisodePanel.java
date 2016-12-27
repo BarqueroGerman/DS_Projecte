@@ -11,15 +11,19 @@ package totseries_it1b.View;
  * @author ecalvove7.alumnes
  */
 public class EpisodePanel extends ParentPanel {
-    
+    int numSeason;
     int numEpisode;
     String inforEpisode;
+    String description;
     
-    public EpisodePanel(String title, String id, int num, String inforEpisode) {
-        super(title,id);
+    public EpisodePanel(String title, String id, int num, String inforEpisode, String description,boolean readOnly, int numSeason) {
+        super(title,id,readOnly);
+        this.description = description;
+        this.inforEpisode = inforEpisode;
         this.infoEpisode.setText(inforEpisode);
         this.numEpisode = num;
         this.titleLabel.setText("EPISODE "+numEpisode);
+        this.numSeason = numSeason;
     }
 
    /* public void prova(String toAdd) {
@@ -63,19 +67,25 @@ public class EpisodePanel extends ParentPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     protected void formMouseEntered(java.awt.event.MouseEvent evt) { 
-        this.setSize(this.getWidth() - 10, this.getHeight() - 10);
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        titlePanel.setLocation(titlePanel.getX() - 5, titlePanel.getY() - 10);
-        this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        if(!readOnly){
+            this.setSize(this.getWidth() - 10, this.getHeight() - 10);
+            this.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+            titlePanel.setLocation(titlePanel.getX() - 5, titlePanel.getY() - 10);
+            this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        }
     }
     protected void formMouseExited(java.awt.event.MouseEvent evt) {   
-        this.setSize(this.getWidth() + 10, this.getHeight() + 10);
-        titlePanel.setLocation(titlePanel.getX() + 5, titlePanel.getY() + 10);
-        this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        if(!readOnly){
+            this.setSize(this.getWidth() + 10, this.getHeight() + 10);
+            titlePanel.setLocation(titlePanel.getX() + 5, titlePanel.getY() + 10);
+            this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        }
     }    
     protected void formMouseClicked(java.awt.event.MouseEvent evt) {    
-        /*CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent();
-        cat.showSeasonCard(title,id);*/
+        if(!readOnly){
+            CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent().getParent();
+            cat.showWatchCard(title,id,numEpisode,inforEpisode,description, numSeason);
+        }
     }   /*
     
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered

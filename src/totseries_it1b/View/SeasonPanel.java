@@ -12,11 +12,18 @@ package totseries_it1b.View;
  */
 public class SeasonPanel extends ParentPanel {    
     int numSeason;
-    
-    public SeasonPanel(String title, String id, int num) {
-        super(title, id);
+    boolean head = false;
+    public SeasonPanel(String title, String id, int num, boolean readOnly) {
+        super(title, id, readOnly);
         this.titleLabel.setText("SEASON "+Integer.toString(num));
         numSeason = num;
+    }
+    
+    public SeasonPanel(String title, String id, int num, boolean readOnly,boolean head) {
+        super(title, id, readOnly);
+        this.titleLabel.setText("SEASON "+Integer.toString(num));
+        numSeason = num;
+        this.head = head;
     }
     
     protected void formMouseEntered(java.awt.event.MouseEvent evt) {
@@ -31,8 +38,13 @@ public class SeasonPanel extends ParentPanel {
         this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
     }    
     protected void formMouseClicked(java.awt.event.MouseEvent evt) {  
-        CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent().getParent();
-        cat.showEpisodeCard(title,id, numSeason);
+        if(!head){
+            CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent().getParent();
+            cat.showEpisodeCard(title,id, numSeason);
+        }else{
+            CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent();
+            cat.showEpisodeCard(title,id, numSeason);
+        }
     } 
     /**
      * This method is called from within the constructor to initialize the form.

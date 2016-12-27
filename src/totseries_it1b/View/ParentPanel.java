@@ -15,15 +15,17 @@ import totseries_it1b.Controller.TSController;
 public abstract class ParentPanel extends javax.swing.JPanel {
     String id;
     String title;
+    boolean readOnly;
     TSController ctrl;
     /**
      * Creates new form ParentPanel
      */
-    public ParentPanel(String title, String id) {
+    public ParentPanel(String title, String id,boolean read) {
         initComponents();
         this.title = title;
         titleLabel.setText(title);
         this.id = id;
+        this.readOnly = read;
         ctrl = TSController.getInstance();
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

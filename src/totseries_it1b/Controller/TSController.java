@@ -338,7 +338,7 @@ public class TSController {
         Season season = serie.getSeasonByNumber(numSeason);
         ArrayList<String[]> infoEpisodes = new ArrayList<String[]>();
         for (Episode episode : season) {
-            String[] infoEpisode = {episode.getTitle(), serie.getId(),Integer.toString(episode.getNumber())};
+            String[] infoEpisode = {episode.getTitle(), serie.getId(),Integer.toString(episode.getNumber()),episode.getDescription()};
             infoEpisodes.add(infoEpisode);
         }
         return infoEpisodes;
@@ -414,5 +414,15 @@ public class TSController {
             infoEpisodes.add(infoEpisode);
         }
         return infoEpisodes;
+    }
+    
+    public String[] getEpisode(String id, int seas, int ep){
+        Episode epi = totSeries.getCatalog().getSerieById(id).getSeasonByNumber(seas).getEpisodeByNumber(ep);
+        String des =  epi.getDescription();
+        String tit = epi.getTitle();
+        String[] str = new String[2];
+        str[0] = des;
+        str[1] = tit;
+        return str;        
     }
 }
