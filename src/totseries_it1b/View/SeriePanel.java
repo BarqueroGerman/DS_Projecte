@@ -25,12 +25,6 @@ public class SeriePanel extends ParentPanel {
 
     }
 
-   /* public void prova(String toAdd) {
-        JLabel label = new JLabel(toAdd);
-        prova.add(label);
-        label.setVisible(true);
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,7 +59,7 @@ public class SeriePanel extends ParentPanel {
             .addGap(0, 298, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-    protected void formMouseEntered(java.awt.event.MouseEvent evt) {                                  
+    protected void formMouseEntered(java.awt.event.MouseEvent evt) {
         if (!readOnly) {
             this.setSize(this.getWidth() - 10, this.getHeight() - 10);
             this.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -73,20 +67,20 @@ public class SeriePanel extends ParentPanel {
             this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         }
     }
-    protected void formMouseExited(java.awt.event.MouseEvent evt) {                                 
+    protected void formMouseExited(java.awt.event.MouseEvent evt) {
         if (!readOnly) {
             this.setSize(this.getWidth() + 10, this.getHeight() + 10);
             titlePanel.setLocation(titlePanel.getX() + 5, titlePanel.getY() + 10);
             this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         }
-    }    
-    protected void formMouseClicked(java.awt.event.MouseEvent evt) {                                  
+    }
+    protected void formMouseClicked(java.awt.event.MouseEvent evt) {
         if (!readOnly) {
             CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent();
             cat.showSeasonCard(title,id);
         }
     }   /*
-    
+
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
         if (!readOnly) {
             this.setSize(this.getWidth() - 10, this.getHeight() - 10);

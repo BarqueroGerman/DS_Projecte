@@ -44,8 +44,8 @@ public class MainScreen extends javax.swing.JFrame {
         mostViewedLabel = new javax.swing.JLabel();
         mainContainer = new javax.swing.JPanel();
         catalogContainer1 = new totseries_it1b.View.CatalogContainer();
-        seriesByViews1 = new totseries_it1b.View.SeriesByViews();
-        seriesByRating1 = new totseries_it1b.View.SeriesByRating();
+        seriesByViews1 = new totseries_it1b.View.Rankings.MostViewed.SeriesByViewsRanking();
+        seriesByRating1 = new totseries_it1b.View.Rankings.BestRated.SeriesByRatingRanking();
         bakcGroundIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -253,8 +253,8 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel mostRatedLabel;
     private javax.swing.JPanel mostViewedButton;
     private javax.swing.JLabel mostViewedLabel;
-    private totseries_it1b.View.SeriesByRating seriesByRating1;
-    private totseries_it1b.View.SeriesByViews seriesByViews1;
+    private totseries_it1b.View.Rankings.BestRated.SeriesByRatingRanking seriesByRating1;
+    private totseries_it1b.View.Rankings.MostViewed.SeriesByViewsRanking seriesByViews1;
     private javax.swing.JPanel tittlePanel;
     private javax.swing.JLabel totSeriesLabel;
     // End of variables declaration//GEN-END:variables

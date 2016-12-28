@@ -261,14 +261,14 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="totseries_it1b.View.SeriesByViews" name="seriesByViews1">
+        <Component class="totseries_it1b.View.Rankings.MostViewed.SeriesByViewsRanking" name="seriesByViews1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="views"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="totseries_it1b.View.SeriesByRating" name="seriesByRating1">
+        <Component class="totseries_it1b.View.Rankings.BestRated.SeriesByRatingRanking" name="seriesByRating1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="ratings"/>

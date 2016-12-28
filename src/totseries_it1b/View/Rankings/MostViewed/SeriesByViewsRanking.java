@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package totseries_it1b.View;
+package totseries_it1b.View.Rankings.MostViewed;
 
 import java.util.Observable;
 import totseries_it1b.Controller.TSController;
+import totseries_it1b.View.Rankings.RankingPanel;
 
 /**
  *
  * @author Enric Calvo & German Barquero
  */
-public class SeriesByViews extends RankingPanel {
+public class SeriesByViewsRanking extends RankingPanel {
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

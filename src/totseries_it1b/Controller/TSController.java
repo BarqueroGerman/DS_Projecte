@@ -13,7 +13,7 @@ import totseries_it1b.Model.*;
 import totseries_it1b.Model.Factories.*;
 import totseries_it1b.Model.Types.*;
 import totseries_it1b.View.InitialScreen;
-import totseries_it1b.View.RankingPanel;
+import totseries_it1b.View.Rankings.RankingPanel;
 
 /**
  * Controlador principal de l'aplicacio TotSeries.

@@ -3,19 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package totseries_it1b.View;
+package totseries_it1b.View.Rankings.BestRated;
+
+import javax.swing.JLabel;
+import totseries_it1b.View.SeriePanel;
 
 /**
  *
  * @author Enric Calvo & German Barquero
  */
-public class SerieViewsPanel extends SeriePanel {
+public class SerieRatingPanel extends SeriePanel {
 
     /**
-     * Creates new form SerieViewsPanel
+     * Creates new form SerieRatingPanel
      */
-    public SerieViewsPanel(String id, String title, int views) {
+    public SerieRatingPanel(String id, String title, double rating) {
         super(title, id, true);
-        //prova(Integer.toString(views));
     }
 }
