@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package totseries_it1b.View;
+package totseries_it1b.View.Catalog;
 
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import totseries_it1b.Controller.TSController;
+import totseries_it1b.View.BasicPanels.EpisodePanel;
+import totseries_it1b.View.BasicPanels.SeasonPanel;
+import totseries_it1b.View.BasicPanels.SeriePanel;
 
 /**
  *
@@ -99,9 +102,9 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
 
         mainSeriePanel = new javax.swing.JPanel();
         seasonsAndEpisodesContainer = new javax.swing.JPanel();
-        seasonsPanel1 = new totseries_it1b.View.seasonsPanel();
-        watchEpisode1 = new totseries_it1b.View.WatchEpisode();
-        episodesPanel1 = new totseries_it1b.View.episodesPanel();
+        seasonsPanel1 = new totseries_it1b.View.Catalog.SeasonsPanel();
+        watchEpisode1 = new totseries_it1b.View.Catalog.WatchEpisode();
+        episodesPanel1 = new totseries_it1b.View.Catalog.EpisodesPanel();
         numberSeasonLabel = new javax.swing.JLabel();
         serieDescription = new javax.swing.JTextPane();
         directorLabel = new javax.swing.JLabel();
@@ -196,14 +199,14 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel directorLabel;
     private javax.swing.JLabel directorNameLabel;
-    private totseries_it1b.View.episodesPanel episodesPanel1;
+    private totseries_it1b.View.Catalog.EpisodesPanel episodesPanel1;
     private javax.swing.JPanel mainSeriePanel;
     private javax.swing.JLabel numberSeasonLabel;
     private javax.swing.JLabel producerLabel;
     private javax.swing.JLabel producerNameLabel;
     public javax.swing.JPanel seasonsAndEpisodesContainer;
-    private totseries_it1b.View.seasonsPanel seasonsPanel1;
+    private totseries_it1b.View.Catalog.SeasonsPanel seasonsPanel1;
     private javax.swing.JTextPane serieDescription;
-    private totseries_it1b.View.WatchEpisode watchEpisode1;
+    private totseries_it1b.View.Catalog.WatchEpisode watchEpisode1;
     // End of variables declaration//GEN-END:variables
 }

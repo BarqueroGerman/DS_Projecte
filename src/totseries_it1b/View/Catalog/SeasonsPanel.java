@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package totseries_it1b.View;
+package totseries_it1b.View.Catalog;
 
 /**
  *
  * @author enric
  */
-public class episodesPanel extends javax.swing.JPanel {
+public class SeasonsPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form seasonsPanel
      */
-    public episodesPanel() {
+    public SeasonsPanel() {
         initComponents();
     }
 

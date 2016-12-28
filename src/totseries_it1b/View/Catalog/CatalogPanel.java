@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package totseries_it1b.View;
+package totseries_it1b.View.Catalog;
 
 import java.util.ArrayList;
 import totseries_it1b.Controller.TSController;
+import totseries_it1b.View.BasicPanels.SeriePanel;
 
 /**
  *

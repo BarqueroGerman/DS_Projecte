@@ -115,7 +115,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Container class="totseries_it1b.View.seasonsPanel" name="seasonsPanel1">
+        <Container class="totseries_it1b.View.Catalog.SeasonsPanel" name="seasonsPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="seasons"/>
@@ -124,14 +124,14 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
         </Container>
-        <Component class="totseries_it1b.View.WatchEpisode" name="watchEpisode1">
+        <Component class="totseries_it1b.View.Catalog.WatchEpisode" name="watchEpisode1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="watch"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Container class="totseries_it1b.View.episodesPanel" name="episodesPanel1">
+        <Container class="totseries_it1b.View.Catalog.EpisodesPanel" name="episodesPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="episodes"/>

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package totseries_it1b.View;
+package totseries_it1b.View.Catalog;
 import java.awt.CardLayout;
 /**
  *
@@ -53,8 +53,8 @@ public class CatalogContainer extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        catalogPanel1 = new totseries_it1b.View.CatalogPanel();
-        seasonsAndEpisodes1 = new totseries_it1b.View.SeasonsAndEpisodes();
+        catalogPanel1 = new totseries_it1b.View.Catalog.CatalogPanel();
+        seasonsAndEpisodes1 = new totseries_it1b.View.Catalog.SeasonsAndEpisodes();
 
         setPreferredSize(new java.awt.Dimension(967, 614));
         setLayout(new java.awt.CardLayout());
@@ -64,7 +64,7 @@ public class CatalogContainer extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private totseries_it1b.View.CatalogPanel catalogPanel1;
-    private totseries_it1b.View.SeasonsAndEpisodes seasonsAndEpisodes1;
+    private totseries_it1b.View.Catalog.CatalogPanel catalogPanel1;
+    private totseries_it1b.View.Catalog.SeasonsAndEpisodes seasonsAndEpisodes1;
     // End of variables declaration//GEN-END:variables
 }

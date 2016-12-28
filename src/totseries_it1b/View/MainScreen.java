@@ -5,6 +5,7 @@
  */
 package totseries_it1b.View;
 
+import totseries_it1b.View.Catalog.CatalogPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javafx.scene.control.TabPane;
@@ -43,7 +44,7 @@ public class MainScreen extends javax.swing.JFrame {
         mostViewedButton = new javax.swing.JPanel();
         mostViewedLabel = new javax.swing.JLabel();
         mainContainer = new javax.swing.JPanel();
-        catalogContainer1 = new totseries_it1b.View.CatalogContainer();
+        catalogContainer1 = new totseries_it1b.View.Catalog.CatalogContainer();
         seriesByViews1 = new totseries_it1b.View.Rankings.MostViewed.SeriesByViewsRanking();
         seriesByRating1 = new totseries_it1b.View.Rankings.BestRated.SeriesByRatingRanking();
         bakcGroundIcon = new javax.swing.JLabel();
@@ -275,7 +276,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel bakcGroundIcon;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JPanel catalogButton;
-    private totseries_it1b.View.CatalogContainer catalogContainer1;
+    private totseries_it1b.View.Catalog.CatalogContainer catalogContainer1;
     private javax.swing.JLabel catalogLabel;
     private javax.swing.JPanel mainContainer;
     private javax.swing.JPanel mostRatedButton;

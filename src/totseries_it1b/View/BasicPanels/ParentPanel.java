@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package totseries_it1b.View;
+package totseries_it1b.View.BasicPanels;
 
 import java.awt.CardLayout;
 import totseries_it1b.Controller.TSController;

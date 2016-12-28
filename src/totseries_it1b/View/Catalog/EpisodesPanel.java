@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package totseries_it1b.View;
+package totseries_it1b.View.Catalog;
 
 /**
  *
  * @author enric
  */
-public class seasonsPanel extends javax.swing.JPanel {
+public class EpisodesPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form seasonsPanel
      */
-    public seasonsPanel() {
+    public EpisodesPanel() {
         initComponents();
     }
 
@@ -30,7 +30,6 @@ public class seasonsPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(913, 324));
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
