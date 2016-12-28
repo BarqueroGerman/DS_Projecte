@@ -59,6 +59,9 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         watchEpisode1.episode.removeAll();
         watchEpisode1.episode.add(new EpisodePanel(title,id, num, inforEpisode, description,true, season));
         watchEpisode1.episodeDescription.setText(description);
+        watchEpisode1.progress.setValue(0);
+        watchEpisode1.panelStars1.setVisible(false);
+        watchEpisode1.rateEpisodeLabel.setVisible(false);
        
     }
     
