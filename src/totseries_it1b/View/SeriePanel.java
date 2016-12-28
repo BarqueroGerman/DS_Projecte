@@ -16,13 +16,8 @@ import totseries_it1b.Controller.TSController;
  */
 public class SeriePanel extends ParentPanel {
 
-    public SeriePanel(String title, String id) {
-        super(title,id);
-    }
-
     public SeriePanel(String title, String id, boolean read) {
         super(title,id,read);
-
     }
 
     /**

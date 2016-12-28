@@ -26,7 +26,7 @@ public class CatalogPanel extends javax.swing.JPanel {
         ctrl = TSController.getInstance();
         seriesPanels = new ArrayList<SeriePanel>();
         for (String[] serie : ctrl.getInfoSeries()) {
-            SeriePanel panel = new SeriePanel(serie[0], serie[1]);
+            SeriePanel panel = new SeriePanel(serie[0], serie[1], false);
             seriesPanels.add(panel);
         }
         updateSeries(0, 9);

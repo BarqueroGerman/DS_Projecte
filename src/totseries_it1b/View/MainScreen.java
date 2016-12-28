@@ -16,7 +16,7 @@ import javax.swing.JTabbedPane;
  * @author ecalvove7.alumnes
  */
 public class MainScreen extends javax.swing.JFrame {
-
+    private int mainCase=0;
     /**
      * Creates new form totSeries
      */
@@ -91,6 +91,9 @@ public class MainScreen extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 catalogLabelMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                catalogLabelMouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout catalogButtonLayout = new javax.swing.GroupLayout(catalogButton);
@@ -115,6 +118,9 @@ public class MainScreen extends javax.swing.JFrame {
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 mostRatedLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                mostRatedLabelMouseExited(evt);
             }
         });
 
@@ -142,6 +148,9 @@ public class MainScreen extends javax.swing.JFrame {
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 mostViewedLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                mostViewedLabelMouseExited(evt);
             }
         });
 
@@ -199,16 +208,17 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void catalogLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_catalogLabelMouseClicked
+        mainCase = 0;
         catalogButton.setBackground(Color.GRAY);
         mostViewedButton.setBackground(Color.WHITE);
         mostRatedButton.setBackground(Color.WHITE);
         CardLayout card = (CardLayout) mainContainer.getLayout();
         card.show(mainContainer, "catalogContainer");
         catalogContainer1.showCatalogCard();
-
     }//GEN-LAST:event_catalogLabelMouseClicked
 
     private void mostViewedLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostViewedLabelMouseClicked
+        mainCase = 1;
         catalogButton.setBackground(Color.WHITE);
         mostViewedButton.setBackground(Color.GRAY);
         mostRatedButton.setBackground(Color.WHITE);
@@ -217,6 +227,7 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_mostViewedLabelMouseClicked
 
     private void mostRatedLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostRatedLabelMouseClicked
+        mainCase = 2;
         catalogButton.setBackground(Color.WHITE);
         mostViewedButton.setBackground(Color.WHITE);
         mostRatedButton.setBackground(Color.GRAY);
@@ -238,6 +249,24 @@ public class MainScreen extends javax.swing.JFrame {
         catalogButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         catalogButton.setBackground(Color.GRAY);
     }//GEN-LAST:event_catalogLabelMouseEntered
+
+    private void catalogLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_catalogLabelMouseExited
+        if(mainCase != 0){
+            catalogButton.setBackground(Color.WHITE);
+        }
+    }//GEN-LAST:event_catalogLabelMouseExited
+
+    private void mostViewedLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostViewedLabelMouseExited
+       if(mainCase != 1){
+            mostViewedButton.setBackground(Color.WHITE);
+        }
+    }//GEN-LAST:event_mostViewedLabelMouseExited
+
+    private void mostRatedLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostRatedLabelMouseExited
+        if(mainCase != 2){
+            mostRatedButton.setBackground(Color.WHITE);
+        }
+    }//GEN-LAST:event_mostRatedLabelMouseExited
 
     /**
      * @param args the command line arguments

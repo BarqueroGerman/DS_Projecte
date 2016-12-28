@@ -10,36 +10,38 @@ package totseries_it1b.View;
  *
  * @author enric
  */
-public class SeasonPanel extends ParentPanel {
-
-    /**
-     * Creates new form SeasonPanel
-     */
-    public SeasonPanel(String title, String id) {
-        super(title, id);
+public class SeasonPanel extends ParentPanel {    
+    int numSeason;
+    boolean head = false;
+    public SeasonPanel(String title, String id, int num, boolean readOnly) {
+        super(title, id, readOnly);
+        this.titleLabel.setText("SEASON "+Integer.toString(num));
+        numSeason = num;
     }
     
-    public SeasonPanel(String title, String id, boolean read, int num) {
-        super(title, id, read, num);
+    public SeasonPanel(String title, String id, int num, boolean readOnly,boolean head) {
+        super(title, id, readOnly);
+        this.titleLabel.setText("SEASON "+Integer.toString(num));
+        numSeason = num;
+        this.head = head;
     }
     
-    protected void formMouseEntered(java.awt.event.MouseEvent evt) {                                  
-        if (!readOnly) {
-            this.setSize(this.getWidth() - 10, this.getHeight() - 10);
-            this.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-            titlePanel.setLocation(titlePanel.getX() - 5, titlePanel.getY() - 10);
-            this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        }
+    protected void formMouseEntered(java.awt.event.MouseEvent evt) {
+        this.setSize(this.getWidth() - 10, this.getHeight() - 10);
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        titlePanel.setLocation(titlePanel.getX() - 5, titlePanel.getY() - 10);
+        this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }
-    protected void formMouseExited(java.awt.event.MouseEvent evt) {                                 
-        if (!readOnly) {
-            this.setSize(this.getWidth() + 10, this.getHeight() + 10);
-            titlePanel.setLocation(titlePanel.getX() + 5, titlePanel.getY() + 10);
-            this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        }
+    protected void formMouseExited(java.awt.event.MouseEvent evt) {  
+        this.setSize(this.getWidth() + 10, this.getHeight() + 10);
+        titlePanel.setLocation(titlePanel.getX() + 5, titlePanel.getY() + 10);
+        this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
     }    
-    protected void formMouseClicked(java.awt.event.MouseEvent evt) {                                  
-        if (!readOnly) {
+    protected void formMouseClicked(java.awt.event.MouseEvent evt) {  
+        if(!head){
+            CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent().getParent();
+            cat.showEpisodeCard(title,id, numSeason);
+        }else{
             CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent();
             cat.showEpisodeCard(title,id, numSeason);
         }

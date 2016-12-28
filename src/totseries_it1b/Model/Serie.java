@@ -110,6 +110,18 @@ public class Serie implements Iterable<Season> {
     public String getTitle() {
         return title;
     }
+    
+    public String getDescription(){
+        return description;
+    }
+    
+    public String getDirector(){
+        return artists.get(0).name;
+    }
+    
+    public String getProducer(){
+        return producer.getName();
+    }
 
     @Override
     public Iterator<Season> iterator() {
