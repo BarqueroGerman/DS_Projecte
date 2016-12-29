@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+
 /**
  *
  * @author enric
@@ -20,17 +21,19 @@ public class WatchEpisode extends javax.swing.JPanel {
      */
     public WatchEpisode() {
         initComponents();
-        timer = new Timer(30,new progress());
+        timer = new Timer(50, new progress());
     }
-    
-    public class progress implements ActionListener{
-        public void actionPerformed(ActionEvent evt){
+
+    public class progress implements ActionListener {
+
+        public void actionPerformed(ActionEvent evt) {
             int n = progress.getValue();
-            if(n<100){
+            if (n < 100) {
                 n++;
                 progress.setValue(n);
-            }else{
+            } else {
                 timer.stop();
+                // AQUI CREAR VIEW I ENLLAÇAR AMB RATE??
                 JOptionPane.showMessageDialog(null, "episode watched");
             }
         }

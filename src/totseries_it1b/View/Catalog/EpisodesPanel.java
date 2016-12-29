@@ -31,6 +31,7 @@ public class EpisodesPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(913, 324));
     }// </editor-fold>//GEN-END:initComponents
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

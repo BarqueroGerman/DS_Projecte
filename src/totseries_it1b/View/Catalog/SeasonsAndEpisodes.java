@@ -21,18 +21,17 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
     /**
      * Creates new form seasonEpisodes
      */
-    
     ArrayList<EpisodePanel> episodesPanels;
     ArrayList<SeasonPanel> seasonsPanels;
     TSController ctrl;
-    
+
     public SeasonsAndEpisodes() {
         initComponents();
         ctrl = TSController.getInstance();
     }
-    
-    public void updateSerie(String title, String id){
-        CardLayout card = (CardLayout)seasonsAndEpisodesContainer.getLayout();
+
+    public void updateSerie(String title, String id) {
+        CardLayout card = (CardLayout) seasonsAndEpisodesContainer.getLayout();
         card.show(seasonsAndEpisodesContainer, "seasons");
         serieDescription.setText(ctrl.getDescriptionSerie(id));
         numberSeasonLabel.setText(title);
@@ -44,49 +43,52 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         for (String[] season : ctrl.getInfoSeasons(id)) {
             SeasonPanel panel = new SeasonPanel(title, season[1], Integer.parseInt(season[0]), false);
             seasonsPanels.add(panel);
-        }updateSeason(seasonsPanels);    
+        }
+        updateSeason(seasonsPanels);
     }
-    
-    public void updateEpisode(String title, String id, int num, String inforEpisode, String description, int season){
-        CardLayout card = (CardLayout)seasonsAndEpisodesContainer.getLayout();
+
+    public void updateEpisode(String title, String id, int num, String inforEpisode, String description, int season) {
+        CardLayout card = (CardLayout) seasonsAndEpisodesContainer.getLayout();
         card.show(seasonsAndEpisodesContainer, "watch");
         serieDescription.setText(ctrl.getDescriptionSerie(id));
         numberSeasonLabel.setText(title);
         directorNameLabel.setText(ctrl.getDirector(id));
         producerNameLabel.setText(ctrl.getProducer(id));
         mainSeriePanel.removeAll();
-        mainSeriePanel.add(new SeasonPanel(title, id, season, false,true));
+        mainSeriePanel.add(new SeasonPanel(title, id, season, false, true));
         watchEpisode1.episode.removeAll();
-        watchEpisode1.episode.add(new EpisodePanel(title,id, num, inforEpisode, description,true, season));
+        watchEpisode1.episode.add(new EpisodePanel(title, id, num, inforEpisode, description, true, season));
         watchEpisode1.episodeDescription.setText(description);
-       
+
     }
-    
-    public void updateSeason(ArrayList<SeasonPanel> seasonsPanels){
+
+    public void updateSeason(ArrayList<SeasonPanel> seasonsPanels) {
         seasonsPanel1.removeAll();
-        for(SeasonPanel panel:seasonsPanels){
+        for (SeasonPanel panel : seasonsPanels) {
             seasonsPanel1.add(panel);
         }
     }
-    
-    public void updateSeason(String title, String id, int num){
-        CardLayout card = (CardLayout)seasonsAndEpisodesContainer.getLayout();
+
+    public void updateSeason(String title, String id, int num) {
+        CardLayout card = (CardLayout) seasonsAndEpisodesContainer.getLayout();
         card.show(seasonsAndEpisodesContainer, "episodes");
         serieDescription.setText(ctrl.getDescriptionSerie(id));
-        numberSeasonLabel.setText("SEASON "+Integer.toString(num));        
+        numberSeasonLabel.setText("SEASON " + Integer.toString(num));
         directorNameLabel.setText(ctrl.getDirector(id));
         producerNameLabel.setText(ctrl.getProducer(id));
         mainSeriePanel.removeAll();
         mainSeriePanel.add(new SeriePanel(title, id, false));
         episodesPanels = new ArrayList<EpisodePanel>();
         for (String[] episode : ctrl.getInfoEpisodes(id, num)) {
-            EpisodePanel panel = new EpisodePanel(title, episode[1], Integer.parseInt(episode[2]), episode[0],episode[3], false, num);
+            EpisodePanel panel = new EpisodePanel(title, episode[1], Integer.parseInt(episode[2]), episode[0], episode[3], false, num);
             episodesPanels.add(panel);
-        }updateEpisode(episodesPanels);
+        }
+        updateEpisode(episodesPanels);
     }
-    public void updateEpisode(ArrayList<EpisodePanel> episodesPanels){
+
+    public void updateEpisode(ArrayList<EpisodePanel> episodesPanels) {
         episodesPanel1.removeAll();
-        for(EpisodePanel panel:episodesPanels){
+        for (EpisodePanel panel : episodesPanels) {
             episodesPanel1.add(panel);
         }
     }
@@ -194,7 +196,6 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel directorLabel;
