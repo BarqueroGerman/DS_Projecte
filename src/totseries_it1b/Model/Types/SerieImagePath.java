@@ -14,13 +14,13 @@ public class SerieImagePath {
     private static class BREAKING_BAD {
 
         public final static String Key = "bbad";
-        public final static String ImagePath = "";
+        public final static String ImagePath = "/images/series/bbad.png";
     }
 
     private static class MRROBOT {
 
         public final static String Key = "mrobot";
-        public final static String ImagePath = "";
+        public final static String ImagePath = "/images/series/mrobot.png";
     }
 
     private static class GAME_OF_THRONES {
@@ -32,43 +32,43 @@ public class SerieImagePath {
     private static class PENNY_DREADFUL {
 
         public final static String Key = "pdreadful";
-        public final static String ImagePath = "";
+        public final static String ImagePath = "/images/series/pdreadful.png";
     }
 
     private static class BLACK_MIRROR {
 
         public final static String Key = "bmirror";
-        public final static String ImagePath = "";
+        public final static String ImagePath = "/images/series/bmirror.png";
     }
 
     private static class SONS_OF_ANARCHY {
 
         public final static String Key = "sofanarchy";
-        public final static String ImagePath = "";
+        public final static String ImagePath = "/images/series/sofanarchy.png";
     }
 
     private static class STRANGER_THINGS {
 
         public final static String Key = "sthings";
-        public final static String ImagePath = "";
+        public final static String ImagePath = "/images/series/sthings.png";
     }
 
     private static class MISFITS {
 
         public final static String Key = "misfits";
-        public final static String ImagePath = "";
+        public final static String ImagePath = "/images/series/misfits.png";
     }
 
     private static class PEAKY_BLINDERS {
 
         public final static String Key = "pblinders";
-        public final static String ImagePath = "";
+        public final static String ImagePath = "/images/series/pblinders.png";
     }
 
     private static class THE_WALKING_DEAD {
 
         public final static String Key = "wdead";
-        public final static String ImagePath = "";
+        public final static String ImagePath = "/images/series/wdead.png";
     }
 
     public static String getImagePath(String key) {

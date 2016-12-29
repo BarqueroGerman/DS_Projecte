@@ -56,13 +56,7 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         producerNameLabel.setText(ctrl.getProducer(id));
         mainSeriePanel.removeAll();
         mainSeriePanel.add(new SeasonPanel(id, numSeason, false, true));
-        watchEpisode1.episode.removeAll();
-        watchEpisode1.episode.add(new EpisodePanel(id, num, inforEpisode, description, true, numSeason));
-        watchEpisode1.episodeDescription.setText(description);
-        watchEpisode1.progress.setValue(0);
-        watchEpisode1.panelStars1.setVisible(false);
-        watchEpisode1.rateEpisodeLabel.setVisible(false);
-
+        watchEpisode1.updateEpisode(new EpisodePanel(id, num, inforEpisode, description, true, numSeason),description);
     }
 
     public void updateSeason(ArrayList<SeasonPanel> seasonsPanels) {
