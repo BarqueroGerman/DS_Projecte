@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package totseries_it1b.View.Rankings.BestRated;
+package totseries_it1b.View.Rankings.MostViewed;
 
+import totseries_it1b.View.Rankings.BestRated.*;
 import totseries_it1b.View.BasicPanels.EpisodePanel;
 
 /**
  *
  * @author Enric Calvo & German Barquero
  */
-public class EpisodeRatingPanel extends EpisodePanel {
+public class EpisodeViewsPanel extends EpisodePanel {
 
-    public EpisodeRatingPanel(String serieid, int num, String title, String desc, int numSeason, double rating) {
+    public EpisodeViewsPanel(String serieid, int num, String title, String desc, int numSeason, int views) {
         super(serieid, num, title, desc, true, numSeason);
     }
 }

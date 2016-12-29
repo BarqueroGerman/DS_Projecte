@@ -17,7 +17,9 @@ import javax.swing.JTabbedPane;
  * @author ecalvove7.alumnes
  */
 public class MainScreen extends javax.swing.JFrame {
-    private int mainCase=0;
+
+    private int mainCase = 0;
+
     /**
      * Creates new form totSeries
      */
@@ -45,8 +47,8 @@ public class MainScreen extends javax.swing.JFrame {
         mostViewedLabel = new javax.swing.JLabel();
         mainContainer = new javax.swing.JPanel();
         catalogContainer1 = new totseries_it1b.View.Catalog.CatalogContainer();
-        seriesByViews1 = new totseries_it1b.View.Rankings.MostViewed.SeriesByViewsRanking();
-        seriesByRating1 = new totseries_it1b.View.Rankings.BestRated.SeriesByRatingRanking();
+        byViewsRankings = new totseries_it1b.View.Rankings.MostViewed.ByViewsRankingsPanel();
+        byRatingRankings = new totseries_it1b.View.Rankings.BestRated.ByRatingRankingsPanel();
         bakcGroundIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -197,8 +199,8 @@ public class MainScreen extends javax.swing.JFrame {
         mainContainer.setOpaque(false);
         mainContainer.setLayout(new java.awt.CardLayout());
         mainContainer.add(catalogContainer1, "catalogContainer");
-        mainContainer.add(seriesByViews1, "views");
-        mainContainer.add(seriesByRating1, "ratings");
+        mainContainer.add(byViewsRankings, "views");
+        mainContainer.add(byRatingRankings, "ratings");
 
         getContentPane().add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 960, 620));
 
@@ -252,19 +254,19 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_catalogLabelMouseEntered
 
     private void catalogLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_catalogLabelMouseExited
-        if(mainCase != 0){
+        if (mainCase != 0) {
             catalogButton.setBackground(Color.WHITE);
         }
     }//GEN-LAST:event_catalogLabelMouseExited
 
     private void mostViewedLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostViewedLabelMouseExited
-       if(mainCase != 1){
+        if (mainCase != 1) {
             mostViewedButton.setBackground(Color.WHITE);
         }
     }//GEN-LAST:event_mostViewedLabelMouseExited
 
     private void mostRatedLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostRatedLabelMouseExited
-        if(mainCase != 2){
+        if (mainCase != 2) {
             mostRatedButton.setBackground(Color.WHITE);
         }
     }//GEN-LAST:event_mostRatedLabelMouseExited
@@ -275,6 +277,8 @@ public class MainScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bakcGroundIcon;
     private javax.swing.JPanel buttonsPanel;
+    private totseries_it1b.View.Rankings.BestRated.ByRatingRankingsPanel byRatingRankings;
+    private totseries_it1b.View.Rankings.MostViewed.ByViewsRankingsPanel byViewsRankings;
     private javax.swing.JPanel catalogButton;
     private totseries_it1b.View.Catalog.CatalogContainer catalogContainer1;
     private javax.swing.JLabel catalogLabel;
@@ -283,8 +287,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel mostRatedLabel;
     private javax.swing.JPanel mostViewedButton;
     private javax.swing.JLabel mostViewedLabel;
-    private totseries_it1b.View.Rankings.BestRated.SeriesByRatingRanking seriesByRating1;
-    private totseries_it1b.View.Rankings.MostViewed.SeriesByViewsRanking seriesByViews1;
     private javax.swing.JPanel tittlePanel;
     private javax.swing.JLabel totSeriesLabel;
     // End of variables declaration//GEN-END:variables

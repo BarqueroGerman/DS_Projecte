@@ -13,7 +13,7 @@ import totseries_it1b.Model.*;
 import totseries_it1b.Model.Factories.*;
 import totseries_it1b.Model.Types.*;
 import totseries_it1b.View.InitialScreen;
-import totseries_it1b.View.Rankings.RankingPanel;
+import totseries_it1b.View.Rankings.AbstractRankingPanel;
 
 /**
  * Controlador principal de l'aplicacio TotSeries.
@@ -289,27 +289,27 @@ public class TSController {
         return this.user;
     }
 
-    public void linkMostViewedSeriesRanking(RankingPanel panel) {
+    public void linkMostViewedSeriesRanking(AbstractRankingPanel panel) {
         totSeries.getMostViewedSeriesRanking().addObserver(panel);
     }
 
-    public void linkMostViewedSeasonsRanking(RankingPanel panel) {
+    public void linkMostViewedSeasonsRanking(AbstractRankingPanel panel) {
         totSeries.getMostViewedSeasonsRanking().addObserver(panel);
     }
 
-    public void linkMostViewedEpisodesRanking(RankingPanel panel) {
+    public void linkMostViewedEpisodesRanking(AbstractRankingPanel panel) {
         totSeries.getMostViewedEpisodesRanking().addObserver(panel);
     }
 
-    public void linkBestRatedSeriesRanking(RankingPanel panel) {
+    public void linkBestRatedSeriesRanking(AbstractRankingPanel panel) {
         totSeries.getBestRatedSeriesRanking().addObserver(panel);
     }
 
-    public void linkBestRatedSeasonsRanking(RankingPanel panel) {
+    public void linkBestRatedSeasonsRanking(AbstractRankingPanel panel) {
         totSeries.getBestRatedSeasonsRanking().addObserver(panel);
     }
 
-    public void linkBestRatedEpisodesRanking(RankingPanel panel) {
+    public void linkBestRatedEpisodesRanking(AbstractRankingPanel panel) {
         totSeries.getBestRatedEpisodesRanking().addObserver(panel);
     }
 
@@ -382,7 +382,7 @@ public class TSController {
 
     public ArrayList<String[]> getBestRatedSeasons() {
         ArrayList<String[]> infoSeasons = new ArrayList<String[]>();
-        for (Object obj : totSeries.getMostViewedSeasonsRanking()) {
+        for (Object obj : totSeries.getBestRatedSeasonsRanking()) {
             Season season = (Season) obj;
             infoSeasons.add(season.parse(false, true));
         }
@@ -391,7 +391,7 @@ public class TSController {
 
     public ArrayList<String[]> getMostViewedEpisodes() {
         ArrayList<String[]> infoEpisodes = new ArrayList<String[]>();
-        for (Object obj : totSeries.getMostViewedSeasonsRanking()) {
+        for (Object obj : totSeries.getMostViewedEpisodesRanking()) {
             Episode episode = (Episode) obj;
             infoEpisodes.add(episode.parse(true, false));
         }
@@ -400,7 +400,7 @@ public class TSController {
 
     public ArrayList<String[]> getBestRatedEpisodes() {
         ArrayList<String[]> infoEpisodes = new ArrayList<String[]>();
-        for (Object obj : totSeries.getMostViewedSeasonsRanking()) {
+        for (Object obj : totSeries.getBestRatedEpisodesRanking()) {
             Episode episode = (Episode) obj;
             infoEpisodes.add(episode.parse(false, true));
         }

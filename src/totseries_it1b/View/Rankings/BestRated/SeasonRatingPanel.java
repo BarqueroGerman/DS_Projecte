@@ -6,14 +6,15 @@
 package totseries_it1b.View.Rankings.BestRated;
 
 import totseries_it1b.View.BasicPanels.EpisodePanel;
+import totseries_it1b.View.BasicPanels.SeasonPanel;
 
 /**
  *
  * @author Enric Calvo & German Barquero
  */
-public class EpisodeRatingPanel extends EpisodePanel {
+public class SeasonRatingPanel extends SeasonPanel {
 
-    public EpisodeRatingPanel(String serieid, int num, String title, String desc, int numSeason, double rating) {
-        super(serieid, num, title, desc, true, numSeason);
+    public SeasonRatingPanel(String serieid, int num, double rating) {
+        super(serieid, num, true);
     }
 }

@@ -5,15 +5,14 @@
  */
 package totseries_it1b.View.Rankings.BestRated;
 
-import java.util.Observable;
 import totseries_it1b.Controller.TSController;
-import totseries_it1b.View.Rankings.RankingPanel;
+import totseries_it1b.View.Rankings.AbstractRankingPanel;
 
 /**
  *
  * @author Enric Calvo & German Barquero
  */
-public class EpisodesByRatingRanking extends RankingPanel {
+public class EpisodesByRatingRanking extends AbstractRankingPanel {
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,8 +48,8 @@ public class EpisodesByRatingRanking extends RankingPanel {
     }
 
     private void addElementToRanking(String[] episode) {
-        //EpisodeRatingPanel panel = new EpisodeRatingPanel(title, episode[1], Integer.parseInt(episode[2]), episode[0], episode[3], false, num);
-        //addPanelToRanking(panel);
+        EpisodeRatingPanel panel = new EpisodeRatingPanel(episode[0], Integer.parseInt(episode[3]), episode[2], episode[4], Integer.parseInt(episode[1]), Double.parseDouble(episode[6]));
+        addPanelToRanking(panel);
     }
 
     @Override

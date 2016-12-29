@@ -7,13 +7,13 @@ package totseries_it1b.View.Rankings.MostViewed;
 
 import java.util.Observable;
 import totseries_it1b.Controller.TSController;
-import totseries_it1b.View.Rankings.RankingPanel;
+import totseries_it1b.View.Rankings.AbstractRankingPanel;
 
 /**
  *
  * @author Enric Calvo & German Barquero
  */
-public class SeriesByViewsRanking extends RankingPanel {
+public class SeriesByViewsRanking extends AbstractRankingPanel {
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

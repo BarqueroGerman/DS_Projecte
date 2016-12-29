@@ -16,14 +16,14 @@ import javax.swing.JPanel;
  *
  * @author Enric Calvo & German Barquero
  */
-public abstract class RankingPanel extends javax.swing.JPanel implements Observer {
+public abstract class AbstractRankingPanel extends javax.swing.JPanel implements Observer {
 
     private int count = 0;
 
     /**
      * Creates new form RankingPanel
      */
-    public RankingPanel() {
+    public AbstractRankingPanel() {
         initComponents();
         model = new DefaultListModel();
         linkToObservable();
