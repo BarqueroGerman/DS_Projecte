@@ -16,9 +16,11 @@ import totseries_it1b.Controller.TSController;
  * @author ecalvove7.alumnes
  */
 public class SeriePanel extends ParentPanel {
+    private String serieId;
 
-    public SeriePanel(String title, String id, boolean read) {
-        super(title,id,read);
+    public SeriePanel(String serieId, String title, boolean readOnly) {
+        super(title, readOnly);
+        this.serieId = serieId;
     }
 
     /**
@@ -56,25 +58,19 @@ public class SeriePanel extends ParentPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     protected void formMouseEntered(java.awt.event.MouseEvent evt) {
-        if (!readOnly) {
             this.setSize(this.getWidth() - 10, this.getHeight() - 10);
             this.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
             titlePanel.setLocation(titlePanel.getX() - 5, titlePanel.getY() - 10);
             this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        }
     }
     protected void formMouseExited(java.awt.event.MouseEvent evt) {
-        if (!readOnly) {
             this.setSize(this.getWidth() + 10, this.getHeight() + 10);
             titlePanel.setLocation(titlePanel.getX() + 5, titlePanel.getY() + 10);
             this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        }
     }
     protected void formMouseClicked(java.awt.event.MouseEvent evt) {
-        if (!readOnly) {
             CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent();
-            cat.showSeasonCard(title,id);
-        }
+            cat.showSeasonCard(title,serieId);
     }   /*
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered

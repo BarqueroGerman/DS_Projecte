@@ -31,9 +31,9 @@ public class CatalogPanel extends javax.swing.JPanel {
             seriesPanels.add(panel);
         }
         updateSeries(0, 9);
-        int[] shownSeriesAux = {0,9};
+        int[] shownSeriesAux = {0, 9};
         this.shownSeries = shownSeriesAux;
-        if(seriesPanels.size()==10){
+        if (seriesPanels.size() == 10) {
             rightArrow.setVisible(false);
             leftArrow.setVisible(false);
         }
@@ -58,8 +58,8 @@ public class CatalogPanel extends javax.swing.JPanel {
             }
         }
     }
-    
-    private int[] getShownSeries(){
+
+    private int[] getShownSeries() {
         return shownSeries;
     }
 
@@ -130,10 +130,10 @@ public class CatalogPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rightArrowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightArrowMouseEntered
-        if(getShownSeries()[1]<seriesPanels.size()-1){
-            rightArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rightArrowPressed.png")));           
+        if (getShownSeries()[1] < seriesPanels.size() - 1) {
+            rightArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rightArrowPressed.png")));
             rightArrow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        }else{
+        } else {
             rightArrow.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         }
     }//GEN-LAST:event_rightArrowMouseEntered
@@ -150,10 +150,10 @@ public class CatalogPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_rightArrowMouseExited
 
     private void leftArrowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftArrowMouseEntered
-        if(getShownSeries()[0]!=0){
+        if (getShownSeries()[0] != 0) {
             leftArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/leftArrowPressed.png")));
             leftArrow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        }else{
+        } else {
             leftArrow.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         }
 
@@ -165,14 +165,14 @@ public class CatalogPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_leftArrowMouseExited
 
     private void leftArrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftArrowMouseClicked
-        if(getShownSeries()[0]!=0){
-            updateSeries(getShownSeries()[0]-10,getShownSeries()[1]-10);
+        if (getShownSeries()[0] != 0) {
+            updateSeries(getShownSeries()[0] - 10, getShownSeries()[1] - 10);
         }
     }//GEN-LAST:event_leftArrowMouseClicked
 
     private void rightArrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightArrowMouseClicked
-        if(getShownSeries()[1]<seriesPanels.size()-1){
-            updateSeries(getShownSeries()[0]+10,getShownSeries()[1]+10);
+        if (getShownSeries()[1] < seriesPanels.size() - 1) {
+            updateSeries(getShownSeries()[0] + 10, getShownSeries()[1] + 10);
         }
     }//GEN-LAST:event_rightArrowMouseClicked
 

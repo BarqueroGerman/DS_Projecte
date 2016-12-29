@@ -110,21 +110,35 @@ public class Serie implements Iterable<Season> {
     public String getTitle() {
         return title;
     }
-    
-    public String getDescription(){
+
+    public String getDescription() {
         return description;
     }
-    
-    public String getDirector(){
+
+    public String getDirector() {
         return artists.get(0).name;
     }
-    
-    public String getProducer(){
+
+    public String getProducer() {
         return producer.getName();
     }
 
     @Override
     public Iterator<Season> iterator() {
         return this.seasons.iterator();
+    }
+
+    public String[] parse(boolean addViews, boolean addRating) {
+        double rating = 0;
+        int views = 0;
+        if (addRating) {
+            rating = getRatingAverage();
+        }
+        if (addViews) {
+            views = getTotalViews();
+        }
+        return new String[]{
+            id, title, Integer.toString(views), Double.toString(rating)
+        };
     }
 }

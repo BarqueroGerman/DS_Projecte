@@ -317,29 +317,26 @@ public class TSController {
     public ArrayList<String[]> getInfoSeries() {
         ArrayList<String[]> infoSeries = new ArrayList<String[]>();
         for (Serie serie : totSeries.getCatalog()) {
-            String[] infoSerie = {serie.getTitle(), serie.getId()};
-            infoSeries.add(infoSerie);
+            infoSeries.add(serie.parse(false, false));
         }
         return infoSeries;
     }
 
-    public ArrayList<String[]> getInfoSeasons(String id) {
+    public ArrayList<String[]> getInfoSeasonsBySerieId(String id) {
         Serie serie = totSeries.getCatalog().getSerieById(id);
         ArrayList<String[]> infoSeasons = new ArrayList<String[]>();
         for (Season season : serie) {
-            String[] infoSeason = {Integer.toString(season.getNumSeason()), serie.getId()};
-            infoSeasons.add(infoSeason);
+            infoSeasons.add(season.parse(false, false));
         }
         return infoSeasons;
     }
-    
-    public ArrayList<String[]> getInfoEpisodes(String id, int numSeason) {
+
+    public ArrayList<String[]> getInfoEpisodesBySeasonId(String id, int numSeason) {
         Serie serie = totSeries.getCatalog().getSerieById(id);
         Season season = serie.getSeasonByNumber(numSeason);
         ArrayList<String[]> infoEpisodes = new ArrayList<String[]>();
         for (Episode episode : season) {
-            String[] infoEpisode = {episode.getTitle(), serie.getId(),Integer.toString(episode.getNumber()),episode.getDescription()};
-            infoEpisodes.add(infoEpisode);
+            infoEpisodes.add(episode.parse(false, false));
         }
         return infoEpisodes;
     }
@@ -348,8 +345,7 @@ public class TSController {
         ArrayList<String[]> infoSeries = new ArrayList<String[]>();
         for (Object obj : totSeries.getMostViewedSeriesRanking()) {
             Serie serie = (Serie) obj;
-            String[] infoSerie = {serie.getId(), serie.getTitle(), Integer.toString(serie.getTotalViews())};
-            infoSeries.add(infoSerie);
+            infoSeries.add(serie.parse(true, false));
         }
         return infoSeries;
     }
@@ -358,21 +354,20 @@ public class TSController {
         ArrayList<String[]> infoSeries = new ArrayList<String[]>();
         for (Object obj : totSeries.getBestRatedSeriesRanking()) {
             Serie serie = (Serie) obj;
-            String[] infoSerie = {serie.getId(), serie.getTitle(), Double.toString(serie.getRatingAverage())};
-            infoSeries.add(infoSerie);
+            infoSeries.add(serie.parse(false, true));
         }
         return infoSeries;
     }
-    
-    public String getDescriptionSerie(String id){
+
+    public String getDescriptionSerie(String id) {
         return totSeries.getCatalog().getSerieById(id).getDescription();
     }
-    
-    public String getDirector(String id){
+
+    public String getDirector(String id) {
         return totSeries.getCatalog().getSerieById(id).getDirector();
     }
-    
-    public String getProducer(String id){
+
+    public String getProducer(String id) {
         return totSeries.getCatalog().getSerieById(id).getProducer();
     }
 
@@ -380,8 +375,7 @@ public class TSController {
         ArrayList<String[]> infoSeasons = new ArrayList<String[]>();
         for (Object obj : totSeries.getMostViewedSeasonsRanking()) {
             Season season = (Season) obj;
-            String[] infoSeason = {Integer.toString(season.getNumber()), Integer.toString(season.getTotalViews())};
-            infoSeasons.add(infoSeason);
+            infoSeasons.add(season.parse(true, false));
         }
         return infoSeasons;
     }
@@ -390,8 +384,7 @@ public class TSController {
         ArrayList<String[]> infoSeasons = new ArrayList<String[]>();
         for (Object obj : totSeries.getMostViewedSeasonsRanking()) {
             Season season = (Season) obj;
-            String[] infoSeason = {Integer.toString(season.getNumber()), Double.toString(season.getRatingAverage())};
-            infoSeasons.add(infoSeason);
+            infoSeasons.add(season.parse(false, true));
         }
         return infoSeasons;
     }
@@ -400,8 +393,7 @@ public class TSController {
         ArrayList<String[]> infoEpisodes = new ArrayList<String[]>();
         for (Object obj : totSeries.getMostViewedSeasonsRanking()) {
             Episode episode = (Episode) obj;
-            String[] infoEpisode = {Integer.toString(episode.getNumber()), episode.getTitle(), Integer.toString(episode.getViewsCount())};
-            infoEpisodes.add(infoEpisode);
+            infoEpisodes.add(episode.parse(true, false));
         }
         return infoEpisodes;
     }
@@ -410,19 +402,8 @@ public class TSController {
         ArrayList<String[]> infoEpisodes = new ArrayList<String[]>();
         for (Object obj : totSeries.getMostViewedSeasonsRanking()) {
             Episode episode = (Episode) obj;
-            String[] infoEpisode = {Integer.toString(episode.getNumber()), episode.getTitle(), Double.toString(episode.getRatingAverage())};
-            infoEpisodes.add(infoEpisode);
+            infoEpisodes.add(episode.parse(false, true));
         }
         return infoEpisodes;
-    }
-    
-    public String[] getEpisode(String id, int seas, int ep){
-        Episode epi = totSeries.getCatalog().getSerieById(id).getSeasonByNumber(seas).getEpisodeByNumber(ep);
-        String des =  epi.getDescription();
-        String tit = epi.getTitle();
-        String[] str = new String[2];
-        str[0] = des;
-        str[1] = tit;
-        return str;        
     }
 }

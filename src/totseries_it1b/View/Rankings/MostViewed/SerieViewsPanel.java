@@ -17,7 +17,6 @@ public class SerieViewsPanel extends SeriePanel {
      * Creates new form SerieViewsPanel
      */
     public SerieViewsPanel(String id, String title, int views) {
-        super(title, id, true);
-        //prova(Integer.toString(views));
+        super(id, title, true);
     }
 }

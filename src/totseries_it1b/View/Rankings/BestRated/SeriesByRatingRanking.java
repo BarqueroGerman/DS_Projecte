@@ -49,7 +49,7 @@ public class SeriesByRatingRanking extends RankingPanel {
     }
 
     private void addElementToRanking(String[] serie) {
-        SerieRatingPanel panel = new SerieRatingPanel(serie[0], serie[1], Double.parseDouble(serie[2]));
+        SerieRatingPanel panel = new SerieRatingPanel(serie[0], serie[1], Double.parseDouble(serie[3]));
         addPanelToRanking(panel);
     }
 

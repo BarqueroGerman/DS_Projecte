@@ -18,6 +18,6 @@ public class SerieRatingPanel extends SeriePanel {
      * Creates new form SerieRatingPanel
      */
     public SerieRatingPanel(String id, String title, double rating) {
-        super(title, id, true);
+        super(id, title, true);
     }
 }

@@ -108,8 +108,22 @@ public class Episode {
     public String getTitle() {
         return this.title;
     }
-    
-    public String getDescription(){
+
+    public String getDescription() {
         return this.description;
+    }
+
+    public String[] parse(boolean addViews, boolean addRating) {
+        double rating = 0;
+        int views = 0;
+        if (addRating) {
+            rating = getRatingAverage();
+        }
+        if (addViews) {
+            views = getViewsCount();
+        }
+        return new String[]{
+            season.getSerie().getId(), Integer.toString(season.getNumSeason()), title, Integer.toString(number), description, Integer.toString(views), Double.toString(rating)
+        };
     }
 }

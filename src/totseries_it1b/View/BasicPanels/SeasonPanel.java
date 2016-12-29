@@ -7,47 +7,52 @@ package totseries_it1b.View.BasicPanels;
 
 import totseries_it1b.View.Catalog.CatalogContainer;
 
-
 /**
  *
  * @author enric
  */
-public class SeasonPanel extends ParentPanel {    
-    int numSeason;
-    boolean head = false;
-    public SeasonPanel(String title, String id, int num, boolean readOnly) {
-        super(title, id, readOnly);
-        this.titleLabel.setText("SEASON "+Integer.toString(num));
+public class SeasonPanel extends ParentPanel {
+
+    private String serieId;
+    private int numSeason;
+    private boolean head = false;
+
+    public SeasonPanel(String serieId, int num, boolean readOnly) {
+        super("SEASON " + num, readOnly);
+        this.serieId = serieId;
         numSeason = num;
     }
-    
-    public SeasonPanel(String title, String id, int num, boolean readOnly,boolean head) {
-        super(title, id, readOnly);
-        this.titleLabel.setText("SEASON "+Integer.toString(num));
+
+    public SeasonPanel(String serieId, int num, boolean readOnly, boolean head) {
+        super("SEASON " + num, readOnly);
+        this.serieId = serieId;
         numSeason = num;
         this.head = head;
     }
-    
+
     protected void formMouseEntered(java.awt.event.MouseEvent evt) {
         this.setSize(this.getWidth() - 10, this.getHeight() - 10);
         this.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         titlePanel.setLocation(titlePanel.getX() - 5, titlePanel.getY() - 10);
         this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }
-    protected void formMouseExited(java.awt.event.MouseEvent evt) {  
+
+    protected void formMouseExited(java.awt.event.MouseEvent evt) {
         this.setSize(this.getWidth() + 10, this.getHeight() + 10);
         titlePanel.setLocation(titlePanel.getX() + 5, titlePanel.getY() + 10);
         this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    }    
-    protected void formMouseClicked(java.awt.event.MouseEvent evt) {  
-        if(!head){
+    }
+
+    protected void formMouseClicked(java.awt.event.MouseEvent evt) {
+        if (!head) {
             CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent().getParent();
-            cat.showEpisodeCard(title,id, numSeason);
-        }else{
+            cat.showEpisodeCard(title, serieId, numSeason);
+        } else {
             CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent();
-            cat.showEpisodeCard(title,id, numSeason);
+            cat.showEpisodeCard(title, serieId, numSeason);
         }
-    } 
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,7 +76,6 @@ public class SeasonPanel extends ParentPanel {
             .addGap(0, 232, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

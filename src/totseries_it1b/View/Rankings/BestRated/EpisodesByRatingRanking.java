@@ -48,8 +48,8 @@ public class EpisodesByRatingRanking extends RankingPanel {
         }
     }
 
-    private void addElementToRanking(String[] serie) {
-        //EpisodeRatingPanel panel = new SerieRatingPanel(serie[0], serie[1], Double.parseDouble(serie[2]));
+    private void addElementToRanking(String[] episode) {
+        //EpisodeRatingPanel panel = new EpisodeRatingPanel(title, episode[1], Integer.parseInt(episode[2]), episode[0], episode[3], false, num);
         //addPanelToRanking(panel);
     }
 

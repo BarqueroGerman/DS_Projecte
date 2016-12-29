@@ -78,8 +78,8 @@ public class Season implements Iterable<Episode> {
         }
         return toReturn;
     }
-    
-    public int getNumSeason(){
+
+    public int getNumSeason() {
         return this.number;
     }
 
@@ -99,5 +99,19 @@ public class Season implements Iterable<Episode> {
     @Override
     public Iterator<Episode> iterator() {
         return this.episodes.iterator();
+    }
+
+    public String[] parse(boolean addViews, boolean addRating) {
+        double rating = 0;
+        int views = 0;
+        if (addRating) {
+            rating = getRatingAverage();
+        }
+        if (addViews) {
+            views = getTotalViews();
+        }
+        return new String[]{
+            serie.getId(), Integer.toString(number), Integer.toString(views), Double.toString(rating)
+        };
     }
 }

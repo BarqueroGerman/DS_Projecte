@@ -13,36 +13,43 @@ import totseries_it1b.Controller.TSController;
  * @author enric
  */
 public abstract class ParentPanel extends javax.swing.JPanel {
-    String id;
-    String title;
-    boolean readOnly;
-    TSController ctrl;
+
+    protected String title;
+    private final boolean readOnly;
+    private TSController ctrl;
+
     /**
      * Creates new form ParentPanel
      */
-    public ParentPanel(String title, String id,boolean read) {
+    public ParentPanel(String title, boolean readOnly) {
         initComponents();
         this.title = title;
         titleLabel.setText(title);
-        this.id = id;
-        this.readOnly = read;
+        this.readOnly = readOnly;
         ctrl = TSController.getInstance();
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                formMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                formMouseExited(evt);
-            }
-        });
+        if (!readOnly) {
+            addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    formMouseClicked(evt);
+                }
+
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    formMouseEntered(evt);
+                }
+
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    formMouseExited(evt);
+                }
+            });
+        }
     }
-     
+
     protected abstract void formMouseEntered(java.awt.event.MouseEvent evt);
+
     protected abstract void formMouseExited(java.awt.event.MouseEvent evt);
+
     protected abstract void formMouseClicked(java.awt.event.MouseEvent evt);
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
