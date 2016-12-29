@@ -18,7 +18,18 @@ public class panelStars extends javax.swing.JPanel {
     public panelStars() {
         initComponents();
     }
-
+    
+    public void setOffStars(){
+        ratingStar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
+        ratingStar2.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
+        ratingStar3.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
+        ratingStar4.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
+        ratingStar5.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
+    }
+    
+    public void checkRate(){
+        rated = false;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,11 +105,7 @@ public class panelStars extends javax.swing.JPanel {
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
         if(!rated){
-            ratingStar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
-            ratingStar2.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
-            ratingStar3.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
-            ratingStar4.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
-            ratingStar5.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));  
+            setOffStars();
         }
     }//GEN-LAST:event_formMouseExited
 

@@ -44,6 +44,8 @@ public class ByViewsRankingsPanel extends javax.swing.JPanel {
         seasonsByViewsRanking1 = new totseries_it1b.View.Rankings.MostViewed.SeasonsByViewsRanking();
         episodesByViewsRanking1 = new totseries_it1b.View.Rankings.MostViewed.EpisodesByViewsRanking();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         buttonsPanel.setBackground(new java.awt.Color(255, 255, 255));
         buttonsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -159,6 +161,7 @@ public class ByViewsRankingsPanel extends javax.swing.JPanel {
 
         add(buttonsPanel);
 
+        mainContainer.setBackground(new java.awt.Color(255, 255, 255));
         mainContainer.setLayout(new java.awt.CardLayout());
         mainContainer.add(seriesByViewsRanking1, "seriesCard");
         mainContainer.add(seasonsByViewsRanking1, "seasonsCard");

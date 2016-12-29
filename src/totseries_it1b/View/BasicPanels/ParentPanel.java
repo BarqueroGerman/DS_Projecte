@@ -5,10 +5,6 @@
  */
 package totseries_it1b.View.BasicPanels;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Color;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import totseries_it1b.Controller.TSController;
 
@@ -24,6 +20,8 @@ public abstract class ParentPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ParentPanel
+     * @param title
+     * @param readOnly
      */
     public ParentPanel(String title, boolean readOnly) {
         initComponents();
@@ -33,14 +31,17 @@ public abstract class ParentPanel extends javax.swing.JPanel {
         ctrl = TSController.getInstance();
         if (!readOnly) {
             addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     formMouseClicked(evt);
                 }
 
+                @Override
                 public void mouseEntered(java.awt.event.MouseEvent evt) {
                     formMouseEntered(evt);
                 }
 
+                @Override
                 public void mouseExited(java.awt.event.MouseEvent evt) {
                     formMouseExited(evt);
                 }
@@ -113,10 +114,10 @@ public abstract class ParentPanel extends javax.swing.JPanel {
    /* */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JLabel infoEpisode;
-    public javax.swing.JPanel infoPanelContainer;
+    protected javax.swing.JLabel infoEpisode;
+    protected javax.swing.JPanel infoPanelContainer;
     protected javax.swing.JLabel titleLabel;
-    public javax.swing.JPanel titlePanel;
+    protected javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables
 
     public void setBackgroundPanel(ImageIcon icon) {

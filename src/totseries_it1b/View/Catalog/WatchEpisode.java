@@ -31,6 +31,8 @@ public class WatchEpisode extends javax.swing.JPanel {
         episodeDescription.setText(description);
         progress.setValue(0);
         panelStars1.setVisible(false);
+        panelStars1.setOffStars();
+        panelStars1.checkRate();
         rateEpisodeLabel.setVisible(false);
     }
 
@@ -47,6 +49,7 @@ public class WatchEpisode extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "episode watched");
                 panelStars1.setVisible(true);
                 rateEpisodeLabel.setVisible(true);
+                progress.setValue(0);
             }
         }
     } 
@@ -71,6 +74,8 @@ public class WatchEpisode extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(913, 324));
 
         episode.setBackground(new java.awt.Color(255, 255, 255));
+
+        episodeDescription.setEditable(false);
 
         watchEpisode.setText("WATCH");
         watchEpisode.addActionListener(new java.awt.event.ActionListener() {

@@ -7,6 +7,7 @@ package totseries_it1b.View.Catalog;
 
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 import totseries_it1b.Controller.TSController;
 import totseries_it1b.View.BasicPanels.EpisodePanel;
 import totseries_it1b.View.BasicPanels.SeasonPanel;
@@ -89,6 +90,10 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
             episodesPanel1.add(panel);
         }
     }
+    
+    public JPanel getSeasonsAndEoisodesContainer(){
+        return seasonsAndEpisodesContainer;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,6 +132,7 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         numberSeasonLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numberSeasonLabel.setText("SEASON NUMBER");
 
+        serieDescription.setEditable(false);
         serieDescription.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         serieDescription.setOpaque(false);
 
@@ -202,7 +208,7 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
     private javax.swing.JLabel numberSeasonLabel;
     private javax.swing.JLabel producerLabel;
     private javax.swing.JLabel producerNameLabel;
-    public javax.swing.JPanel seasonsAndEpisodesContainer;
+    private javax.swing.JPanel seasonsAndEpisodesContainer;
     private totseries_it1b.View.Catalog.SeasonsPanel seasonsPanel1;
     private javax.swing.JTextPane serieDescription;
     private totseries_it1b.View.Catalog.WatchEpisode watchEpisode1;

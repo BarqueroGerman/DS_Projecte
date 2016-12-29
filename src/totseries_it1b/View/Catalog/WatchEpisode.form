@@ -92,6 +92,9 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
     </Container>
     <Component class="javax.swing.JTextPane" name="episodeDescription">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="watchEpisode">
       <Properties>
