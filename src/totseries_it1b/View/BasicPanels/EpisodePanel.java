@@ -7,19 +7,19 @@ package totseries_it1b.View.BasicPanels;
 
 import totseries_it1b.View.Catalog.CatalogContainer;
 
-
 /**
  *
  * @author ecalvove7.alumnes
  */
 public class EpisodePanel extends ParentPanel {
+
     private String serieId;
     private int numSeason;
     private int numEpisode;
     private String titleEpisode;
     private String description;
 
-    public EpisodePanel(String serieId, int num, String title, String description,boolean readOnly, int numSeason) {
+    public EpisodePanel(String serieId, int num, String title, String description, boolean readOnly, int numSeason) {
         super("EPISODE " + num, readOnly);
         this.serieId = serieId;
         this.description = description;
@@ -40,17 +40,6 @@ public class EpisodePanel extends ParentPanel {
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setPreferredSize(new java.awt.Dimension(157, 234));
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                formMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                formMouseExited(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -63,49 +52,12 @@ public class EpisodePanel extends ParentPanel {
             .addGap(0, 298, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-    @Override
-    protected void formMouseEntered(java.awt.event.MouseEvent evt) {
-            this.setSize(this.getWidth() - 10, this.getHeight() - 10);
-            this.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-            titlePanel.setLocation(titlePanel.getX() - 5, titlePanel.getY() - 10);
-            this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    }
-    @Override
-    protected void formMouseExited(java.awt.event.MouseEvent evt) {
-            this.setSize(this.getWidth() + 10, this.getHeight() + 10);
-            titlePanel.setLocation(titlePanel.getX() + 5, titlePanel.getY() + 10);
-            this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    }
+
     @Override
     protected void formMouseClicked(java.awt.event.MouseEvent evt) {
-            CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent().getParent();
-            cat.showWatchCard(title,serieId,numEpisode,titleEpisode,description, numSeason);
-    }   /*
-
-    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
-        if (!readOnly) {
-            this.setSize(this.getWidth() - 10, this.getHeight() - 10);
-            titlePanel.setLocation(titlePanel.getX() - 5, titlePanel.getY() - 10);
-            this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        }
-    }//GEN-LAST:event_formMouseEntered
-
-    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
-        if (!readOnly) {
-            this.setSize(this.getWidth() + 10, this.getHeight() + 10);
-            titlePanel.setLocation(titlePanel.getX() + 5, titlePanel.getY() + 10);
-            this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        }
-    }//GEN-LAST:event_formMouseExited
-
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        if (!readOnly) {
-            CardLayout card = (CardLayout) getParent().getParent().getParent().getLayout();
-            card.show(getParent().getParent().getParent(), "seasons");
-            ((CatalogContainer) (this.getParent().getParent().getParent())).getSeasons().updateSerie(ctrl.getCatalog().getSerieById(id).getTitle(), id);
-        }
-    }//GEN-LAST:event_formMouseClicked
-*/
+        CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent().getParent();
+        cat.showWatchCard(title, serieId, numEpisode, titleEpisode, description, numSeason);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 

@@ -30,19 +30,6 @@ public class SeasonPanel extends ParentPanel {
         this.head = head;
     }
 
-    protected void formMouseEntered(java.awt.event.MouseEvent evt) {
-        this.setSize(this.getWidth() - 10, this.getHeight() - 10);
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        titlePanel.setLocation(titlePanel.getX() - 5, titlePanel.getY() - 10);
-        this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    }
-
-    protected void formMouseExited(java.awt.event.MouseEvent evt) {
-        this.setSize(this.getWidth() + 10, this.getHeight() + 10);
-        titlePanel.setLocation(titlePanel.getX() + 5, titlePanel.getY() + 10);
-        this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    }
-
     protected void formMouseClicked(java.awt.event.MouseEvent evt) {
         if (!head) {
             CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent().getParent();

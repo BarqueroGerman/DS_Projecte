@@ -406,4 +406,8 @@ public class TSController {
         }
         return infoEpisodes;
     }
+
+    public String getImageBySerieId(String id) {
+        return SerieImagePath.getImagePath(id);
+    }
 }

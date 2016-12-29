@@ -5,7 +5,11 @@
  */
 package totseries_it1b.View.BasicPanels;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import totseries_it1b.Controller.TSController;
 
 /**
@@ -44,9 +48,21 @@ public abstract class ParentPanel extends javax.swing.JPanel {
         }
     }
 
-    protected abstract void formMouseEntered(java.awt.event.MouseEvent evt);
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {
+        this.setSize(this.getWidth() - 10, this.getHeight() - 10);
+        infoEpisode.setLocation(infoEpisode.getX() - 5, infoEpisode.getY() - 5);
+        this.setLocation(this.getX() + 5, this.getY() + 5);
+        titlePanel.setLocation(titlePanel.getX() - 5, titlePanel.getY() - 10);
+        this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }
 
-    protected abstract void formMouseExited(java.awt.event.MouseEvent evt);
+    private void formMouseExited(java.awt.event.MouseEvent evt) {
+        this.setSize(this.getWidth() + 10, this.getHeight() + 10);
+        infoEpisode.setLocation(infoEpisode.getX() + 5, infoEpisode.getY() + 5);
+        this.setLocation(this.getX() - 5, this.getY() - 5);
+        titlePanel.setLocation(titlePanel.getX() + 5, titlePanel.getY() + 10);
+        this.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    }
 
     protected abstract void formMouseClicked(java.awt.event.MouseEvent evt);
 
@@ -102,4 +118,8 @@ public abstract class ParentPanel extends javax.swing.JPanel {
     protected javax.swing.JLabel titleLabel;
     public javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables
+
+    public void setBackgroundPanel(ImageIcon icon) {
+        infoEpisode.setIcon(icon);
+    }
 }

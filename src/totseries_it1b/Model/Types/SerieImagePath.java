@@ -26,7 +26,7 @@ public class SerieImagePath {
     private static class GAME_OF_THRONES {
 
         public final static String Key = "gofthrones";
-        public final static String ImagePath = "";
+        public final static String ImagePath = "/images/series/got.png";
     }
 
     private static class PENNY_DREADFUL {
