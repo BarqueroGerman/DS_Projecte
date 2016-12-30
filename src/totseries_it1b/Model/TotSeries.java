@@ -5,6 +5,12 @@
  */
 package totseries_it1b.Model;
 
+import totseries_it1b.Model.Rankings.BestRatedSeasons;
+import totseries_it1b.Model.Rankings.MostViewedSeries;
+import totseries_it1b.Model.Rankings.BestRatedSeries;
+import totseries_it1b.Model.Rankings.BestRatedEpisodes;
+import totseries_it1b.Model.Rankings.MostViewedSeasons;
+import totseries_it1b.Model.Rankings.MostViewedEpisodes;
 import totseries_it1b.Model.Factories.CatalogFactory;
 import totseries_it1b.Model.Factories.FactoryCreator;
 import totseries_it1b.Model.Factories.RankingsFactory;

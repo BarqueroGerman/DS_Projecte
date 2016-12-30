@@ -9,6 +9,7 @@ import totseries_it1b.Model.AbstractView;
 import totseries_it1b.Model.Client;
 import totseries_it1b.Model.Episode;
 import totseries_it1b.Model.PhantomView;
+import totseries_it1b.Model.User;
 import totseries_it1b.Model.View;
 
 /**
@@ -17,7 +18,7 @@ import totseries_it1b.Model.View;
  */
 public class ViewFactory extends AbstractFactory {
 
-    public AbstractView create(Episode e, Client c) {
+    public AbstractView create(Episode e, User c) {
         AbstractView v;
         v = new View();
         e.addView(v);
@@ -25,7 +26,7 @@ public class ViewFactory extends AbstractFactory {
         return v;
     }
 
-    public AbstractView create(Episode e, Client c, boolean fake) {
+    public AbstractView create(Episode e, User c, boolean fake) {
         AbstractView v;
         if (fake) {
             v = new PhantomView();

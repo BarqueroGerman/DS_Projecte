@@ -11,6 +11,7 @@ import java.awt.Color;
 import javafx.scene.control.TabPane;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
+import totseries_it1b.Controller.TSController;
 
 /**
  *
@@ -25,6 +26,11 @@ public class MainScreen extends javax.swing.JFrame {
      */
     public MainScreen() {
         initComponents();
+        if (TSController.getInstance().isLogged()) {
+            auxButton.setText("LOG OUT");
+        } else {
+            auxButton.setText("LOG IN");
+        }
     }
 
     /**
@@ -49,6 +55,7 @@ public class MainScreen extends javax.swing.JFrame {
         catalogContainer1 = new totseries_it1b.View.Catalog.CatalogContainer();
         byViewsRankings = new totseries_it1b.View.Rankings.MostViewed.ByViewsRankingsPanel();
         byRatingRankings = new totseries_it1b.View.Rankings.BestRated.ByRatingRankingsPanel();
+        auxButton = new javax.swing.JButton();
         bakcGroundIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -204,6 +211,15 @@ public class MainScreen extends javax.swing.JFrame {
 
         getContentPane().add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 960, 620));
 
+        auxButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        auxButton.setText("LOG IN");
+        auxButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                auxButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(auxButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 90, 30));
+
         bakcGroundIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fonsMainMenu.png"))); // NOI18N
         getContentPane().add(bakcGroundIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 810));
 
@@ -271,10 +287,21 @@ public class MainScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mostRatedLabelMouseExited
 
+    private void auxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auxButtonActionPerformed
+        TSController ctrl = TSController.getInstance();
+        if (ctrl.isLogged()) {
+            ctrl.logout();
+        }
+        this.dispose();
+        InitialScreen initial = new InitialScreen();
+        initial.setVisible(true);
+    }//GEN-LAST:event_auxButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton auxButton;
     private javax.swing.JLabel bakcGroundIcon;
     private javax.swing.JPanel buttonsPanel;
     private totseries_it1b.View.Rankings.BestRated.ByRatingRankingsPanel byRatingRankings;

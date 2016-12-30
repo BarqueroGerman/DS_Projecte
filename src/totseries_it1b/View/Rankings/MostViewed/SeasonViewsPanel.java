@@ -17,8 +17,8 @@ public class SeasonViewsPanel extends SeasonPanel {
 
     private int views;
 
-    public SeasonViewsPanel(String serieid, int num, int views) {
-        super(serieid, num, true);
+    public SeasonViewsPanel(String serieid, String serieTitle, int num, int views) {
+        super(serieid, serieTitle, num, true);
         addViewsToPanel(views);
         this.views = views;
     }

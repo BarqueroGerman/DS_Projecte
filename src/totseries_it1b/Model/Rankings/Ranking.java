@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package totseries_it1b.Model;
+package totseries_it1b.Model.Rankings;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,11 +28,12 @@ public abstract class Ranking extends Observable implements Iterable<Object> {
         top = new ArrayList<>();
     }
 
-    protected void update(Object o) {
+    public void update(Object o) {
         int oldPosition = top.indexOf(o);
         int newPosition = updateElementPosition(o, oldPosition);
 
-        if (oldPosition != newPosition && (oldPosition <= num - 1 || newPosition <= num - 1)) {
+        //if (oldPosition != newPosition && (oldPosition <= num - 1 || newPosition <= num - 1)) {
+        if (oldPosition <= num - 1 || newPosition <= num - 1) {
             setChanged();
             notifyObservers();
         }

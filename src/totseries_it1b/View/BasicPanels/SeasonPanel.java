@@ -5,6 +5,9 @@
  */
 package totseries_it1b.View.BasicPanels;
 
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import totseries_it1b.Controller.TSController;
 import totseries_it1b.View.Catalog.CatalogContainer;
 
@@ -18,15 +21,15 @@ public class SeasonPanel extends ParentPanel {
     private int numSeason;
     private boolean head = false;
 
-    public SeasonPanel(String serieId, int num, boolean readOnly) {
-        super("SEASON " + num, readOnly);
+    public SeasonPanel(String serieId, String serieTitle, int num, boolean readOnly) {
+        super(serieTitle, readOnly);
         this.serieId = serieId;
         numSeason = num;
         initCustomComponents();
     }
 
-    public SeasonPanel(String serieId, int num, boolean readOnly, boolean head) {
-        super("SEASON " + num, readOnly);
+    public SeasonPanel(String serieId, String serieTitle, int num, boolean readOnly, boolean head) {
+        super(serieTitle, readOnly);
         this.serieId = serieId;
         numSeason = num;
         this.head = head;
@@ -38,6 +41,16 @@ public class SeasonPanel extends ParentPanel {
         if (imagePath != null && !imagePath.equals("")) {
             setBackgroundPanel(new javax.swing.ImageIcon(getClass().getResource(imagePath)));
         }
+
+        // SEASON TITLE
+        JPanel seasInfoPanel = new JPanel();
+        seasInfoPanel.setBounds(0, 100, 155, 30);
+        JLabel label1 = new JLabel("SEASON " + numSeason);
+        label1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        label1.setForeground(new java.awt.Color(255, 255, 255));
+        seasInfoPanel.add(label1);
+        seasInfoPanel.setBackground(new Color(0, 0, 0, 170));
+        infoPanelContainer.add(seasInfoPanel, new Integer(1));
     }
 
     protected void formMouseClicked(java.awt.event.MouseEvent evt) {

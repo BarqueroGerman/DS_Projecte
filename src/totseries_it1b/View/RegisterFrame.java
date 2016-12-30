@@ -8,12 +8,15 @@ package totseries_it1b.View;
 import java.awt.Color;
 import java.util.Calendar;
 import totseries_it1b.Controller.TSController;
+
 /**
  *
  * @author enric
  */
 public class RegisterFrame extends javax.swing.JFrame {
+
     TSController controller;
+
     /**
      * Creates new form RegisterFrame
      */
@@ -22,10 +25,11 @@ public class RegisterFrame extends javax.swing.JFrame {
         controller = ctrl;
         usernameTextField.setText(user);
         String pass = "";
-        for(char c:password){
-            pass = pass+c;
+        for (char c : password) {
+            pass = pass + c;
         }
         passwordTextField.setText(pass);
+        checkUsernameAvailability();
     }
 
     /**
@@ -219,42 +223,46 @@ public class RegisterFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTextFieldActionPerformed
 
     private void usernameTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTextFieldKeyReleased
-        if(controller.usernameExists(usernameTextField.getText())){
-            availabilityLabel.setForeground(Color.RED);
-            availabilityLabel.setText("This username is not avaialable");
-        }else{
-            availabilityLabel.setForeground(new java.awt.Color(0,153,51));
-            availabilityLabel.setText("This username is avaialable");
-        }
+        checkUsernameAvailability();
     }//GEN-LAST:event_usernameTextFieldKeyReleased
+
+    private void checkUsernameAvailability() {
+        if (controller.usernameExists(usernameTextField.getText())) {
+            availabilityLabel.setForeground(Color.RED);
+            availabilityLabel.setText("This username is not available");
+        } else {
+            availabilityLabel.setForeground(new java.awt.Color(0, 153, 51));
+            availabilityLabel.setText("This username is available");
+        }
+    }
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         String username = usernameTextField.getText();
         String password = "";
-        for(char c:passwordTextField.getPassword()){
-            password = password+c;
-        }String name = nameTextField.getText();
+        for (char c : passwordTextField.getPassword()) {
+            password = password + c;
+        }
+        String name = nameTextField.getText();
         String nationality = nationalityTextField.getText();
         Calendar date = Calendar.getInstance();
         try {
             date.set(Integer.parseInt(yearTextField.getText()), Integer.parseInt(monthTextField.getText()), Integer.parseInt(dayTextField.getText()));
             birthdateFormatLabel.setVisible(false);
-            if(controller.createClient(username, password, name, nationality, date)){
+            if (controller.createClient(username, password, name, nationality, date)) {
                 this.dispose();
             }
         } catch (Exception ex) {
             birthdateFormatLabel.setVisible(true);
         }
-        if(controller.createClient(username, password, name, nationality, date)){
+        if (controller.createClient(username, password, name, nationality, date)) {
             this.dispose();
         }
-        
+
     }//GEN-LAST:event_registerButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel availabilityLabel;
     private javax.swing.JLabel birthdateFormatLabel;

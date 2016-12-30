@@ -49,7 +49,7 @@ public class EpisodesByViewsRanking extends AbstractRankingPanel {
     }
 
     private void addElementToRanking(String[] episode) {
-        EpisodeViewsPanel panel = new EpisodeViewsPanel(episode[0], Integer.parseInt(episode[3]), episode[2], episode[4], Integer.parseInt(episode[1]), Integer.parseInt(episode[5]));
+        EpisodeViewsPanel panel = new EpisodeViewsPanel(episode[0], episode[1], Integer.parseInt(episode[4]), episode[3], episode[5], Integer.parseInt(episode[2]), Integer.parseInt(episode[6]));
         addPanelToRanking(panel);
     }
 

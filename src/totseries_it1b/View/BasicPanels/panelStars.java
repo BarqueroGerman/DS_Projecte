@@ -5,20 +5,48 @@
  */
 package totseries_it1b.View.BasicPanels;
 
+import javax.swing.JOptionPane;
+import totseries_it1b.Controller.TSController;
+
 /**
  *
  * @author enric
  */
 public class panelStars extends javax.swing.JPanel {
 
-    boolean rated = false;
-    int rating;
+    private boolean rated = false;
+    private int rating;
+    private int viewId;
+    private String serieId;
+    private int numSeason;
+    private int numEp;
 
     /**
      * Creates new form panelStars
      */
     public panelStars() {
         initComponents();
+    }
+
+    public void load(String serieId, int numSeason, int numEp) {
+        this.serieId = serieId;
+        this.numSeason = numSeason;
+        this.numEp = numEp;
+
+        TSController ctrl = TSController.getInstance();
+        if (ctrl.userIsClient()) {
+            int rate = ctrl.getClientRateOfEpisode(serieId, numSeason, numEp);
+            if (rate != -1) {
+                setPreviouslyRated(rate);
+                this.setVisible(true);
+            }
+        }
+    }
+
+    public void reset() {
+        setVisible(false);
+        setOffStars();
+        checkRate();
     }
 
     public void setOffStars() {
@@ -31,6 +59,43 @@ public class panelStars extends javax.swing.JPanel {
 
     public void checkRate() {
         rated = false;
+    }
+
+    public void setViewId(int id) {
+        viewId = id;
+    }
+
+    private void rate() {
+        TSController ctrl = TSController.getInstance();
+        if (ctrl.userIsClient()) {
+            // Tenim viewId
+            ctrl.rateEpisode(viewId, rating);
+        } else if (ctrl.userIsAdmin()) {
+            // Preguntem quants cops vol valorar aquest episodi.
+            String count = JOptionPane.showInputDialog("How many times do you want to rate this episode with a " + rating + "/5?");
+            int intCount = Integer.parseInt(count);
+            ctrl.rateEpisodeByAdmin(serieId, numSeason, numEp, rating, intCount);
+            reset();
+            setVisible(true);
+        }
+        JOptionPane.showMessageDialog(null, "Thanks for rating this episode!");
+    }
+
+    private void setPreviouslyRated(int rating) {
+        switch (rating) {
+            case 5:
+                ratingStar5.setOn();
+            case 4:
+                ratingStar4.setOn();
+            case 3:
+                ratingStar3.setOn();
+            case 2:
+                ratingStar2.setOn();
+            case 1:
+                ratingStar1.setOn();
+        }
+        rated = true;
+        this.rating = rating;
     }
 
     /**
@@ -113,28 +178,43 @@ public class panelStars extends javax.swing.JPanel {
     }//GEN-LAST:event_formMouseExited
 
     private void ratingStar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ratingStar1MouseClicked
-        rated = true;
-        rating = 1;
+        if (!rated) {
+            rated = true;
+            rating = 1;
+            rate();
+        }
     }//GEN-LAST:event_ratingStar1MouseClicked
 
     private void ratingStar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ratingStar2MouseClicked
-        rated = true;
-        rating = 2;
+        if (!rated) {
+            rated = true;
+            rating = 2;
+            rate();
+        }
     }//GEN-LAST:event_ratingStar2MouseClicked
 
     private void ratingStar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ratingStar3MouseClicked
-        rated = true;
-        rating = 3;
+        if (!rated) {
+            rated = true;
+            rating = 3;
+            rate();
+        }
     }//GEN-LAST:event_ratingStar3MouseClicked
 
     private void ratingStar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ratingStar4MouseClicked
-        rated = true;
-        rating = 4;
+        if (!rated) {
+            rated = true;
+            rating = 4;
+            rate();
+        }
     }//GEN-LAST:event_ratingStar4MouseClicked
 
     private void ratingStar5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ratingStar5MouseClicked
-        rated = true;
-        rating = 5;
+        if (!rated) {
+            rated = true;
+            rating = 5;
+            rate();
+        }
     }//GEN-LAST:event_ratingStar5MouseClicked
 
     private void ratingStar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ratingStar1MouseEntered

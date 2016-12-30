@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import totseries_it1b.Controller.TSController;
 import totseries_it1b.View.BasicPanels.EpisodePanel;
 
 /**
@@ -17,6 +18,10 @@ import totseries_it1b.View.BasicPanels.EpisodePanel;
  */
 public class WatchEpisode extends javax.swing.JPanel {
 
+    private String idSerie;
+    private int numSeason;
+    private int numEp;
+
     /**
      * Creates new form WatchEpisode
      */
@@ -24,16 +29,29 @@ public class WatchEpisode extends javax.swing.JPanel {
         initComponents();
         timer = new Timer(50, new progress());
     }
-    
-    public void updateEpisode(EpisodePanel episodePanel, String description){
+
+    public void updateEpisode(String id, String titleSerie, int numSeason, int numEp, String titleEp, String desc) {
+        this.idSerie = id;
+        this.numSeason = numSeason;
+        this.numEp = numEp;
+
+        panelStars1.reset();
+        panelStars1.load(idSerie, numSeason, numEp);
         episode.removeAll();
-        episode.add(episodePanel);
-        episodeDescription.setText(description);
+        episode.add(new EpisodePanel(id, titleSerie, numEp, titleEp, desc, true, numSeason));
+        episodeDescription.setText(desc);
         progress.setValue(0);
-        panelStars1.setVisible(false);
-        panelStars1.setOffStars();
-        panelStars1.checkRate();
         rateEpisodeLabel.setVisible(false);
+        TSController ctrl = TSController.getInstance();
+        if (ctrl.userIsAdmin()) {
+            watchEpisode.setVisible(false);
+            progress.setVisible(false);
+            panelStars1.setVisible(true);
+            rateEpisodeLabel.setVisible(true);
+        } else if (!ctrl.userIsClient()) {
+            watchEpisode.setVisible(false);
+            progress.setVisible(false);
+        }
     }
 
     public class progress implements ActionListener {
@@ -45,14 +63,15 @@ public class WatchEpisode extends javax.swing.JPanel {
                 progress.setValue(n);
             } else {
                 timer.stop();
-                // AQUI CREAR VIEW I ENLLAÇAR AMB RATE??
-                JOptionPane.showMessageDialog(null, "episode watched");
+                int viewId = TSController.getInstance().visualizeEpisode(idSerie, numSeason, numEp);
+                panelStars1.setViewId(viewId);
+                JOptionPane.showMessageDialog(null, "The episode finished!");
                 panelStars1.setVisible(true);
                 rateEpisodeLabel.setVisible(true);
                 progress.setValue(0);
             }
         }
-    } 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,4 +170,5 @@ public class WatchEpisode extends javax.swing.JPanel {
     private javax.swing.JLabel rateEpisodeLabel;
     private javax.swing.JButton watchEpisode;
     // End of variables declaration//GEN-END:variables
+
 }

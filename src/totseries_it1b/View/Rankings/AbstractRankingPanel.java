@@ -83,7 +83,9 @@ public abstract class AbstractRankingPanel extends javax.swing.JPanel implements
     }
 
     protected void clearRanking() {
-        model.clear();
+        count = 0;
+        bottomContainer.removeAll();
+        topContainer.removeAll();
     }
 
     protected void addPanelToRanking(JPanel panel) {

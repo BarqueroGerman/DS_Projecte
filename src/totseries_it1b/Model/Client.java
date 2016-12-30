@@ -30,9 +30,4 @@ public class Client extends User {
         this.birthdate = birthdate;
         id += 1;
     }
-
-    public void addView(AbstractView v) {
-        views.add(v);
-        v.setUser(this);
-    }
 }

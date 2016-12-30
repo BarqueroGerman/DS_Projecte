@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package totseries_it1b.Model;
+package totseries_it1b.Model.Rankings;
+
+import totseries_it1b.Model.Episode;
 
 /**
  * Classe que representa el TOP X de les series més vistes de TotSeries.

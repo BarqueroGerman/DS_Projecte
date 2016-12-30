@@ -23,8 +23,8 @@ public class EpisodePanel extends ParentPanel {
     private String titleEpisode;
     private String description;
 
-    public EpisodePanel(String serieId, int num, String title, String description, boolean readOnly, int numSeason) {
-        super("EPISODE " + num, readOnly);
+    public EpisodePanel(String serieId, String serieTitle, int num, String title, String description, boolean readOnly, int numSeason) {
+        super(serieTitle, readOnly);
         this.serieId = serieId;
         this.description = description;
         this.titleEpisode = title;
@@ -39,16 +39,27 @@ public class EpisodePanel extends ParentPanel {
             setBackgroundPanel(new javax.swing.ImageIcon(getClass().getResource(imagePath)));
         }
 
+        // SEASON TITLE
+        JPanel seasInfoPanel = new JPanel();
+        seasInfoPanel.setBounds(0, 90, 155, 25);
+        JLabel label1 = new JLabel("SEASON " + numSeason);
+        label1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        label1.setForeground(new java.awt.Color(255, 255, 255));
+        seasInfoPanel.add(label1);
+        seasInfoPanel.setBackground(new Color(0, 0, 0, 170));
+        infoPanelContainer.add(seasInfoPanel, new Integer(1));
+
+        // EPISODE TITLE
         String shortTitle = titleEpisode;
         if (titleEpisode.length() > 18) {
             shortTitle = titleEpisode.substring(0, 15) + "...";
         }
         JPanel epInfoPanel = new JPanel();
-        epInfoPanel.setBounds(0, 100, 155, 30);
-        JLabel label = new JLabel(shortTitle);
-        label.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        label.setForeground(new java.awt.Color(255, 255, 255));
-        epInfoPanel.add(label);
+        epInfoPanel.setBounds(0, 115, 155, 30);
+        JLabel label2 = new JLabel(shortTitle);
+        label2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        label2.setForeground(new java.awt.Color(255, 255, 255));
+        epInfoPanel.add(label2);
         epInfoPanel.setBackground(new Color(0, 0, 0, 170));
         infoPanelContainer.add(epInfoPanel, new Integer(1));
     }

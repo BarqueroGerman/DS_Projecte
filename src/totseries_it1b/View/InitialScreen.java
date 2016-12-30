@@ -53,6 +53,7 @@ public class InitialScreen extends javax.swing.JFrame {
         usernameTextFieldRegister = new javax.swing.JTextField();
         registerButton = new javax.swing.JButton();
         passwordTextFieldRegister = new javax.swing.JPasswordField();
+        noLogin = new javax.swing.JButton();
         backGround = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -126,7 +127,7 @@ public class InitialScreen extends javax.swing.JFrame {
                     .addComponent(passwordLoginLabel)
                     .addComponent(passwordTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(incorrectLoginLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .addComponent(incorrectLoginLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginButton)
                 .addContainerGap())
@@ -187,12 +188,21 @@ public class InitialScreen extends javax.swing.JFrame {
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordRegisterLabel)
                     .addComponent(passwordTextFieldRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(registerButton)
                 .addContainerGap())
         );
 
         getContentPane().add(registerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 390, 190));
+
+        noLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        noLogin.setText("ACCESS WITHOUT LOGIN");
+        noLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noLoginActionPerformed(evt);
+            }
+        });
+        getContentPane().add(noLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, 250, 50));
 
         backGround.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         backGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fonsMainMenu.png"))); // NOI18N
@@ -249,7 +259,7 @@ public class InitialScreen extends javax.swing.JFrame {
         }
         if (ctrl.login(usernameTextFieldLogin.getText(), password)) {
             incorrectLoginLabel.setText("");
-            this.setVisible(false);
+            this.dispose();
             MainScreen totSeries = new MainScreen();
             totSeries.setVisible(true);
         } else {
@@ -257,28 +267,41 @@ public class InitialScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
+    private void noLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noLoginActionPerformed
+        this.dispose();
+        MainScreen totSeries = new MainScreen();
+        totSeries.setVisible(true);
+    }//GEN-LAST:event_noLoginActionPerformed
+
     public static void init() {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 InitialScreen initial = new InitialScreen();
-                //initial.setVisible(true);
-                TSController ctrl = TSController.getInstance();
-                if (ctrl.login("atormenta", "atormenta")) {
-                    initial.setVisible(false);
-                    MainScreen totSeries = new MainScreen();
-                    totSeries.setVisible(true);
-                }
+                initial.setVisible(true);
+                //TSController ctrl = TSController.getInstance();
+                //if (ctrl.login("ajaleo", "ajaleo")) { // CLIENT
+                /*if (ctrl.login("pierre", "pierre")) { // ADMIN
+                 initial.setVisible(false);
+                 MainScreen totSeries = new MainScreen();
+                 totSeries.setVisible(true);
+
+                 }*/
             }
-        });
+        }
+        );
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backGround;
+    private javax.swing.JLabel catalogLabel;
+    private javax.swing.JLabel catalogLabel1;
+    private javax.swing.JLabel catalogLabel2;
     private javax.swing.JLabel incorrectLoginLabel;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel mainTitle;
+    private javax.swing.JButton noLogin;
     private javax.swing.JLabel passwordLoginLabel;
     private javax.swing.JLabel passwordRegisterLabel;
     private javax.swing.JPasswordField passwordTextFieldLogin;

@@ -18,6 +18,9 @@ import totseries_it1b.Model.User;
  */
 public abstract class AbstractView {
 
+    private static int COUNTER = 0;
+
+    private int id;
     private Calendar date;
     private boolean active;
 
@@ -27,6 +30,8 @@ public abstract class AbstractView {
 
     public AbstractView() {
         this.date = Calendar.getInstance();
+        this.id = COUNTER;
+        COUNTER++;
         active = false; // In our system, the episode is instantly watched, so not active in any moment.
     }
 
@@ -59,6 +64,14 @@ public abstract class AbstractView {
 
     public void setEpisode(Episode e) {
         this.episode = e;
+    }
+
+    public boolean checkId(int id) {
+        return this.id == id;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
 }

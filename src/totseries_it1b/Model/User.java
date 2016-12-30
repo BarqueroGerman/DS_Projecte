@@ -6,6 +6,7 @@
 package totseries_it1b.Model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -17,7 +18,7 @@ public abstract class User {
     private String name;
     protected String username;
     protected String password;
-    
+
     protected ArrayList<AbstractView> views;
 
     public User(String id, String name, String username, String pass) {
@@ -25,7 +26,7 @@ public abstract class User {
         this.name = name;
         this.username = username;
         this.password = pass;
-        
+
         views = new ArrayList<AbstractView>();
     }
 
@@ -43,5 +44,23 @@ public abstract class User {
 
     public boolean isPasswordCorrect(String password) {
         return this.password.equals(password);
+    }
+
+    public void addView(AbstractView v) {
+        views.add(v);
+        v.setUser(this);
+    }
+
+    public AbstractView findViewById(int viewId) {
+        boolean found = false;
+        Iterator it = views.iterator();
+        AbstractView v = null;
+        while (!found && it.hasNext()) {
+            v = (AbstractView) it.next();
+            if (v.checkId(viewId)) {
+                found = true;
+            }
+        }
+        return v;
     }
 }

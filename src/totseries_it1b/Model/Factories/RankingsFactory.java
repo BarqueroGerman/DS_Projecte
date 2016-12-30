@@ -5,13 +5,13 @@
  */
 package totseries_it1b.Model.Factories;
 
-import totseries_it1b.Model.BestRatedEpisodes;
-import totseries_it1b.Model.BestRatedSeasons;
-import totseries_it1b.Model.BestRatedSeries;
-import totseries_it1b.Model.MostViewedEpisodes;
-import totseries_it1b.Model.MostViewedSeasons;
-import totseries_it1b.Model.MostViewedSeries;
-import totseries_it1b.Model.Ranking;
+import totseries_it1b.Model.Rankings.BestRatedEpisodes;
+import totseries_it1b.Model.Rankings.BestRatedSeasons;
+import totseries_it1b.Model.Rankings.BestRatedSeries;
+import totseries_it1b.Model.Rankings.MostViewedEpisodes;
+import totseries_it1b.Model.Rankings.MostViewedSeasons;
+import totseries_it1b.Model.Rankings.MostViewedSeries;
+import totseries_it1b.Model.Rankings.Ranking;
 import totseries_it1b.Model.Types.RankingType;
 
 /**

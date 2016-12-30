@@ -3,22 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package totseries_it1b.Model;
+package totseries_it1b.Model.Rankings;
+
+import totseries_it1b.Model.Serie;
 
 /**
  * Classe que representa el TOP X de les series més vistes de TotSeries.
  *
  * @author Enric Calvo & German Barquero
  */
-public class MostViewedSeasons extends Ranking {
+public class MostViewedSeries extends Ranking {
 
-    public MostViewedSeasons(int num) {
+    public MostViewedSeries(int num) {
         super(num);
     }
 
-    protected Season getHigherElement(Object obj1, Object obj2) {
-        Season s1 = (Season) obj1;
-        Season s2 = (Season) obj2;
+    protected Serie getHigherElement(Object obj1, Object obj2) {
+        Serie s1 = (Serie) obj1;
+        Serie s2 = (Serie) obj2;
         if (s1.getTotalViews() > s2.getTotalViews()) {
             return s1;
         } else if (s1.getTotalViews() < s2.getTotalViews()) {

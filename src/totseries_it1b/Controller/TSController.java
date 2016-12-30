@@ -171,6 +171,27 @@ public class TSController {
     }
 
     /**
+     * Metode que crea una visualitzacio per l'episodi amb el client en sessio.
+     * Si no es client no es crea.
+     *
+     * @param e
+     * @return
+     */
+    public int visualizeEpisode(String serieId, int numSeason, int episodeId) {
+        int viewId = -1;
+        if (userIsClient()) {
+            ViewFactory fact = FactoryCreator.Create(ViewFactory.class);
+            Episode e = totSeries.getCatalog().getSerieById(serieId).getSeasonByNumber(numSeason).getEpisodeByNumber(episodeId);
+            AbstractView v = fact.create(e, (Client) user);
+            viewId = v.getId();
+            totSeries.updateMostViewedSeriesRanking(e.getSerie());
+            totSeries.updateMostViewedSeasonsRanking(e.getSeason());
+            totSeries.updateMostViewedEpisodesRanking(e);
+        }
+        return viewId;
+    }
+
+    /**
      * Mètode que retorna true si l'username ja esta agafat i false sino.
      *
      * @param user
@@ -208,6 +229,47 @@ public class TSController {
     }
 
     /**
+     * Metode que afegeix una valoracio a una visualitzacio (si es client i no
+     * l'ha valorat encara)
+     *
+     * @param v
+     * @param rating
+     */
+    public void rateEpisode(int viewId, int rating) {
+        AbstractView v = user.findViewById(viewId);
+        if (v != null && userIsClient() && user == v.getUser() && !v.getEpisode().isRatedBy((Client) user)) {
+            v.setRate(rating);
+            Episode ep = v.getEpisode();
+            totSeries.updateBestRatedEpisodesRanking(ep);
+            totSeries.updateBestRatedSeasonsRanking(ep.getSeason());
+            totSeries.updateBestRatedSeriesRanking(ep.getSerie());
+        }
+    }
+
+    public void rateEpisodeByAdmin(String serieId, int numSeason, int episodeId, int rating, int count) {
+        for (int i = 0; i < count; i++) {
+            ViewFactory fact = FactoryCreator.Create(ViewFactory.class);
+            Episode e = totSeries.getCatalog().getSerieById(serieId).getSeasonByNumber(numSeason).getEpisodeByNumber(episodeId);
+            AbstractView v = fact.create(e, user, true);
+            v.setRate(rating);
+            totSeries.updateBestRatedEpisodesRanking(e);
+            totSeries.updateBestRatedSeasonsRanking(e.getSeason());
+            totSeries.updateBestRatedSeriesRanking(e.getSerie());
+            totSeries.updateMostViewedSeriesRanking(e.getSerie());
+            totSeries.updateMostViewedSeasonsRanking(e.getSeason());
+            totSeries.updateMostViewedEpisodesRanking(e);
+        }
+    }
+
+    public int getClientRateOfEpisode(String serieId, int numSeason, int epId) {
+        if (userIsClient()) {
+            Episode e = totSeries.getCatalog().getSerieById(serieId).getSeasonByNumber(numSeason).getEpisodeByNumber(epId);
+            return e.getRateByClient((Client) user);
+        }
+        return -1;
+    }
+
+    /**
      * Retorna true si hi ha algu loguejat.
      *
      * @return
@@ -226,7 +288,7 @@ public class TSController {
      */
     public boolean login(String username, String pass) {
         User u = totSeries.getUserByUsername(username);
-        if (u != null && u.isPasswordCorrect(pass) && u instanceof Client) {
+        if (u != null && u.isPasswordCorrect(pass)) {
             user = u;
             return true;
         }
@@ -282,6 +344,15 @@ public class TSController {
      */
     public boolean userIsClient() {
         return user != null && getUserInSessionType() == UserType.CLIENT;
+    }
+
+    /**
+     * Funcio que retorna true si l'usuari en sessio es un client.
+     *
+     * @return
+     */
+    public boolean userIsAdmin() {
+        return user != null && getUserInSessionType() == UserType.ADMIN;
     }
 
     /**

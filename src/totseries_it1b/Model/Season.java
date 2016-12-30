@@ -128,7 +128,7 @@ public class Season implements Iterable<Episode> {
             views = getTotalViews();
         }
         return new String[]{
-            serie.getId(), Integer.toString(number), Integer.toString(views), Double.toString(rating)
+            serie.getId(), serie.getTitle(), Integer.toString(number), Integer.toString(views), Double.toString(rating)
         };
     }
 }

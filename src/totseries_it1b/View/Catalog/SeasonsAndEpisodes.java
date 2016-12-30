@@ -42,13 +42,13 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         mainSeriePanel.add(new SeriePanel(id, title, true));
         seasonsPanels = new ArrayList<SeasonPanel>();
         for (String[] season : ctrl.getInfoSeasonsBySerieId(id)) {
-            SeasonPanel panel = new SeasonPanel(season[0], Integer.parseInt(season[1]), false);
+            SeasonPanel panel = new SeasonPanel(season[0], title, Integer.parseInt(season[2]), false);
             seasonsPanels.add(panel);
         }
         updateSeason(seasonsPanels);
     }
 
-    public void updateEpisode(String title, String id, int num, String inforEpisode, String description, int numSeason) {
+    public void updateEpisode(String title, String id, int numEp, String inforEpisode, String description, int numSeason) {
         CardLayout card = (CardLayout) seasonsAndEpisodesContainer.getLayout();
         card.show(seasonsAndEpisodesContainer, "watch");
         serieDescription.setText(ctrl.getDescriptionSerie(id));
@@ -56,8 +56,8 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         directorNameLabel.setText(ctrl.getDirector(id));
         producerNameLabel.setText(ctrl.getProducer(id));
         mainSeriePanel.removeAll();
-        mainSeriePanel.add(new SeasonPanel(id, numSeason, false, true));
-        watchEpisode1.updateEpisode(new EpisodePanel(id, num, inforEpisode, description, true, numSeason),description);
+        mainSeriePanel.add(new SeasonPanel(id, title, numSeason, false, true));
+        watchEpisode1.updateEpisode(id, title, numSeason, numEp, inforEpisode, description);
     }
 
     public void updateSeason(ArrayList<SeasonPanel> seasonsPanels) {
@@ -78,7 +78,7 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         mainSeriePanel.add(new SeriePanel(id, title, false));
         episodesPanels = new ArrayList<EpisodePanel>();
         for (String[] episode : ctrl.getInfoEpisodesBySeasonId(id, num)) {
-            EpisodePanel panel = new EpisodePanel(episode[0], Integer.parseInt(episode[3]), episode[2], episode[4], false, num);
+            EpisodePanel panel = new EpisodePanel(episode[0], title, Integer.parseInt(episode[4]), episode[3], episode[5], false, num);
             episodesPanels.add(panel);
         }
         updateEpisode(episodesPanels);
@@ -90,8 +90,8 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
             episodesPanel1.add(panel);
         }
     }
-    
-    public JPanel getSeasonsAndEoisodesContainer(){
+
+    public JPanel getSeasonsAndEoisodesContainer() {
         return seasonsAndEpisodesContainer;
     }
 

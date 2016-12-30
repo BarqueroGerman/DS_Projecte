@@ -17,8 +17,8 @@ public class SeasonRatingPanel extends SeasonPanel {
 
     private double rating;
 
-    public SeasonRatingPanel(String serieid, int num, double rating) {
-        super(serieid, num, true);
+    public SeasonRatingPanel(String serieid, String serieTitle, int num, double rating) {
+        super(serieid, serieTitle, num, true);
         addRatingToPanel(rating);
         this.rating = rating;
     }

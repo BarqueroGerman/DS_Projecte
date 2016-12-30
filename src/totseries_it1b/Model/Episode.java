@@ -49,13 +49,20 @@ public class Episode {
     }
 
     public boolean isRatedBy(Client client) {
+        return getRateByClient(client) != -1;
+    }
+
+    public int getRateByClient(Client client) {
+        int rating = -1;
         Iterator it = views.iterator();
         boolean rated = false;
         while (it.hasNext() && !rated) {
-            View v = (View) it.next();
-            rated = v.getRating() != null && v.getUser().compareUsername(client.getUsername());
+            AbstractView v = (AbstractView) it.next();
+            if (v.getRating() != null && v.getUser().compareUsername(client.getUsername())) {
+                rating = v.getRating().getValue();
+            }
         }
-        return rated;
+        return rating;
     }
 
     public void updateRating(Rating r) {
@@ -130,7 +137,7 @@ public class Episode {
             views = getViewsCount();
         }
         return new String[]{
-            season.getSerie().getId(), Integer.toString(season.getNumSeason()), title, Integer.toString(number), description, Integer.toString(views), Double.toString(rating)
+            season.getSerie().getId(), season.getSerie().getTitle(), Integer.toString(season.getNumSeason()), title, Integer.toString(number), description, Integer.toString(views), Double.toString(rating)
         };
     }
 }
