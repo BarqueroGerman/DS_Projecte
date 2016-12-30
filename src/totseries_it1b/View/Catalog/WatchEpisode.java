@@ -27,7 +27,7 @@ public class WatchEpisode extends javax.swing.JPanel {
      */
     public WatchEpisode() {
         initComponents();
-        timer = new Timer(5, new progress());
+        timer = new Timer(35, new progress());
     }
 
     public void updateEpisode(String id, String titleSerie, int numSeason, int numEp, String titleEp, String desc) {
