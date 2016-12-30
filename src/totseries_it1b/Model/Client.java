@@ -5,7 +5,6 @@
  */
 package totseries_it1b.Model;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 /**

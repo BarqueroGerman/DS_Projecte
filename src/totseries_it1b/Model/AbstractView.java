@@ -15,7 +15,7 @@ import totseries_it1b.Model.Factories.RatingFactory;
  */
 public abstract class AbstractView {
 
-    private static int COUNTER = 0;
+    private static int counter = 0;
 
     private int id;
     private Calendar date;
@@ -27,8 +27,8 @@ public abstract class AbstractView {
 
     public AbstractView() {
         this.date = Calendar.getInstance();
-        this.id = COUNTER;
-        COUNTER++;
+        this.id = counter;
+        counter++;
         active = false; // In our system, the episode is instantly watched, so not active in any moment.
     }
 

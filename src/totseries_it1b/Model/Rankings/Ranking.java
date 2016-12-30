@@ -20,11 +20,11 @@ public abstract class Ranking extends Observable implements Iterable<Object> {
     /**
      * Nombre d'episodis al ranking.
      */
-    protected final int num;
+    protected final int NUM;
     protected ArrayList<Object> top;
 
     public Ranking(int num) {
-        this.num = num;
+        this.NUM = num;
         top = new ArrayList<>();
     }
 
@@ -33,7 +33,7 @@ public abstract class Ranking extends Observable implements Iterable<Object> {
         int newPosition = updateElementPosition(o, oldPosition);
 
         //if (oldPosition != newPosition && (oldPosition <= num - 1 || newPosition <= num - 1)) {
-        if (oldPosition <= num - 1 || newPosition <= num - 1) {
+        if (oldPosition <= NUM - 1 || newPosition <= NUM - 1) {
             setChanged();
             notifyObservers();
         }
@@ -99,9 +99,9 @@ public abstract class Ranking extends Observable implements Iterable<Object> {
 
     @Override
     public Iterator<Object> iterator() {
-        if (top.size() < num) {
+        if (top.size() < NUM) {
             return this.top.subList(0, top.size()).iterator();
         }
-        return this.top.subList(0, num).iterator();
+        return this.top.subList(0, NUM).iterator();
     }
 }

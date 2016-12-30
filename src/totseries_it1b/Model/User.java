@@ -15,7 +15,7 @@ import java.util.Iterator;
 public abstract class User {
 
     protected String id;
-    private String name;
+    protected String name;
     protected String username;
     protected String password;
 
