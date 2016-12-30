@@ -5,6 +5,7 @@
  */
 package totseries_it1b.View.BasicPanels;
 
+import totseries_it1b.Controller.TSController;
 import totseries_it1b.View.Catalog.CatalogContainer;
 
 /**
@@ -21,6 +22,7 @@ public class SeasonPanel extends ParentPanel {
         super("SEASON " + num, readOnly);
         this.serieId = serieId;
         numSeason = num;
+        initCustomComponents();
     }
 
     public SeasonPanel(String serieId, int num, boolean readOnly, boolean head) {
@@ -28,6 +30,14 @@ public class SeasonPanel extends ParentPanel {
         this.serieId = serieId;
         numSeason = num;
         this.head = head;
+        initCustomComponents();
+    }
+
+    private void initCustomComponents() {
+        String imagePath = TSController.getInstance().getImageBySerieId(serieId);
+        if (imagePath != null && !imagePath.equals("")) {
+            setBackgroundPanel(new javax.swing.ImageIcon(getClass().getResource(imagePath)));
+        }
     }
 
     protected void formMouseClicked(java.awt.event.MouseEvent evt) {

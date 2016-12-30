@@ -68,9 +68,6 @@ public class TSController {
         InitialScreen.init();
     }
 
-    /**
-     * Afegeix valoracions a 9 episodes de breaking bad a mode de test.
-     */
     public void runRatingTest() {
         TSController ctrl = TSController.getInstance();
         ArrayList<Episode> episodes = new ArrayList<>();
@@ -80,13 +77,20 @@ public class TSController {
         for (Serie serie : ctrl.getCatalog()) {
             for (Season season : serie) {
                 for (Episode e : season) {
-                    ctrl.login(c1.getUsername(), c1.getPassword());
-                    v = ctrl.visualizeEpisode(e);
-                    ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(0, 6));
-
-                    ctrl.login(c2.getUsername(), c2.getPassword());
-                    v = ctrl.visualizeEpisode(e);
-                    ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(1, 6));
+                    for (int i = ThreadLocalRandom.current().nextInt(0, 7); i < 10; i++) {
+                        ctrl.login(c1.getUsername(), c1.getPassword());
+                        v = ctrl.visualizeEpisode(e);
+                        if (ThreadLocalRandom.current().nextInt(0, 2) > 0) {
+                            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(0, 6));
+                        }
+                    }
+                    for (int i = ThreadLocalRandom.current().nextInt(0, 8); i < 10; i++) {
+                        ctrl.login(c2.getUsername(), c2.getPassword());
+                        v = ctrl.visualizeEpisode(e);
+                        if (ThreadLocalRandom.current().nextInt(0, 2) > 0) {
+                            ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(1, 6));
+                        }
+                    }
                 }
             }
         }

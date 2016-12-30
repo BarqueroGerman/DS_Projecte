@@ -6,7 +6,9 @@
 package totseries_it1b.View.Rankings.BestRated;
 
 import javax.swing.JLabel;
+import totseries_it1b.View.BasicPanels.RatingPanel;
 import totseries_it1b.View.BasicPanels.SeriePanel;
+import totseries_it1b.View.BasicPanels.ViewsPanel;
 
 /**
  *
@@ -14,10 +16,21 @@ import totseries_it1b.View.BasicPanels.SeriePanel;
  */
 public class SerieRatingPanel extends SeriePanel {
 
+    private double rating;
+
     /**
      * Creates new form SerieRatingPanel
      */
     public SerieRatingPanel(String id, String title, double rating) {
         super(id, title, true);
+        addRatingToPanel(rating);
+        this.rating = rating;
+    }
+
+    private void addRatingToPanel(double rating) {
+        RatingPanel panel = new RatingPanel(rating);
+        panel.setBounds(0, 0, 155, 30);
+        infoPanelContainer.add(panel, new Integer(1));
+        panel.setVisible(true);
     }
 }

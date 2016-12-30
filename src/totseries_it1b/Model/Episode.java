@@ -73,6 +73,15 @@ public class Episode {
 
     @Override
     public String toString() {
+
+        return number + " - " + title + " (" + Double.toString(getRoundedRatingAverage()) + "/5)\n" + description;
+    }
+
+    public double getRatingAverage() {
+        return ratingAverage;
+    }
+
+    public double getRoundedRatingAverage() {
         String ratingStr = "0";
         DecimalFormat numberFormat = new DecimalFormat("#.00");
         if (ratingAverage - (int) ratingAverage == 0) {
@@ -82,11 +91,9 @@ public class Episode {
         } else {
             ratingStr = numberFormat.format(ratingAverage);
         }
-        return number + " - " + title + " (" + ratingStr + "/5)\n" + description;
-    }
 
-    public double getRatingAverage() {
-        return ratingAverage;
+        ratingStr = ratingStr.replace(",", ".");
+        return Double.parseDouble(ratingStr);
     }
 
     public int getViewsCount() {
@@ -117,7 +124,7 @@ public class Episode {
         double rating = 0;
         int views = 0;
         if (addRating) {
-            rating = getRatingAverage();
+            rating = getRoundedRatingAverage();
         }
         if (addViews) {
             views = getViewsCount();

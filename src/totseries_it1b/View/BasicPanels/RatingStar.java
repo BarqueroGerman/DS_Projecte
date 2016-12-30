@@ -17,10 +17,15 @@ public class RatingStar extends javax.swing.JPanel {
     public RatingStar() {
         initComponents();
     }
-    
-    public void setImage(javax.swing.ImageIcon image){
-        starIcon.setIcon(image);     
+
+    public void setOn() {
+        starIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
     }
+
+    public void setOff() {
+        starIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,7 +52,6 @@ public class RatingStar extends javax.swing.JPanel {
             .addComponent(starIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel starIcon;

@@ -5,28 +5,23 @@
  */
 package totseries_it1b.View.BasicPanels;
 
-import totseries_it1b.Controller.TSController;
-import totseries_it1b.View.Catalog.CatalogContainer;
+import java.awt.Color;
 
 /**
  *
- * @author ecalvove7.alumnes
+ * @author Enric Calvo & German Barquero
  */
-public class SeriePanel extends ParentPanel {
+public class RatingPanel extends javax.swing.JPanel {
 
-    private String serieId;
+    private double rating;
 
-    public SeriePanel(String serieId, String title, boolean readOnly) {
-        super(title, readOnly);
-        this.serieId = serieId;
-        initCustomComponents();
-    }
-
-    private void initCustomComponents() {
-        String imagePath = TSController.getInstance().getImageBySerieId(serieId);
-        if (imagePath != null && !imagePath.equals("")) {
-            setBackgroundPanel(new javax.swing.ImageIcon(getClass().getResource(imagePath)));
-        }
+    /**
+     * Creates new form ViewsPanel
+     */
+    public RatingPanel(double num) {
+        initComponents();
+        ratingNum.setText(Double.toString(num) + "/5.0");
+        setBackground(new Color(0, 0, 0, 170));
     }
 
     /**
@@ -38,26 +33,28 @@ public class SeriePanel extends ParentPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setPreferredSize(new java.awt.Dimension(157, 234));
+        ratingNum = new javax.swing.JLabel();
+
+        ratingNum.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ratingNum.setForeground(new java.awt.Color(255, 255, 255));
+        ratingNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ratingNum.setText("UNDEFINED");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 398, Short.MAX_VALUE)
+            .addComponent(ratingNum, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 298, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(ratingNum, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    protected void formMouseClicked(java.awt.event.MouseEvent evt) {
-        CatalogContainer cat = (CatalogContainer) getParent().getParent().getParent();
-        cat.showSeasonCard(title, serieId);
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ratingNum;
     // End of variables declaration//GEN-END:variables
 }

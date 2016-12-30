@@ -43,7 +43,7 @@ public class EpisodesByViewsRanking extends AbstractRankingPanel {
     // End of variables declaration
     @Override
     protected void load() {
-        for (String[] ep : TSController.getInstance().getBestRatedEpisodes()) {
+        for (String[] ep : TSController.getInstance().getMostViewedEpisodes()) {
             addElementToRanking(ep);
         }
     }

@@ -5,6 +5,10 @@
  */
 package totseries_it1b.View.BasicPanels;
 
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import totseries_it1b.Controller.TSController;
 import totseries_it1b.View.Catalog.CatalogContainer;
 
 /**
@@ -24,9 +28,29 @@ public class EpisodePanel extends ParentPanel {
         this.serieId = serieId;
         this.description = description;
         this.titleEpisode = title;
-        this.infoEpisode.setText(titleEpisode);
         this.numEpisode = num;
         this.numSeason = numSeason;
+        initCustomComponents();
+    }
+
+    private void initCustomComponents() {
+        String imagePath = TSController.getInstance().getImageBySerieId(serieId);
+        if (imagePath != null && !imagePath.equals("")) {
+            setBackgroundPanel(new javax.swing.ImageIcon(getClass().getResource(imagePath)));
+        }
+
+        String shortTitle = titleEpisode;
+        if (titleEpisode.length() > 18) {
+            shortTitle = titleEpisode.substring(0, 15) + "...";
+        }
+        JPanel epInfoPanel = new JPanel();
+        epInfoPanel.setBounds(0, 100, 155, 30);
+        JLabel label = new JLabel(shortTitle);
+        label.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        label.setForeground(new java.awt.Color(255, 255, 255));
+        epInfoPanel.add(label);
+        epInfoPanel.setBackground(new Color(0, 0, 0, 170));
+        infoPanelContainer.add(epInfoPanel, new Integer(1));
     }
 
     /**

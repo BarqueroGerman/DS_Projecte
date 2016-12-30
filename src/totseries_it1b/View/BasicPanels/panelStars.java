@@ -10,26 +10,29 @@ package totseries_it1b.View.BasicPanels;
  * @author enric
  */
 public class panelStars extends javax.swing.JPanel {
+
     boolean rated = false;
     int rating;
+
     /**
      * Creates new form panelStars
      */
     public panelStars() {
         initComponents();
     }
-    
-    public void setOffStars(){
-        ratingStar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
-        ratingStar2.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
-        ratingStar3.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
-        ratingStar4.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
-        ratingStar5.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/offStar.jpg")));
+
+    public void setOffStars() {
+        ratingStar1.setOff();
+        ratingStar2.setOff();
+        ratingStar3.setOff();
+        ratingStar4.setOff();
+        ratingStar5.setOff();
     }
-    
-    public void checkRate(){
+
+    public void checkRate() {
         rated = false;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,7 +107,7 @@ public class panelStars extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
-        if(!rated){
+        if (!rated) {
             setOffStars();
         }
     }//GEN-LAST:event_formMouseExited
@@ -135,43 +138,42 @@ public class panelStars extends javax.swing.JPanel {
     }//GEN-LAST:event_ratingStar5MouseClicked
 
     private void ratingStar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ratingStar1MouseEntered
-        ratingStar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg"))); 
+        ratingStar1.setOn();
     }//GEN-LAST:event_ratingStar1MouseEntered
 
     private void ratingStar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ratingStar2MouseEntered
-        if(!rated){
-            ratingStar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
-            ratingStar2.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
+        if (!rated) {
+            ratingStar1.setOn();
+            ratingStar2.setOn();
         }
     }//GEN-LAST:event_ratingStar2MouseEntered
 
     private void ratingStar3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ratingStar3MouseEntered
-        if(!rated){
-            ratingStar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
-            ratingStar2.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
-            ratingStar3.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
+        if (!rated) {
+            ratingStar1.setOn();
+            ratingStar2.setOn();
+            ratingStar3.setOn();
         }
     }//GEN-LAST:event_ratingStar3MouseEntered
 
     private void ratingStar4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ratingStar4MouseEntered
-        if(!rated){
-            ratingStar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
-            ratingStar2.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
-            ratingStar3.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
-            ratingStar4.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
+        if (!rated) {
+            ratingStar1.setOn();
+            ratingStar2.setOn();
+            ratingStar3.setOn();
+            ratingStar4.setOn();
         }
     }//GEN-LAST:event_ratingStar4MouseEntered
 
     private void ratingStar5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ratingStar5MouseEntered
-        if(!rated){  
-            ratingStar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
-            ratingStar2.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
-            ratingStar3.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
-            ratingStar4.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
-            ratingStar5.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/onStar.jpg")));
+        if (!rated) {
+            ratingStar1.setOn();
+            ratingStar2.setOn();
+            ratingStar3.setOn();
+            ratingStar4.setOn();
+            ratingStar5.setOn();
         }
     }//GEN-LAST:event_ratingStar5MouseEntered
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private totseries_it1b.View.BasicPanels.RatingStar ratingStar1;

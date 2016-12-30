@@ -5,6 +5,7 @@
  */
 package totseries_it1b.Model;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -52,6 +53,22 @@ public class Season implements Iterable<Episode> {
             num += 1;
         }
         return sum / num;
+    }
+
+    public double getRoundedRatingAverage() {
+        String ratingStr = "0";
+        DecimalFormat numberFormat = new DecimalFormat("#.00");
+        double ratingAverage = getRatingAverage();
+        if (ratingAverage - (int) ratingAverage == 0) {
+            ratingStr = Integer.toString((int) ratingAverage);
+        } else if (ratingAverage < 1) {
+            ratingStr = "0" + numberFormat.format(ratingAverage);
+        } else {
+            ratingStr = numberFormat.format(ratingAverage);
+        }
+
+        ratingStr = ratingStr.replace(",", ".");
+        return Double.parseDouble(ratingStr);
     }
 
     public int getTotalViews() {
@@ -105,7 +122,7 @@ public class Season implements Iterable<Episode> {
         double rating = 0;
         int views = 0;
         if (addRating) {
-            rating = getRatingAverage();
+            rating = getRoundedRatingAverage();
         }
         if (addViews) {
             views = getTotalViews();

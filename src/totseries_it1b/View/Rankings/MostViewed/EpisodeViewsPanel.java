@@ -7,6 +7,7 @@ package totseries_it1b.View.Rankings.MostViewed;
 
 import totseries_it1b.View.Rankings.BestRated.*;
 import totseries_it1b.View.BasicPanels.EpisodePanel;
+import totseries_it1b.View.BasicPanels.ViewsPanel;
 
 /**
  *
@@ -14,7 +15,18 @@ import totseries_it1b.View.BasicPanels.EpisodePanel;
  */
 public class EpisodeViewsPanel extends EpisodePanel {
 
+    private int views;
+
     public EpisodeViewsPanel(String serieid, int num, String title, String desc, int numSeason, int views) {
         super(serieid, num, title, desc, true, numSeason);
+        addViewsToPanel(views);
+        this.views = views;
+    }
+
+    private void addViewsToPanel(int views) {
+        ViewsPanel panel = new ViewsPanel(views);
+        panel.setBounds(0, 0, 155, 30);
+        infoPanelContainer.add(panel, new Integer(1));
+        panel.setVisible(true);
     }
 }

@@ -20,6 +20,7 @@ public abstract class ParentPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ParentPanel
+     *
      * @param title
      * @param readOnly
      */
@@ -78,10 +79,11 @@ public abstract class ParentPanel extends javax.swing.JPanel {
 
         titlePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
-        infoPanelContainer = new javax.swing.JPanel();
+        infoPanelContainer = new javax.swing.JLayeredPane();
         infoEpisode = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setPreferredSize(new java.awt.Dimension(157, 242));
         setLayout(new java.awt.BorderLayout());
 
         titlePanel.setBackground(new java.awt.Color(51, 51, 51));
@@ -99,15 +101,32 @@ public abstract class ParentPanel extends javax.swing.JPanel {
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+            .addComponent(titleLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         add(titlePanel, java.awt.BorderLayout.CENTER);
 
-        infoPanelContainer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        infoPanelContainer.setPreferredSize(new java.awt.Dimension(155, 212));
 
         infoEpisode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        infoPanelContainer.add(infoEpisode, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 155, 212));
+
+        javax.swing.GroupLayout infoPanelContainerLayout = new javax.swing.GroupLayout(infoPanelContainer);
+        infoPanelContainer.setLayout(infoPanelContainerLayout);
+        infoPanelContainerLayout.setHorizontalGroup(
+            infoPanelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoPanelContainerLayout.createSequentialGroup()
+                .addGap(0, 77, Short.MAX_VALUE)
+                .addComponent(infoEpisode)
+                .addGap(0, 78, Short.MAX_VALUE))
+        );
+        infoPanelContainerLayout.setVerticalGroup(
+            infoPanelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoPanelContainerLayout.createSequentialGroup()
+                .addGap(0, 106, Short.MAX_VALUE)
+                .addComponent(infoEpisode)
+                .addGap(0, 106, Short.MAX_VALUE))
+        );
+        infoPanelContainer.setLayer(infoEpisode, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         add(infoPanelContainer, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
@@ -115,7 +134,7 @@ public abstract class ParentPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JLabel infoEpisode;
-    protected javax.swing.JPanel infoPanelContainer;
+    protected javax.swing.JLayeredPane infoPanelContainer;
     protected javax.swing.JLabel titleLabel;
     protected javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables
