@@ -27,18 +27,16 @@ public class WatchEpisode extends javax.swing.JPanel {
      */
     public WatchEpisode() {
         initComponents();
-        timer = new Timer(50, new progress());
+        timer = new Timer(5, new progress());
     }
 
     public void updateEpisode(String id, String titleSerie, int numSeason, int numEp, String titleEp, String desc) {
         this.idSerie = id;
         this.numSeason = numSeason;
         this.numEp = numEp;
-
         panelStars1.reset();
+        episodeTitle.setText(titleEp);
         panelStars1.load(idSerie, numSeason, numEp);
-        episode.removeAll();
-        episode.add(new EpisodePanel(id, titleSerie, numEp, titleEp, desc, true, numSeason));
         episodeDescription.setText(desc);
         progress.setValue(0);
         rateEpisodeLabel.setVisible(false);
@@ -82,17 +80,15 @@ public class WatchEpisode extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        episode = new javax.swing.JPanel();
         episodeDescription = new javax.swing.JTextPane();
         watchEpisode = new javax.swing.JButton();
         progress = new javax.swing.JProgressBar();
         panelStars1 = new totseries_it1b.View.BasicPanels.panelStars();
         rateEpisodeLabel = new javax.swing.JLabel();
+        episodeTitle = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(913, 324));
-
-        episode.setBackground(new java.awt.Color(255, 255, 255));
 
         episodeDescription.setEditable(false);
 
@@ -110,50 +106,51 @@ public class WatchEpisode extends javax.swing.JPanel {
         rateEpisodeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         rateEpisodeLabel.setText("RATE EPISODE:");
 
+        episodeTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        episodeTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        episodeTitle.setText("EPISODE TITLE");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(episode, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(203, 203, 203)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(episodeDescription, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(panelStars1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(13, 13, 13))
-                            .addComponent(episodeDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                            .addComponent(watchEpisode, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(139, 139, 139)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(watchEpisode, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(117, 117, 117)
-                                .addComponent(rateEpisodeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(13, 13, 13)))))
-                .addContainerGap(195, Short.MAX_VALUE))
+                                .addComponent(panelStars1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(rateEpisodeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(152, 152, 152))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(episodeTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(episodeTitle)
+                .addGap(18, 18, 18)
                 .addComponent(episodeDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(rateEpisodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rateEpisodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(watchEpisode, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelStars1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(watchEpisode, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(64, 64, 64)
                         .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(episode, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 73, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -163,8 +160,8 @@ public class WatchEpisode extends javax.swing.JPanel {
 
     private Timer timer;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel episode;
     private javax.swing.JTextPane episodeDescription;
+    private javax.swing.JLabel episodeTitle;
     private totseries_it1b.View.BasicPanels.panelStars panelStars1;
     private javax.swing.JProgressBar progress;
     private javax.swing.JLabel rateEpisodeLabel;

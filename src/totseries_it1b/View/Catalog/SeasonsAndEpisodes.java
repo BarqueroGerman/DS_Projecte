@@ -25,6 +25,10 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
     ArrayList<EpisodePanel> episodesPanels;
     ArrayList<SeasonPanel> seasonsPanels;
     TSController ctrl;
+    int activeCard = 0;
+    int numSeason;
+    String title;
+    String id;
 
     public SeasonsAndEpisodes() {
         initComponents();
@@ -32,8 +36,11 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
     }
 
     public void updateSerie(String title, String id) {
+        this.title = title;
+        this.id = id;
         CardLayout card = (CardLayout) seasonsAndEpisodesContainer.getLayout();
         card.show(seasonsAndEpisodesContainer, "seasons");
+        activeCard = 0;
         serieDescription.setText(ctrl.getDescriptionSerie(id));
         numberSeasonLabel.setText(title);
         directorNameLabel.setText(ctrl.getDirector(id));
@@ -41,16 +48,19 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         mainSeriePanel.removeAll();
         mainSeriePanel.add(new SeriePanel(id, title, true));
         seasonsPanels = new ArrayList<SeasonPanel>();
-        for (String[] season : ctrl.getInfoSeasonsBySerieId(id)) {
+        for (String[] season : ctrl.getInfoSeasonsBySerieId(id)) {            
             SeasonPanel panel = new SeasonPanel(season[0], title, Integer.parseInt(season[2]), false);
             seasonsPanels.add(panel);
         }
-        updateSeason(seasonsPanels);
+        updateSeason();
     }
 
     public void updateEpisode(String title, String id, int numEp, String inforEpisode, String description, int numSeason) {
+        this.title = title;
+        this.id = id;
         CardLayout card = (CardLayout) seasonsAndEpisodesContainer.getLayout();
         card.show(seasonsAndEpisodesContainer, "watch");
+        activeCard = 1;
         serieDescription.setText(ctrl.getDescriptionSerie(id));
         numberSeasonLabel.setText(title);
         directorNameLabel.setText(ctrl.getDirector(id));
@@ -58,18 +68,22 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         mainSeriePanel.removeAll();
         mainSeriePanel.add(new SeasonPanel(id, title, numSeason, false, true));
         watchEpisode1.updateEpisode(id, title, numSeason, numEp, inforEpisode, description);
+        this.numSeason = numSeason;
     }
 
-    public void updateSeason(ArrayList<SeasonPanel> seasonsPanels) {
-        seasonsPanel1.removeAll();
-        for (SeasonPanel panel : seasonsPanels) {
+    public void updateSeason() {
+        seasonsPanel1.removeAll();        
+        for (SeasonPanel panel : seasonsPanels){            
             seasonsPanel1.add(panel);
         }
     }
 
     public void updateSeason(String title, String id, int num) {
+        this.title = title;
+        this.id = id;
         CardLayout card = (CardLayout) seasonsAndEpisodesContainer.getLayout();
         card.show(seasonsAndEpisodesContainer, "episodes");
+        activeCard = 2;
         serieDescription.setText(ctrl.getDescriptionSerie(id));
         numberSeasonLabel.setText("SEASON " + Integer.toString(num));
         directorNameLabel.setText(ctrl.getDirector(id));
@@ -115,6 +129,7 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         directorNameLabel = new javax.swing.JLabel();
         producerLabel = new javax.swing.JLabel();
         producerNameLabel = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(960, 637));
@@ -146,20 +161,24 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
 
         producerNameLabel.setText("jLabel2");
 
+        backButton.setText("BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(seasonsAndEpisodesContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 913, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(mainSeriePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(numberSeasonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(43, 43, 43)
                                 .addComponent(serieDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -171,7 +190,13 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(directorNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(producerNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(producerNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(numberSeasonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(backButton)
+                                .addGap(8, 8, 8)))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -182,8 +207,13 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
                         .addGap(34, 34, 34)
                         .addComponent(mainSeriePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(numberSeasonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(numberSeasonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(backButton)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(serieDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,7 +230,23 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        CatalogContainer cat = (CatalogContainer)getParent();
+        switch(activeCard){
+            case 0:
+                cat.showCatalogCard();
+                break;
+            case 1:
+                cat.showEpisodeCard(title, id, numSeason);
+                break;
+            case 2:
+                cat.showSeasonCard(title, id);
+                break;
+        }
+    }//GEN-LAST:event_backButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel directorLabel;
     private javax.swing.JLabel directorNameLabel;
     private totseries_it1b.View.Catalog.EpisodesPanel episodesPanel1;

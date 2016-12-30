@@ -44,6 +44,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         tittlePanel = new javax.swing.JPanel();
         totSeriesLabel = new javax.swing.JLabel();
+        auxButton = new javax.swing.JButton();
         buttonsPanel = new javax.swing.JPanel();
         catalogButton = new javax.swing.JPanel();
         catalogLabel = new javax.swing.JLabel();
@@ -55,7 +56,6 @@ public class MainScreen extends javax.swing.JFrame {
         catalogContainer1 = new totseries_it1b.View.Catalog.CatalogContainer();
         byViewsRankings = new totseries_it1b.View.Rankings.MostViewed.ByViewsRankingsPanel();
         byRatingRankings = new totseries_it1b.View.Rankings.BestRated.ByRatingRankingsPanel();
-        auxButton = new javax.swing.JButton();
         bakcGroundIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,17 +71,31 @@ public class MainScreen extends javax.swing.JFrame {
         totSeriesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         totSeriesLabel.setText("TotSeries.com");
 
+        auxButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        auxButton.setText("LOG IN");
+        auxButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                auxButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tittlePanelLayout = new javax.swing.GroupLayout(tittlePanel);
         tittlePanel.setLayout(tittlePanelLayout);
         tittlePanelLayout.setHorizontalGroup(
             tittlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tittlePanelLayout.createSequentialGroup()
                 .addComponent(totSeriesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 749, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 591, Short.MAX_VALUE)
+                .addComponent(auxButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
         );
         tittlePanelLayout.setVerticalGroup(
             tittlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(totSeriesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(totSeriesLabel)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tittlePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(auxButton)
+                .addContainerGap())
         );
 
         getContentPane().add(tittlePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, -1));
@@ -210,15 +224,6 @@ public class MainScreen extends javax.swing.JFrame {
         mainContainer.add(byRatingRankings, "ratings");
 
         getContentPane().add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 960, 620));
-
-        auxButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        auxButton.setText("LOG IN");
-        auxButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                auxButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(auxButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 90, 30));
 
         bakcGroundIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fonsMainMenu.png"))); // NOI18N
         getContentPane().add(bakcGroundIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 810));
