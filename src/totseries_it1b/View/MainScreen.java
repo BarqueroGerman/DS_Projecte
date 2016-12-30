@@ -158,7 +158,7 @@ public class MainScreen extends javax.swing.JFrame {
         );
         mostRatedButtonLayout.setVerticalGroup(
             mostRatedButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mostRatedLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+            .addComponent(mostRatedLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         mostViewedButton.setBackground(new java.awt.Color(255, 255, 255));
@@ -213,7 +213,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(buttonsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 960, 50));
+        getContentPane().add(buttonsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 960, 40));
 
         mainContainer.setBackground(new java.awt.Color(255, 255, 255));
         mainContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -223,7 +223,7 @@ public class MainScreen extends javax.swing.JFrame {
         mainContainer.add(byViewsRankings, "views");
         mainContainer.add(byRatingRankings, "ratings");
 
-        getContentPane().add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 960, 620));
+        getContentPane().add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 960, 610));
 
         bakcGroundIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fonsMainMenu.png"))); // NOI18N
         getContentPane().add(bakcGroundIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 810));
