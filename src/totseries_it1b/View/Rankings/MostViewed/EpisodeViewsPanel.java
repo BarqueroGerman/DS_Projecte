@@ -5,7 +5,6 @@
  */
 package totseries_it1b.View.Rankings.MostViewed;
 
-import totseries_it1b.View.Rankings.BestRated.*;
 import totseries_it1b.View.BasicPanels.EpisodePanel;
 import totseries_it1b.View.BasicPanels.ViewsPanel;
 

@@ -6,8 +6,10 @@
 package totseries_it1b.Controller;
 
 import edu.ub.informatica.disseny.totseries.TotSeriesDataManager;
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Observer;
 import java.util.concurrent.ThreadLocalRandom;
 import totseries_it1b.Model.*;
 import totseries_it1b.Model.Factories.*;
@@ -70,24 +72,23 @@ public class TSController {
 
     public void runRatingTest() {
         TSController ctrl = TSController.getInstance();
-        ArrayList<Episode> episodes = new ArrayList<>();
-        Client c1 = (Client) ctrl.getUserByUsername("atormenta");
-        Client c2 = (Client) ctrl.getUserByUsername("dtomacal");
-        AbstractView v;
-        for (Serie serie : ctrl.getCatalog()) {
+        Client c1 = (Client) totSeries.getUserByUsername("atormenta");
+        Client c2 = (Client) totSeries.getUserByUsername("dtomacal");
+        int v;
+        for (Serie serie : totSeries.getCatalog()) {
             for (Season season : serie) {
                 for (Episode e : season) {
                     for (int i = ThreadLocalRandom.current().nextInt(0, 7); i < 10; i++) {
                         ctrl.login(c1.getUsername(), c1.getPassword());
-                        v = ctrl.visualizeEpisode(e);
-                        if (ThreadLocalRandom.current().nextInt(0, 2) > 0) {
+                        v = ctrl.visualizeEpisode(serie.getId(), season.getNumSeason(), e.getNumber());
+                        if (ThreadLocalRandom.current().nextInt(0, 4) > 2) {
                             ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(0, 6));
                         }
                     }
                     for (int i = ThreadLocalRandom.current().nextInt(0, 8); i < 10; i++) {
                         ctrl.login(c2.getUsername(), c2.getPassword());
-                        v = ctrl.visualizeEpisode(e);
-                        if (ThreadLocalRandom.current().nextInt(0, 2) > 0) {
+                        v = ctrl.visualizeEpisode(serie.getId(), season.getNumSeason(), e.getNumber());
+                        if (ThreadLocalRandom.current().nextInt(0, 4) > 2) {
                             ctrl.rateEpisode(v, ThreadLocalRandom.current().nextInt(1, 6));
                         }
                     }
@@ -158,25 +159,6 @@ public class TSController {
      * @param e
      * @return
      */
-    public AbstractView visualizeEpisode(Episode e) {
-        AbstractView v = null;
-        if (userIsClient()) {
-            ViewFactory fact = FactoryCreator.Create(ViewFactory.class);
-            v = fact.create(e, (Client) user);
-            totSeries.updateMostViewedSeriesRanking(e.getSerie());
-            totSeries.updateMostViewedSeasonsRanking(e.getSeason());
-            totSeries.updateMostViewedEpisodesRanking(e);
-        }
-        return v;
-    }
-
-    /**
-     * Metode que crea una visualitzacio per l'episodi amb el client en sessio.
-     * Si no es client no es crea.
-     *
-     * @param e
-     * @return
-     */
     public int visualizeEpisode(String serieId, int numSeason, int episodeId) {
         int viewId = -1;
         if (userIsClient()) {
@@ -199,33 +181,6 @@ public class TSController {
      */
     public boolean usernameExists(String user) {
         return totSeries.usernameRegistered(user);
-    }
-
-    /**
-     * NO IMPLEMENTADA
-     *
-     * @param c
-     * @param VIP
-     */
-    public void setClientVIP(Client c, boolean VIP) {
-        // NO IMPLEMENTAT
-    }
-
-    /**
-     * Metode que afegeix una valoracio a una visualitzacio (si es client i no
-     * l'ha valorat encara)
-     *
-     * @param v
-     * @param rating
-     */
-    public void rateEpisode(AbstractView v, int rating) {
-        if (userIsClient() && user == v.getUser() && !v.getEpisode().isRatedBy((Client) user)) {
-            v.setRate(rating);
-            Episode ep = v.getEpisode();
-            totSeries.updateBestRatedEpisodesRanking(ep);
-            totSeries.updateBestRatedSeasonsRanking(ep.getSeason());
-            totSeries.updateBestRatedSeriesRanking(ep.getSerie());
-        }
     }
 
     /**
@@ -303,31 +258,11 @@ public class TSController {
     }
 
     /**
-     * Getter del cataleg de TotSeries.
-     *
-     * @return
-     */
-    public Catalog getCatalog() {
-        return totSeries.getCatalog();
-    }
-
-    /**
-     * Retorna l'usuari amb el nom d'usuari passat com a parametre. null si no
-     * n'hi ha cap
-     *
-     * @param username
-     * @return
-     */
-    public User getUserByUsername(String username) {
-        return totSeries.getUserByUsername(username);
-    }
-
-    /**
      * Retorna 0 si l'usuari en sessio es Admin o 1 si es Client.
      *
      * @return
      */
-    public int getUserInSessionType() {
+    private int getUserInSessionType() {
         if (user != null && user instanceof Admin) {
             return 0;
         } else if (user != null && user instanceof Client) {
@@ -355,36 +290,27 @@ public class TSController {
         return user != null && getUserInSessionType() == UserType.ADMIN;
     }
 
-    /**
-     * Funcio que retorna l'usuari en sessio.
-     *
-     * @return
-     */
-    public User getUserInSession() {
-        return this.user;
-    }
-
-    public void linkMostViewedSeriesRanking(AbstractRankingPanel panel) {
+    public void linkMostViewedSeriesRanking(Observer panel) {
         totSeries.getMostViewedSeriesRanking().addObserver(panel);
     }
 
-    public void linkMostViewedSeasonsRanking(AbstractRankingPanel panel) {
+    public void linkMostViewedSeasonsRanking(Observer panel) {
         totSeries.getMostViewedSeasonsRanking().addObserver(panel);
     }
 
-    public void linkMostViewedEpisodesRanking(AbstractRankingPanel panel) {
+    public void linkMostViewedEpisodesRanking(Observer panel) {
         totSeries.getMostViewedEpisodesRanking().addObserver(panel);
     }
 
-    public void linkBestRatedSeriesRanking(AbstractRankingPanel panel) {
+    public void linkBestRatedSeriesRanking(Observer panel) {
         totSeries.getBestRatedSeriesRanking().addObserver(panel);
     }
 
-    public void linkBestRatedSeasonsRanking(AbstractRankingPanel panel) {
+    public void linkBestRatedSeasonsRanking(Observer panel) {
         totSeries.getBestRatedSeasonsRanking().addObserver(panel);
     }
 
-    public void linkBestRatedEpisodesRanking(AbstractRankingPanel panel) {
+    public void linkBestRatedEpisodesRanking(Observer panel) {
         totSeries.getBestRatedEpisodesRanking().addObserver(panel);
     }
 
@@ -416,6 +342,18 @@ public class TSController {
         return infoEpisodes;
     }
 
+    public String getDescriptionSerie(String id) {
+        return totSeries.getCatalog().getSerieById(id).getDescription();
+    }
+
+    public String getDirector(String id) {
+        return totSeries.getCatalog().getSerieById(id).getDirector();
+    }
+
+    public String getProducer(String id) {
+        return totSeries.getCatalog().getSerieById(id).getProducer();
+    }
+
     public ArrayList<String[]> getMostViewedSeries() {
         ArrayList<String[]> infoSeries = new ArrayList<String[]>();
         for (Object obj : totSeries.getMostViewedSeriesRanking()) {
@@ -432,18 +370,6 @@ public class TSController {
             infoSeries.add(serie.parse(false, true));
         }
         return infoSeries;
-    }
-
-    public String getDescriptionSerie(String id) {
-        return totSeries.getCatalog().getSerieById(id).getDescription();
-    }
-
-    public String getDirector(String id) {
-        return totSeries.getCatalog().getSerieById(id).getDirector();
-    }
-
-    public String getProducer(String id) {
-        return totSeries.getCatalog().getSerieById(id).getProducer();
     }
 
     public ArrayList<String[]> getMostViewedSeasons() {
@@ -482,7 +408,7 @@ public class TSController {
         return infoEpisodes;
     }
 
-    public String getImageBySerieId(String id) {
+    public String getImagePathBySerieId(String id) {
         return SerieImagePath.getImagePath(id);
     }
 }

@@ -8,9 +8,7 @@ package totseries_it1b.Model;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
-import java.util.Observable;
 
 /**
  *
@@ -72,16 +70,6 @@ public class Episode {
 
     public boolean checkNumber(int n) {
         return this.number == n;
-    }
-
-    public String getNumAndTitle() {
-        return this.number + " - " + this.title;
-    }
-
-    @Override
-    public String toString() {
-
-        return number + " - " + title + " (" + Double.toString(getRoundedRatingAverage()) + "/5)\n" + description;
     }
 
     public double getRatingAverage() {

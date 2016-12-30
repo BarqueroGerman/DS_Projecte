@@ -6,11 +6,8 @@
 package totseries_it1b.Model;
 
 import java.util.Calendar;
-import java.util.Date;
-import totseries_it1b.Model.Episode;
 import totseries_it1b.Model.Factories.FactoryCreator;
 import totseries_it1b.Model.Factories.RatingFactory;
-import totseries_it1b.Model.User;
 
 /**
  *

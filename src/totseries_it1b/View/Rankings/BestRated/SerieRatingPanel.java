@@ -5,10 +5,8 @@
  */
 package totseries_it1b.View.Rankings.BestRated;
 
-import javax.swing.JLabel;
 import totseries_it1b.View.BasicPanels.RatingPanel;
 import totseries_it1b.View.BasicPanels.SeriePanel;
-import totseries_it1b.View.BasicPanels.ViewsPanel;
 
 /**
  *

@@ -23,7 +23,7 @@ public class SeriePanel extends ParentPanel {
     }
 
     private void initCustomComponents() {
-        String imagePath = TSController.getInstance().getImageBySerieId(serieId);
+        String imagePath = TSController.getInstance().getImagePathBySerieId(serieId);
         if (imagePath != null && !imagePath.equals("")) {
             setBackgroundPanel(new javax.swing.ImageIcon(getClass().getResource(imagePath)));
         }

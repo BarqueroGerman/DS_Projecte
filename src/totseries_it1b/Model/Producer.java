@@ -12,26 +12,26 @@ import java.util.ArrayList;
  * @author Enric Calvo & German Barquero
  */
 public class Producer {
+
     private String name;
     private int id;
     private int foundationYear;
-    
+
     private ArrayList<Serie> series;
-    
-    public Producer(String n, int id, int year){
+
+    public Producer(String n, int id, int year) {
         this.name = n;
         this.id = id;
         this.foundationYear = year;
-        
+
         series = new ArrayList<Serie>();
     }
-    
-    public void addSerie(Serie s){
-        // TODO check if existent
+
+    public void addSerie(Serie s) {
         series.add(s);
     }
-    
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 }

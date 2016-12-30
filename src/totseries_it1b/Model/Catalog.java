@@ -54,14 +54,6 @@ public class Catalog implements Iterable<Serie> {
         return true;
     }
 
-    public int getNumSeries() {
-        return series.size();
-    }
-
-    public Serie getSerie(int i) {
-        return series.get(i);
-    }
-
     @Override
     public Iterator<Serie> iterator() {
         return this.series.iterator();

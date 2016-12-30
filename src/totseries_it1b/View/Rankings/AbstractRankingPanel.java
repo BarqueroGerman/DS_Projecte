@@ -5,11 +5,9 @@
  */
 package totseries_it1b.View.Rankings;
 
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.DefaultListModel;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 /**

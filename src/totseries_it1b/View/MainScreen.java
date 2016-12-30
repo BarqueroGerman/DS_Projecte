@@ -8,8 +8,6 @@ package totseries_it1b.View;
 import totseries_it1b.View.Catalog.CatalogPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
-import javafx.scene.control.TabPane;
-import javax.swing.JButton;
 import javax.swing.JTabbedPane;
 import totseries_it1b.Controller.TSController;
 

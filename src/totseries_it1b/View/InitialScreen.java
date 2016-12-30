@@ -7,8 +7,6 @@ package totseries_it1b.View;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JFrame;
 import totseries_it1b.Controller.TSController;
 

@@ -48,7 +48,7 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         mainSeriePanel.removeAll();
         mainSeriePanel.add(new SeriePanel(id, title, true));
         seasonsPanels = new ArrayList<SeasonPanel>();
-        for (String[] season : ctrl.getInfoSeasonsBySerieId(id)) {            
+        for (String[] season : ctrl.getInfoSeasonsBySerieId(id)) {
             SeasonPanel panel = new SeasonPanel(season[0], title, Integer.parseInt(season[2]), false);
             seasonsPanels.add(panel);
         }
@@ -66,14 +66,14 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         directorNameLabel.setText(ctrl.getDirector(id));
         producerNameLabel.setText(ctrl.getProducer(id));
         mainSeriePanel.removeAll();
-        mainSeriePanel.add(new SeasonPanel(id, title, numSeason, false, true));
+        mainSeriePanel.add(new SeasonPanel(id, title, numSeason, true, true));
         watchEpisode1.updateEpisode(id, title, numSeason, numEp, inforEpisode, description);
         this.numSeason = numSeason;
     }
 
     public void updateSeason() {
-        seasonsPanel1.removeAll();        
-        for (SeasonPanel panel : seasonsPanels){            
+        seasonsPanel1.removeAll();
+        for (SeasonPanel panel : seasonsPanels) {
             seasonsPanel1.add(panel);
         }
     }
@@ -89,7 +89,7 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
         directorNameLabel.setText(ctrl.getDirector(id));
         producerNameLabel.setText(ctrl.getProducer(id));
         mainSeriePanel.removeAll();
-        mainSeriePanel.add(new SeriePanel(id, title, false));
+        mainSeriePanel.add(new SeriePanel(id, title, true));
         episodesPanels = new ArrayList<EpisodePanel>();
         for (String[] episode : ctrl.getInfoEpisodesBySeasonId(id, num)) {
             EpisodePanel panel = new EpisodePanel(episode[0], title, Integer.parseInt(episode[4]), episode[3], episode[5], false, num);
@@ -231,8 +231,8 @@ public class SeasonsAndEpisodes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        CatalogContainer cat = (CatalogContainer)getParent();
-        switch(activeCard){
+        CatalogContainer cat = (CatalogContainer) getParent();
+        switch (activeCard) {
             case 0:
                 cat.showCatalogCard();
                 break;

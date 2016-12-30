@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import totseries_it1b.Controller.TSController;
-import totseries_it1b.View.BasicPanels.EpisodePanel;
 
 /**
  *
@@ -27,7 +26,7 @@ public class WatchEpisode extends javax.swing.JPanel {
      */
     public WatchEpisode() {
         initComponents();
-        timer = new Timer(35, new progress());
+        timer = new Timer(50, new progress());
     }
 
     public void updateEpisode(String id, String titleSerie, int numSeason, int numEp, String titleEp, String desc) {
@@ -83,7 +82,7 @@ public class WatchEpisode extends javax.swing.JPanel {
         episodeDescription = new javax.swing.JTextPane();
         watchEpisode = new javax.swing.JButton();
         progress = new javax.swing.JProgressBar();
-        panelStars1 = new totseries_it1b.View.BasicPanels.panelStars();
+        panelStars1 = new totseries_it1b.View.BasicPanels.StarsPanel();
         rateEpisodeLabel = new javax.swing.JLabel();
         episodeTitle = new javax.swing.JLabel();
 
@@ -162,7 +161,7 @@ public class WatchEpisode extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane episodeDescription;
     private javax.swing.JLabel episodeTitle;
-    private totseries_it1b.View.BasicPanels.panelStars panelStars1;
+    private totseries_it1b.View.BasicPanels.StarsPanel panelStars1;
     private javax.swing.JProgressBar progress;
     private javax.swing.JLabel rateEpisodeLabel;
     private javax.swing.JButton watchEpisode;

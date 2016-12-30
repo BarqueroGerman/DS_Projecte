@@ -5,11 +5,6 @@
  */
 package totseries_it1b.View.Rankings.MostViewed;
 
-import java.awt.Color;
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.SpringLayout.Constraints;
 import totseries_it1b.View.BasicPanels.SeriePanel;
 import totseries_it1b.View.BasicPanels.ViewsPanel;
 

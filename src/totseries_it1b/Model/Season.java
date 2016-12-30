@@ -87,30 +87,12 @@ public class Season implements Iterable<Episode> {
         this.episodes.add(e);
     }
 
-    public String getEpisodesString() {
-        String toReturn = "";
-        Iterator it = episodes.iterator();
-        while (it.hasNext()) {
-            toReturn += ((Episode) it.next()).getNumAndTitle() + "\n";
-        }
-        return toReturn;
-    }
-
     public int getNumSeason() {
         return this.number;
     }
 
     public Serie getSerie() {
         return this.serie;
-    }
-
-    public int getNumber() {
-        return this.number;
-    }
-
-    @Override
-    public String toString() {
-        return "Season " + number;
     }
 
     @Override

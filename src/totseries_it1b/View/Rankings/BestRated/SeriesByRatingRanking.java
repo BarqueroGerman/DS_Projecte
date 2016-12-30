@@ -5,7 +5,6 @@
  */
 package totseries_it1b.View.Rankings.BestRated;
 
-import java.util.Observable;
 import totseries_it1b.Controller.TSController;
 import totseries_it1b.View.Rankings.AbstractRankingPanel;
 

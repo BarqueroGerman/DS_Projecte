@@ -98,20 +98,6 @@ public class Serie implements Iterable<Season> {
         this.artists.add(a);
     }
 
-    public String getSeasonsString() {
-        String toReturn = "";
-        Iterator it = seasons.iterator();
-        while (it.hasNext()) {
-            toReturn += ((Season) it.next()).toString() + "\n";
-        }
-        return toReturn;
-    }
-
-    @Override
-    public String toString() {
-        return "[ID = " + this.id + "]  " + this.title + "\n       " + this.description;
-    }
-
     public String getId() {
         return this.id;
     }

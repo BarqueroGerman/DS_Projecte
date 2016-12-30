@@ -12,7 +12,7 @@ import totseries_it1b.Controller.TSController;
  *
  * @author enric
  */
-public class panelStars extends javax.swing.JPanel {
+public class StarsPanel extends javax.swing.JPanel {
 
     private boolean rated = false;
     private int rating;
@@ -24,7 +24,7 @@ public class panelStars extends javax.swing.JPanel {
     /**
      * Creates new form panelStars
      */
-    public panelStars() {
+    public StarsPanel() {
         initComponents();
     }
 
@@ -218,7 +218,9 @@ public class panelStars extends javax.swing.JPanel {
     }//GEN-LAST:event_ratingStar5MouseClicked
 
     private void ratingStar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ratingStar1MouseEntered
-        ratingStar1.setOn();
+        if (!rated) {
+            ratingStar1.setOn();
+        }
     }//GEN-LAST:event_ratingStar1MouseEntered
 
     private void ratingStar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ratingStar2MouseEntered

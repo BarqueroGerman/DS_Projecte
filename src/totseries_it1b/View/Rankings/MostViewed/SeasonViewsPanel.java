@@ -5,7 +5,6 @@
  */
 package totseries_it1b.View.Rankings.MostViewed;
 
-import javax.swing.JLabel;
 import totseries_it1b.View.BasicPanels.SeasonPanel;
 import totseries_it1b.View.BasicPanels.ViewsPanel;
 

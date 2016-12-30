@@ -5,8 +5,6 @@
  */
 package totseries_it1b.Model.Rankings;
 
-import java.util.ArrayList;
-import java.util.Observable;
 import totseries_it1b.Model.Episode;
 
 /**
